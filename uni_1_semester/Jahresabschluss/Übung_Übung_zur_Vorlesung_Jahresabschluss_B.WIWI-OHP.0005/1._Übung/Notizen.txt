@@ -1,0 +1,70 @@
+# Aufgabe 1
+- Internes Rechnungswesen: Interne Unternehmensrechnung um Planung, Kontrolle und Koordination zu erleichtern. Oft mit dem Ziel der Gewinnmaximierung im Vordergrund. Dies beinhaltet den Jahresabschluss und den Lagebericht. Diese Informationen sind insbesondere dem Unternehmen von Interesse.
+
+- Externes Rechnungswesen: Die Finanzbuchhaltung des Unternehmens bildet die wirtschaftliche Lage des Unternehmens nach außen ab und bildet die Bilanz, das Inventar und Gewinne/Verluste ab (VFE-Lage - Vermögens-, Finanz- und Ertragslage). Dies beinhaltet oft die Kosten und Leistungsrechnung bzw. die Investitions- und Finanzierungsrechnung. Diese Informationen sind vor allem externen Stakeholdern, wie Investoren, Gläubigern oder dem Finanzamt  aber auch der Unternehmensleitung von Wichtigkeit.
+
+
+# Aufgabe 2
+Bilanz: Zeitpunktbetrachtung, Abbildung der Vermögenslage
+GuV (Gewinn- und Verlustrechnung): Abbildung der Ertragslage, Zeitraumbetrachtung
+Jahresabschluss: GuV, Bilanz
+
+# Aufgabe 3
+Aktiva		=		Passiva
+Mittelverwendung=		Mittelherkunft
+Vermögen	=		Kapital
+Vermögen	=		Anlagevermögen + Umlaufvermögen
+Kapital		=		Eigenkapital + Fremdkapital
+
+
+# Aufgabe 4
+Aktiva					Passiva
+Anlagevermögen				Eigenkapital
+Grundstück 180000€			Eigenkapital 190000€
+Maschine 42000€
+
+Umlaufvermögen				Fremdkapital
+Kasse 700€				Bankdarlehen 24000€
+Forderung 3000€				Rückstellungen 6000€
+					Verbindlichkeiten 5700€
+
+Forderung = Vermögen was zu Geld wird (Bsp. Kunde kauft auf Rechnung)
+Rückstellungen = Verbindlichkeiten, deren Höhe noch ungewiss ist aber wahrscheinlich ist
+					
+
+# Aufgabe 5
+- Einzahlung: 
+- Einnahme:
+- Ertrag:
+- Auszahlung:
+- Ausgabe:
+- Aufwand: 
+
+- Einzahlung/Auszahlung: Veränderung der liquiden Mittel (Bargeld/Bankguthaben)
+- Einnahme/Ausgabe: Veränderung des Geldvermögens (liquide Mittel, Forderungen und Verbindlichkeiten)
+- Ertrag/Aufwand: Veränderung des Reinvermögens = Eigenkapital (Sach- und Geldvermögen)
+
+# Aufgabe 6
+			a	b	c	d	e	f	g	h	i
+Bargeld								-
++ Sichtguthaben				+	-			+
+= Zahlungsmittel			+	-		-	+
+
++ Forderungen						+		
+/ Verbindlichkeiten	+		+	-				
+= Geldvermögen		-				+	-	+	
+
++ Sachvermögen		+	-			-	+		-	-
+= Reinvermögen			-					+	-	-
+
+- a) Ausgabe, keine Auszahlung, kein Aufwand
+- b) Aufwand, keine Auszahlung, keine Ausgabe
+- c) Einzahlung, keine Einnahme, kein Ertrag
+- d) Auszahlung, keine Ausgaben kein Aufwand
+- e) Einnahme, keine Einnahme, kein Ertrag
+- f) Auszahlung und Ausgabe, kein Aufwand
+- g) Ertrag, Einnahme, Einzahlung
+- h) Aufwand, keine Auszahlung, keine Ausgabe
+- i) Aufwand, keine Auszahlung, keine Ausgabe
+
+# Aufgabe 7

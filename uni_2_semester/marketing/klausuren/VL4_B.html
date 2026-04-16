@@ -1,0 +1,540 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);font-size:15px;line-height:1.7;color:var(--color-text-primary)}
+.doc{max-width:860px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:20px;font-weight:500;margin-bottom:4px}
+h2{font-size:16px;font-weight:500;margin:2rem 0 .5rem;color:var(--color-text-primary)}
+h3{font-size:14px;font-weight:500;margin:.75rem 0 .25rem;color:var(--color-text-secondary)}
+.meta{font-size:13px;color:var(--color-text-secondary);margin-bottom:2rem;padding-bottom:1rem;border-bottom:.5px solid var(--color-border-tertiary)}
+.task{border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:2rem}
+.task-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem}
+.task-num{background:var(--color-background-secondary);border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:4px 10px;font-size:13px;font-weight:500;white-space:nowrap;color:var(--color-text-secondary)}
+.task-title{font-size:15px;font-weight:500}
+.task-theme{font-size:12px;color:var(--color-text-tertiary);margin-top:2px}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin-left:8px;vertical-align:middle}
+.badge-blue{background:var(--color-background-info);color:var(--color-text-info)}
+.badge-warn{background:var(--color-background-warning);color:var(--color-text-warning)}
+.badge-ok{background:var(--color-background-success);color:var(--color-text-success)}
+.badge-danger{background:var(--color-background-danger);color:var(--color-text-danger)}
+.scenario{background:var(--color-background-secondary);border-left:3px solid var(--color-border-info);border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:1rem 1.25rem;margin:1rem 0;font-size:14px}
+.scenario p{margin-bottom:.5rem}
+.scenario p:last-child{margin-bottom:0}
+.section{margin:1rem 0}
+.section-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--color-text-tertiary);margin-bottom:.4rem}
+.solution{background:var(--color-background-success);border:.5px solid var(--color-border-success);border-radius:var(--border-radius-md);padding:1rem 1.25rem;margin:.5rem 0}
+.criteria{background:var(--color-background-warning);border:.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);padding:1rem 1.25rem;margin:.5rem 0}
+.transfer{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.75rem 1rem;margin:.5rem 0;font-size:13px;color:var(--color-text-secondary);font-style:italic}
+ul,ol{padding-left:1.4rem;margin:.4rem 0}
+li{margin:.25rem 0;font-size:14px}
+.formula{font-family:var(--font-mono);background:var(--color-background-secondary);border-radius:4px;padding:2px 6px;font-size:13px}
+.formula-block{font-family:var(--font-mono);background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:.75rem 1rem;margin:.5rem 0;font-size:13px;white-space:pre-wrap}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:.5rem 0}
+th{background:var(--color-background-secondary);font-weight:500;padding:6px 10px;text-align:left;border:.5px solid var(--color-border-tertiary)}
+td{padding:6px 10px;border:.5px solid var(--color-border-tertiary)}
+</style>
+
+<div class="doc">
+<div style="border-bottom:.5px solid var(--color-border-tertiary);padding-bottom:1.25rem;margin-bottom:1.5rem">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem">
+<div>
+<h1>Klausur B — Marktforschung</h1>
+<div class="meta" style="border:none;margin:0;padding:0">Modul B.WIWI-BWL.0005 · Sommersemester 2026 · Professur für Marketing und Handelsmanagement · Georg-August-Universität Göttingen</div>
+</div>
+<div style="text-align:right;font-size:12px;color:var(--color-text-tertiary)">8 Aufgaben · Transfer-orientiert<br>Ergänzung zu Klausur A</div>
+</div>
+</div>
+
+<!-- AUFGABE B1 -->
+<div class="task">
+<div class="task-header">
+<span class="task-num">B1</span>
+<div>
+<div class="task-title">Sekundärforschung und Paneldaten: Windelmarkt <span class="badge badge-blue">Grundlagen & Studiendesign</span></div>
+<div class="task-theme">Themenbereich 1 · Primär-/Sekundärforschung, Haushalts-/Handelspanel, Eigen-/Fremdforschung</div>
+</div>
+</div>
+
+<div class="scenario">
+<p><strong>Szenario:</strong> Der Hersteller <em>BabyFirst GmbH</em> möchte seinen Marktanteil im Windelmarkt analysieren und verstehen, welche Handelskanäle (Drogerie, Supermarkt, Online) von welchen Käufergruppen bevorzugt werden. Die Marketingchefin überlegt: „Wir könnten ein Institut beauftragen — oder wir nutzen einfach, was es schon gibt."</p>
+<p><strong>Aufgabe:</strong> (a) Erläutern Sie den Unterschied zwischen Primär- und Sekundärforschung und entscheiden Sie, welche Vorgehensweise für BabyFirst in einem ersten Schritt sinnvoller ist. Begründen Sie Ihre Wahl mit mindestens zwei Argumenten. (b) Erklären Sie, was ein <strong>Haushaltspanel</strong> und was ein <strong>Handelspanel</strong> ist, und nennen Sie für jedes konkret eine Information, die BabyFirst daraus gewinnen kann, die aus dem jeweils anderen Panel <em>nicht</em> direkt ablesbar ist. (c) Die Marketingchefin erwägt zwischen Eigenforschung und Fremdforschung. Nennen Sie je zwei spezifische Vorteile und leiten Sie eine begründete Empfehlung für BabyFirst ab.</p>
+</div>
+
+<div class="section">
+<div class="section-label">Musterlösung</div>
+<div class="solution">
+<p><strong>(a) Primär- vs. Sekundärforschung</strong></p>
+<p>Primärforschung erhebt Daten neu, speziell für den vorliegenden Verwendungszweck. Sekundärforschung greift auf bereits vorhandene Daten zurück. Als erster Schritt ist für BabyFirst <strong>Sekundärforschung</strong> sinnvoller, weil: (1) Paneldaten (Haushaltspanel, Handelspanel) bereits vorliegen und Marktanteile, Kauffrequenzen und Kanalnutzung zeitreihenartig abdecken — eine Neuerhebung wäre redundant und teurer. (2) Der Zeithorizont für strategische Entscheidungen ist kurz; Sekundärdaten sind unmittelbar verfügbar, während eine Primärstudie Wochen bis Monate benötigt.</p>
+<p style="margin-top:.75rem"><strong>(b) Haushalts- vs. Handelspanel</strong></p>
+<table>
+<tr><th>Panel</th><th>Definition</th><th>Information für BabyFirst</th><th>Nicht verfügbar im jeweils anderen</th></tr>
+<tr><td>Haushaltspanel</td><td>Kontinuierliche Erfassung des Kaufverhaltens repräsentativer Haushalte (z.B. GfK Consumer Panel)</td><td>Welche Altersgruppe kauft welche Windelmarke wie oft? → Käuferstruktur, Markentreue, Kauffrequenz</td><td>Kanalentscheidung des Konsumenten (wo kauft er?) — direkt auf Haushaltsebene</td></tr>
+<tr><td>Handelspanel</td><td>Kontinuierliche Erfassung von Abverkaufsdaten auf Handelsebene (z.B. Nielsen Retail Panel)</td><td>Welcher Vertriebskanal (Drogerie, Supermarkt, Online) erzielte in Woche 14 welchen Umsatz? → Distributionsgrad, Regalplatz-Effizienz</td><td>Soziodemographie der tatsächlichen Käufer — nur aggregierte Abverkäufe pro Outlet</td></tr>
+</table>
+<p style="margin-top:.75rem"><strong>(c) Eigen- vs. Fremdforschung und Empfehlung</strong></p>
+<table>
+<tr><th>Eigenforschung</th><th>Fremdforschung</th></tr>
+<tr><td>Unternehmensspezifische Erfahrung und Marktkenntnis kann genutzt werden</td><td>Methodenkenntnis und -erfahrung ist meistens höher</td></tr>
+<tr><td>Vertraulichkeit der Ergebnisse ist gesichert</td><td>Kosten sind meist niedriger (Skaleneffekte bei Instituten)</td></tr>
+</table>
+<p><strong>Empfehlung für BabyFirst:</strong> Fremdforschung via etabliertem Marktforschungsinstitut. BabyFirst ist ein Konsumgüterhersteller ohne eigene Marktforschungsabteilung mit Panel-Zugängen — Institute wie GfK oder Nielsen verfügen über bestehende Panel-Infrastruktur, methodische Expertise und können Benchmarks aus dem Gesamtmarkt liefern, die intern nicht reproduzierbar wären.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Korrekturkriterien</div>
+<div class="criteria">
+<ul>
+<li><strong>Volle Punktzahl:</strong> Primär/Sekundär korrekt definiert; Sekundärforschung mit zwei inhaltlich unterschiedlichen Argumenten begründet; Haushalts-/Handelspanel klar unterschieden mit je einem exklusiven Informationsbeispiel; Eigen-/Fremdvorteile korrekt zugeordnet; Empfehlung inhaltlich konsistent begründet.</li>
+<li><strong>Teilpunkte:</strong> Paneltypen korrekt definiert, aber kein exklusives Informationsbeispiel; Empfehlung ohne Begründung.</li>
+<li><strong>Abzug:</strong> Haushalts- und Handelspanel vertauscht; Primärforschung als erster Schritt ohne inhaltliche Begründung empfohlen.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Transfer-Aspekt</div>
+<div class="transfer">Die Unterscheidung der exklusiven Informationsgehalte beider Paneltypen sowie die begründete Empfehlung für einen spezifischen Unternehmenstypus erfordern angewandtes Urteilsvermögen, nicht bloße Definitionen.</div>
+</div>
+</div>
+
+<!-- AUFGABE B2 -->
+<div class="task">
+<div class="task-header">
+<span class="task-num">B2</span>
+<div>
+<div class="task-title">Klumpenauswahl vs. geschichtete Stichprobe: Schulbefragung <span class="badge badge-blue">Datenerhebung & Stichproben</span></div>
+<div class="task-theme">Themenbereich 2 · Klumpenauswahl, geschichtete Zufallsauswahl, Auswahlverzerrung</div>
+</div>
+</div>
+
+<div class="scenario">
+<p><strong>Szenario:</strong> Ein Bildungsforschungsinstitut möchte das Mediennutzungsverhalten von Schülerinnen und Schülern (Klassen 5–12) in Niedersachsen untersuchen (Grundgesamtheit: ca. 400.000 Schüler an 800 Schulen). Das Budget erlaubt die Befragung von 2.000 Schülern.</p>
+<p>Forscher A schlägt vor: „Wir wählen 40 Schulen zufällig aus und befragen dort jeweils alle Schüler einer zufällig ausgewählten Klasse." Forscher B schlägt vor: „Wir schichten nach Jahrgangsstufe (5–12 = 8 Stufen) und ziehen in jeder Stufe eine proportionale Zufallsstichprobe."</p>
+<p><strong>Aufgabe:</strong> (a) Identifizieren Sie das Stichprobenverfahren von Forscher A und Forscher B und erläutern Sie den grundlegenden methodischen Unterschied zwischen beiden Ansätzen. (b) Nennen Sie je zwei Vor- und Nachteile der Klumpenauswahl (Forscher A) gegenüber der geschichteten Auswahl (Forscher B). (c) Bei der Klumpenauswahl besteht das Risiko des sogenannten <em>Intraklassen-Korrelationsproblems</em>. Erklären Sie dieses Problem in eigenen Worten und zeigen Sie auf, warum es die Repräsentativität der Ergebnisse gefährdet.</p>
+</div>
+
+<div class="section">
+<div class="section-label">Musterlösung</div>
+<div class="solution">
+<p><strong>(a) Verfahren und Unterschied</strong></p>
+<p>Forscher A: <strong>Klumpenauswahl (Cluster Sampling)</strong> — die Grundgesamtheit wird in natürliche Gruppen (Klassen/Schulen) aufgeteilt, eine Zufallsauswahl der Gruppen wird gezogen, dann werden alle (oder eine Zufallsauswahl der) Elemente innerhalb der gewählten Gruppen befragt. Forscher B: <strong>Geschichtete Zufallsauswahl (Stratified Random Sampling)</strong> — die Grundgesamtheit wird anhand eines relevanten Merkmals (Jahrgangsstufe) in homogene Schichten unterteilt; innerhalb jeder Schicht wird unabhängig eine Zufallsstichprobe gezogen.</p>
+<p>Grundlegender Unterschied: Bei der Klumpenauswahl sind die Primäreinheiten (Schulen/Klassen) heterogen untereinander, aber die Sekundäreinheiten (Schüler) innerhalb einer Gruppe sind oft homogen. Bei der Schichtung ist es umgekehrt: die Schichten sind intern homogen, untereinander aber heterogen.</p>
+<p style="margin-top:.75rem"><strong>(b) Vor-/Nachteile Klumpenauswahl vs. geschichtete Auswahl</strong></p>
+<table>
+<tr><th>Kriterium</th><th>Klumpenauswahl (A)</th><th>Geschichtete Auswahl (B)</th></tr>
+<tr><td>Vorteil 1</td><td>Kostengünstiger: Interviewer reisen nur zu 40 Schulen, nicht zu 2.000 verstreuten Schülern</td><td>Höhere Präzision der Schätzungen bei gleichem n, da Varianz innerhalb Schichten gering</td></tr>
+<tr><td>Vorteil 2</td><td>Einfache Durchführung: bestehende Klassenstrukturen werden genutzt</td><td>Sicherstellung der Repräsentativität aller Jahrgangsstufen (keine Unterrepräsentation kleiner Klassen)</td></tr>
+<tr><td>Nachteil 1</td><td>Hohes Intraklassen-Korrelationsrisiko (s. c)</td><td>Erfordert vollständige Kenntnis der Schichtgrenzen und -größen vorab (Schichtungsrahmen)</td></tr>
+<tr><td>Nachteil 2</td><td>Geringere statistische Effizienz bei homogenen Klassen</td><td>Aufwändiger in der Koordination (2.000 Schüler an potenziell 100+ Schulen)</td></tr>
+</table>
+<p style="margin-top:.75rem"><strong>(c) Intraklassen-Korrelationsproblem</strong></p>
+<p>Schüler innerhalb derselben Klasse teilen denselben Lehrer, dasselbe soziale Umfeld, ähnlichen sozioökonomischen Hintergrund und oft ähnliche Mediengewohnheiten — sie sind untereinander ähnlicher als zufällig aus der Grundgesamtheit gezogene Schüler. Diese Within-Cluster-Ähnlichkeit (Intraklassen-Korrelation, ICC > 0) bedeutet, dass jede Beobachtung innerhalb der Klasse weniger neue Information liefert als eine unabhängige Zufallsbeobachtung. Die effektive Stichprobengröße ist daher kleiner als n = 2.000 (design effect > 1), und Konfidenzintervalle sind schmaler berechnet als sie sein dürften — die Präzision wird überschätzt, die Generalisierbarkeit gefährdet.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Korrekturkriterien</div>
+<div class="criteria">
+<ul>
+<li><strong>Volle Punktzahl:</strong> Beide Verfahren korrekt benannt und Grundprinzip unterschieden; je zwei inhaltlich verschiedene Vor-/Nachteile; Intraklassen-Korrelation inhaltlich korrekt (Homogenitätsproblem, effektive n-Reduktion) erklärt.</li>
+<li><strong>Teilpunkte:</strong> Verfahren korrekt, aber Vor-/Nachteile nur oberflächlich; ICC benannt, aber Konsequenz für Repräsentativität nicht expliziert.</li>
+<li><strong>Abzug:</strong> Klumpen- und Quotenauswahl verwechselt; ICC als Vorteil interpretiert.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Transfer-Aspekt</div>
+<div class="transfer">Das Intraklassen-Korrelationsproblem wird im Skript nicht explizit benannt — Studierende müssen aus dem Klumpenauswahl-Prinzip eigenständig auf das statistische Effizienzproblem schließen.</div>
+</div>
+</div>
+
+<!-- AUFGABE B3 -->
+<div class="task">
+<div class="task-header">
+<span class="task-num">B3</span>
+<div>
+<div class="task-title">Verdeckte Beobachtung vs. Befragung: Supermarkt-Eye-Tracking <span class="badge badge-blue">Methoden der Feldarbeit</span></div>
+<div class="task-theme">Themenbereich 3 · Beobachtung (verdeckt/offen), Befragung, methodische Grenzen</div>
+</div>
+</div>
+
+<div class="scenario">
+<p><strong>Szenario:</strong> Ein Schokoladenriegel-Hersteller möchte verstehen, welche Regalzonen (Augenhöhe, Greifzone, Bodenzone) Käufer am längsten fixieren und ob das tatsächliche Kaufverhalten mit der selbstberichteten Regalwahrnehmung übereinstimmt. Der Forschungsleiter schlägt zwei parallele Methoden vor: (1) Eye-Tracking-Brillen für Kunden im echten Supermarkt (ohne deren Wissen), (2) anschließende Nachbefragung derselben Kunden an der Kasse.</p>
+<p><strong>Aufgabe:</strong> (a) Klassifizieren Sie beide Erhebungsmethoden nach den Dimensionen: offen/verdeckt, Primär-/Sekundärforschung, reaktiv/nicht-reaktiv. (b) Benennen Sie je einen spezifischen Vorteil der Beobachtung und einen spezifischen Vorteil der Befragung für diese Fragestellung — und erklären Sie, warum die Kombination beider Methoden (Triangulation) dem jeweiligen Einzelansatz überlegen ist. (c) Der Datenschutzbeauftragte des Unternehmens erhebt Einwände gegen die verdeckte Beobachtung. Nennen Sie zwei konkrete ethische und rechtliche Probleme und schlagen Sie eine datenschutzkonforme Alternative vor, die denselben Erkenntniszweck erfüllt.</p>
+</div>
+
+<div class="section">
+<div class="section-label">Musterlösung</div>
+<div class="solution">
+<p><strong>(a) Klassifikation</strong></p>
+<table>
+<tr><th>Dimension</th><th>Eye-Tracking (verdeckt)</th><th>Nachbefragung</th></tr>
+<tr><td>Offen/verdeckt</td><td>Verdeckt (Proband weiß nicht, dass er beobachtet wird)</td><td>Offen (bewusste Teilnahme)</td></tr>
+<tr><td>Primär-/Sekundärforschung</td><td>Primärforschung (neue Daten)</td><td>Primärforschung (neue Daten)</td></tr>
+<tr><td>Reaktiv/nicht-reaktiv</td><td>Nicht-reaktiv (kein Interviewereinfluss, kein Hawthorne-Effekt)</td><td>Reaktiv (Antworten können durch Fragestellung beeinflusst werden)</td></tr>
+</table>
+<p style="margin-top:.75rem"><strong>(b) Vorteile und Triangulation</strong></p>
+<p><strong>Vorteil Beobachtung:</strong> Erfasst unbewusstes und unreflektiertes Verhalten — Kunden können nicht bewusst steuern, wohin ihr Blick wandert. Regalfixierungen spiegeln echte Aufmerksamkeitsverteilung wider, unabhängig von Verbalisierungsfähigkeit oder Erinnerungsverzerrung.</p>
+<p><strong>Vorteil Befragung:</strong> Erfasst nicht beobachtbare Größen wie Kaufmotive, Einstellungen und Präferenzen — „Warum haben Sie diesen Riegel genommen?" ist nur durch Befragung zugänglich.</p>
+<p><strong>Triangulation:</strong> Erst die Kombination beider Methoden erlaubt es, Diskrepanzen aufzudecken: Ein Kunde fixiert Regalzone B am längsten (Beobachtung), berichtet aber, er habe bewusst Zone A gewählt (Befragung). Diese Inkonsistenz ist der eigentliche Erkenntnisgewinn — weder Beobachtung noch Befragung allein hätte sie offenbart.</p>
+<p style="margin-top:.75rem"><strong>(c) Ethische/rechtliche Probleme und Alternative</strong></p>
+<p>Problem 1: <strong>Verstoß gegen DSGVO Art. 6</strong> — verdeckte Videoaufnahmen und Biometrie-Daten (Blickbewegungen) bedürfen einer Rechtsgrundlage (informierte Einwilligung oder berechtigtes Interesse, das hier schwer zu begründen ist).</p>
+<p>Problem 2: <strong>Verletzung des Persönlichkeitsrechts</strong> — Kunden, die nicht informiert sind, können ihre Teilnahme nicht verweigern; das Prinzip der informierten Einwilligung (informed consent) ist nicht gewahrt.</p>
+<p><strong>Datenschutzkonforme Alternative:</strong> Durchführung als <em>Labor-Eye-Tracking-Studie</em> in einem simulierten Supermarktregal (Labortest) mit expliziter schriftlicher Einwilligung der Probanden. Alternativ: <em>offene Feldbeobachtung</em> mit Einwilligungserklärung an der Kasse vor Betreten der Testabteilung.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Korrekturkriterien</div>
+<div class="criteria">
+<ul>
+<li><strong>Volle Punktzahl:</strong> Alle sechs Klassifikationsfelder korrekt; Triangulations-Argument mit Diskrepanzbeispiel; zwei inhaltlich verschiedene Rechts-/Ethikprobleme; konkrete datenschutzkonforme Alternative mit Erklärung.</li>
+<li><strong>Teilpunkte:</strong> Klassifikation teilweise korrekt; Triangulation als „mehr Daten" ohne Diskrepanz-Argument; nur ein Rechtsproblem genannt.</li>
+<li><strong>Abzug:</strong> Beobachtung als reaktiv klassifiziert; Triangulation = Mittelwert beider Methoden.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Transfer-Aspekt</div>
+<div class="transfer">Die DSGVO-Dimension und das Triangulations-Argument gehen deutlich über den Skriptinhalt hinaus und verlangen, methodisches Wissen auf reale forschungsethische Herausforderungen zu übertragen.</div>
+</div>
+</div>
+
+<!-- AUFGABE B4 -->
+<div class="task">
+<div class="task-header">
+<span class="task-num">B4</span>
+<div>
+<div class="task-title">Kreuztabellen-Analyse: Zahlungsmittelwahl im Einzelhandel <span class="badge badge-warn">Deskriptive Analyse & Mittelwertvergleich</span></div>
+<div class="task-theme">Themenbereich 4 · Kreuztabellen, Zeilen-/Spaltenprozente, Gesamtprozente, Chi-Quadrat-Logik</div>
+</div>
+</div>
+
+<div class="scenario">
+<p><strong>Szenario:</strong> Ein Payment-Dienstleister befragt 300 Personen zu ihrem bevorzugten Zahlungsmittel (Bar/Karte) und ihrer Altersgruppe (unter 40 / 40 und älter). Die Kreuztabelle lautet:</p>
+<table>
+<tr><th>Altersgruppe</th><th>Bar (absolut)</th><th>Karte (absolut)</th><th>Zeilensumme</th></tr>
+<tr><td>Unter 40</td><td>45</td><td>105</td><td>150</td></tr>
+<tr><td>40 und älter</td><td>90</td><td>60</td><td>150</td></tr>
+<tr><td>Spaltensumme</td><td>135</td><td>165</td><td>300</td></tr>
+</table>
+<p><strong>Aufgabe:</strong> (a) Berechnen Sie für jede Zelle die Zeilenprozente, Spaltenprozente und Gesamtprozente. Stellen Sie die Ergebnisse in einer vollständigen Kreuztabelle dar. (b) Interpretieren Sie die berechneten Prozentwerte: Was sagen die Zeilenprozente, was die Spaltenprozente aus — und welche Perspektive ist für den Payment-Dienstleister aus strategischer Sicht relevanter? (c) Ein Kollege schlägt vor, einen Chi-Quadrat-Test durchzuführen. Erklären Sie in eigenen Worten, welche Nullhypothese dieser Test prüft, und beschreiben Sie ohne Berechnung das inhaltliche Prinzip des Tests (erwartete vs. beobachtete Häufigkeiten).</p>
+</div>
+
+<div class="section">
+<div class="section-label">Musterlösung</div>
+<div class="solution">
+<p><strong>(a) Vollständige Kreuztabelle</strong></p>
+<table>
+<tr><th>Altersgruppe</th><th>Kennwert</th><th>Bar</th><th>Karte</th><th>Gesamt</th></tr>
+<tr><td rowspan="3">Unter 40</td><td>absolut</td><td>45</td><td>105</td><td>150</td></tr>
+<tr><td>Zeile %</td><td>30,0 %</td><td>70,0 %</td><td>100 %</td></tr>
+<tr><td>Spalte %</td><td>33,3 %</td><td>63,6 %</td><td>50,0 %</td></tr>
+<tr><td rowspan="3">40 und älter</td><td>absolut</td><td>90</td><td>60</td><td>150</td></tr>
+<tr><td>Zeile %</td><td>60,0 %</td><td>40,0 %</td><td>100 %</td></tr>
+<tr><td>Spalte %</td><td>66,7 %</td><td>36,4 %</td><td>50,0 %</td></tr>
+<tr><td rowspan="2">Spaltensumme</td><td>absolut</td><td>135</td><td>165</td><td>300</td></tr>
+<tr><td>Gesamt %</td><td>45,0 %</td><td>55,0 %</td><td>100 %</td></tr>
+</table>
+<p>Gesamtprozente (Beispiel): 45/300 = 15,0 % (unter 40, bar); 105/300 = 35,0 % (unter 40, Karte); 90/300 = 30,0 % (40+, bar); 60/300 = 20,0 % (40+, Karte).</p>
+<p style="margin-top:.75rem"><strong>(b) Interpretation und strategische Relevanz</strong></p>
+<p><strong>Zeilenprozente</strong> beschreiben das Verhalten innerhalb einer Altersgruppe: 70 % der unter 40-Jährigen zahlen mit Karte, aber nur 40 % der 40-Jährigen und Älteren. → Aussage: Wie ist das Zahlungsverhalten einer bestimmten Zielgruppe zusammengesetzt?</p>
+<p><strong>Spaltenprozente</strong> beschreiben die Zusammensetzung der Kartenzahler: 63,6 % aller Kartenzahler sind unter 40. → Aussage: Wer nutzt ein bestimmtes Zahlungsmittel?</p>
+<p><strong>Strategisch relevanter für den Payment-Dienstleister:</strong> Die <em>Zeilenprozente</em>, da er verstehen möchte, wie stark die Kartenpräferenz in verschiedenen Zielgruppensegmenten ist — um Akquisitionsmaßnahmen auf die Gruppe mit der niedrigsten Akzeptanz (40+) auszurichten und das Wachstumspotenzial zu quantifizieren.</p>
+<p style="margin-top:.75rem"><strong>(c) Chi-Quadrat-Test</strong></p>
+<p><strong>Nullhypothese:</strong> H₀: Die Wahl des Zahlungsmittels (bar/Karte) ist statistisch unabhängig von der Altersgruppe.</p>
+<p><strong>Prinzip:</strong> Unter H₀ werden die <em>erwarteten Häufigkeiten</em> berechnet, die man in jeder Zelle beobachten würde, wenn kein Zusammenhang bestünde (z.B. erwartete Häufigkeit Zelle „unter 40, bar" = Zeilensumme × Spaltensumme / Gesamtn = 150 × 135 / 300 = 67,5). Der Chi-Quadrat-Wert misst die gewichtete quadratische Abweichung zwischen beobachteten und erwarteten Häufigkeiten: Je größer die Abweichung, desto unwahrscheinlicher ist H₀, desto eher wird sie verworfen.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Korrekturkriterien</div>
+<div class="criteria">
+<ul>
+<li><strong>Volle Punktzahl:</strong> Alle Prozentsätze rechnerisch korrekt; Zeilen- und Spaltenprozente inhaltlich klar unterschieden; strategische Empfehlung mit Begründung; H₀ korrekt als Unabhängigkeitshypothese; Chi-Quadrat-Prinzip (erwartet vs. beobachtet) inhaltlich korrekt.</li>
+<li><strong>Teilpunkte:</strong> Prozentrechnung korrekt, aber Interpretation fehlt; Chi-Quadrat erklärt, aber H₀ nicht explizit formuliert.</li>
+<li><strong>Abzug:</strong> Zeilen- und Spaltenprozente verwechselt; erwartete Häufigkeit falsch berechnet.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Transfer-Aspekt</div>
+<div class="transfer">Die strategische Einordnung der Perspektive (Zeile vs. Spalte) und das eigenständige Erklären des Chi-Quadrat-Prinzips ohne Formelvorlage verlangen konzeptionelles Verständnis des Inferenzlogik-Prinzips.</div>
+</div>
+</div>
+
+<!-- AUFGABE B5 -->
+<div class="task">
+<div class="task-header">
+<span class="task-num">B5</span>
+<div>
+<div class="task-title">Varianzanalyse mit Wechselwirkungseffekten: Verpackungsdesign und Geschlecht <span class="badge badge-warn">Varianz- & Regressionsanalyse</span></div>
+<div class="task-theme">Themenbereich 5 · Zweiweg-ANOVA, Haupteffekte, Interaktionseffekte, R²</div>
+</div>
+</div>
+
+<div class="scenario">
+<p><strong>Szenario:</strong> Ein Lebensmittelhersteller testet, ob das <strong>Verpackungsdesign</strong> (modern/klassisch) und das <strong>Geschlecht</strong> der Befragten (männlich/weiblich) die Kaufbereitschaft (0–100 Skala) beeinflussen. Es werden je 10 Personen pro Zelle befragt (2 × 2 = 40 Personen gesamt). Der SPSS-Output (vereinfacht) lautet:</p>
+<table>
+<tr><th>Quelle</th><th>Quadratsumme (Typ III)</th><th>df</th><th>Mittel der Quadrate</th><th>F</th><th>Sig.</th></tr>
+<tr><td>Korrigiertes Modell</td><td>3.240</td><td>3</td><td>1.080</td><td>18,00</td><td>,000</td></tr>
+<tr><td>Design</td><td>1.600</td><td>1</td><td>1.600</td><td>26,67</td><td>,000</td></tr>
+<tr><td>Geschlecht</td><td>900</td><td>1</td><td>900</td><td>15,00</td><td>,000</td></tr>
+<tr><td>Design × Geschlecht</td><td>740</td><td>1</td><td>740</td><td>12,33</td><td>,001</td></tr>
+<tr><td>Fehler</td><td>2.160</td><td>36</td><td>60</td><td></td><td></td></tr>
+<tr><td>Korrigierte Gesamtvariation</td><td>5.400</td><td>39</td><td></td><td></td><td></td></tr>
+</table>
+<p>Deskriptive Mittelwerte: Männer/modern: 72; Männer/klassisch: 58; Frauen/modern: 68; Frauen/klassisch: 74.</p>
+<p><strong>Aufgabe:</strong> (a) Formulieren Sie die vier Nullhypothesen (H₀₁–H₀₄) der Varianzanalyse für dieses Design. (b) Interpretieren Sie alle Ergebniszeilen bei α = 5 % und entscheiden Sie für jede Nullhypothese. (c) Berechnen Sie R² und das korrigierte R² und interpretieren Sie den Wechselwirkungseffekt inhaltlich anhand der Mittelwerte: Was bedeutet es konkret, dass die Interaktion signifikant ist?</p>
+</div>
+
+<div class="section">
+<div class="section-label">Musterlösung</div>
+<div class="solution">
+<p><strong>(a) Nullhypothesen</strong></p>
+<ul>
+<li>H₀₁: Weder Design noch Geschlecht noch Wechselwirkungen wirken sich auf die Kaufbereitschaft aus (Gesamtmodell).</li>
+<li>H₀₂: Das Verpackungsdesign hat keinen Einfluss auf die Kaufbereitschaft (Haupteffekt Design).</li>
+<li>H₀₃: Das Geschlecht hat keinen Einfluss auf die Kaufbereitschaft (Haupteffekt Geschlecht).</li>
+<li>H₀₄: Es gibt keine Wechselwirkung zwischen Design und Geschlecht auf die Kaufbereitschaft.</li>
+</ul>
+<p style="margin-top:.75rem"><strong>(b) Interpretation und Entscheidungen</strong></p>
+<table>
+<tr><th>Hypothese</th><th>F-Wert</th><th>Sig.</th><th>Entscheidung bei α = 5 %</th></tr>
+<tr><td>H₀₁ (Gesamtmodell)</td><td>18,00</td><td>,000</td><td>Verwerfen — Gesamtmodell signifikant</td></tr>
+<tr><td>H₀₂ (Haupteffekt Design)</td><td>26,67</td><td>,000</td><td>Verwerfen — Design wirkt signifikant</td></tr>
+<tr><td>H₀₃ (Haupteffekt Geschlecht)</td><td>15,00</td><td>,000</td><td>Verwerfen — Geschlecht wirkt signifikant</td></tr>
+<tr><td>H₀₄ (Wechselwirkung)</td><td>12,33</td><td>,001</td><td>Verwerfen — signifikante Interaktion</td></tr>
+</table>
+<p style="margin-top:.75rem"><strong>(c) R², korrigiertes R² und Interaktionsinterpretation</strong></p>
+<div class="formula-block">R² = Quadratsumme Modell / Gesamtvariation = 3.240 / 5.400 = 0,600 (60,0 %)
+
+Korrigiertes R² = 1 − [(1 − R²) × (N−1) / (N−k−1)]
+               = 1 − [(1 − 0,600) × 39 / 36]
+               = 1 − [0,400 × 1,083] = 1 − 0,433 = 0,567 (56,7 %)</div>
+<p><strong>Interpretation der Wechselwirkung:</strong> Ein signifikanter Interaktionseffekt bedeutet, dass der Effekt des Verpackungsdesigns vom Geschlecht abhängt — und umgekehrt. Anhand der Mittelwerte:</p>
+<ul>
+<li>Männer bevorzugen das <em>moderne</em> Design (72 > 58, Δ = +14).</li>
+<li>Frauen bevorzugen das <em>klassische</em> Design (74 > 68, Δ = +6).</li>
+</ul>
+<p>Der Effekt des Designs ist also nicht nur in seiner Stärke, sondern in seiner <strong>Richtung</strong> geschlechtsabhängig. Die Haupteffekte allein wären hier irreführend: Ein reiner Mittelwertvergleich über beide Geschlechter würde die gegensätzliche Wirkungsrichtung maskieren. <strong>Handlungsempfehlung:</strong> Gender-spezifische Verpackungslinien oder segmentierte Kommunikation.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Korrekturkriterien</div>
+<div class="criteria">
+<ul>
+<li><strong>Volle Punktzahl:</strong> Alle vier H₀ inhaltlich korrekt formuliert; alle vier Entscheidungen mit Sig.-Vergleich; R² und korrigiertes R² korrekt berechnet; Wechselwirkung inhaltlich mit Richtungsumkehr erklärt; Handlungsimplikation.</li>
+<li><strong>Teilpunkte:</strong> H₀ korrekt, Entscheidungen korrekt, aber Interaktion nur als „signifikant" ohne inhaltliche Erklärung; R² berechnet, aber korrigiertes R² fehlt.</li>
+<li><strong>Abzug:</strong> Wechselwirkungseffekt als Summe der Haupteffekte interpretiert; H₀₄ nicht von H₀₁ unterschieden.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Transfer-Aspekt</div>
+<div class="transfer">Die inhaltliche Interpretation einer Richtungsumkehr im Wechselwirkungseffekt anhand konkreter Mittelwerte sowie die Berechnung des korrigierten R² erfordern deutlich mehr als Formelreproduktion.</div>
+</div>
+</div>
+
+<!-- AUFGABE B6 -->
+<div class="task">
+<div class="task-header">
+<span class="task-num">B6</span>
+<div>
+<div class="task-title">Kausalanalyse: Pfadkoeffizienten interpretieren und Messmodell beurteilen <span class="badge badge-danger">Kausal- & Faktorenanalyse</span></div>
+<div class="task-theme">Themenbereich 6 · Pfadkoeffizienten, direkte/indirekte Effekte, Messmodell-Güte</div>
+</div>
+</div>
+
+<div class="scenario">
+<p><strong>Szenario:</strong> Ein Marktforscher untersucht den Zusammenhang zwischen <strong>Markenbekanntheit</strong> (ξ₁), <strong>wahrgenommener Qualität</strong> (ξ₂), <strong>Markenpräferenz</strong> (η₁) und <strong>Kaufabsicht</strong> (η₂). Das geschätzte Strukturmodell ergibt folgende signifikante Pfadkoeffizienten (alle auf 1%-Niveau signifikant):</p>
+<table>
+<tr><th>Pfad</th><th>Koeffizient</th></tr>
+<tr><td>ξ₁ → η₁ (Bekanntheit → Präferenz)</td><td>0,29</td></tr>
+<tr><td>ξ₂ → η₁ (Qualität → Präferenz)</td><td>0,51</td></tr>
+<tr><td>η₁ → η₂ (Präferenz → Kaufabsicht)</td><td>0,67</td></tr>
+<tr><td>ξ₁ → η₂ (Bekanntheit → Kaufabsicht, direkt)</td><td>0,18</td></tr>
+</table>
+<p><strong>Aufgabe:</strong> (a) Berechnen Sie den <strong>indirekten Effekt</strong> von Markenbekanntheit (ξ₁) auf Kaufabsicht (η₂) über Markenpräferenz (η₁) und den <strong>Gesamteffekt</strong> von ξ₁ auf η₂. (b) Erklären Sie, was es bedeutet, dass sowohl ein direkter als auch ein indirekter Pfad von ξ₁ auf η₂ existiert. Welche strategische Schlussfolgerung zieht der Hersteller daraus? (c) Das Messmodell für η₁ (Markenpräferenz) besteht aus drei Indikatoren mit Faktorladungen λ = 0,82; 0,76; 0,51. Beurteilen Sie die Qualität des Messmodells: Welche Ladung ist problematisch, und was sollte der Forscher mit diesem Indikator tun?</div>
+</div>
+
+<div class="section">
+<div class="section-label">Musterlösung</div>
+<div class="solution">
+<p><strong>(a) Indirekter Effekt und Gesamteffekt</strong></p>
+<div class="formula-block">Indirekter Effekt ξ₁ → η₁ → η₂:
+= Pfad(ξ₁→η₁) × Pfad(η₁→η₂)
+= 0,29 × 0,67 = 0,194
+
+Direkter Effekt ξ₁ → η₂:
+= 0,18
+
+Gesamteffekt ξ₁ → η₂:
+= direkter Effekt + indirekter Effekt
+= 0,18 + 0,194 = 0,374</div>
+<p style="margin-top:.75rem"><strong>(b) Bedeutung direkter + indirekter Pfad (partielle Mediation)</strong></p>
+<p>Das Nebeneinander von direktem und indirektem Pfad bedeutet, dass Markenpräferenz (η₁) die Beziehung zwischen Bekanntheit und Kaufabsicht <strong>partiell mediiert</strong>: Ein Teil des Bekanntheitseinflusses läuft über den Umweg der Präferenzbildung (indirekt), ein anderer Teil wirkt direkt auf die Kaufabsicht — z.B. durch bloßes Wiedererkennen am Point of Sale ohne bewusste Präferenz.</p>
+<p><strong>Strategische Schlussfolgerung:</strong> Der Hersteller sollte sowohl in Präferenzmarketing investieren (Qualitätskommunikation, da ξ₂ den stärksten Präferenzeffekt hat: 0,51) als auch sicherstellen, dass die Marke am PoS maximal sichtbar ist (direkter Bekanntheitseffekt auf Kaufabsicht: 0,18), z.B. durch Platzierung, Packaging, Promotions.</p>
+<p style="margin-top:.75rem"><strong>(c) Messmodell-Beurteilung</strong></p>
+<p>Faktorladungen (λ) repräsentieren, wie stark ein Indikator das latente Konstrukt widerspiegelt. Als Faustregel gilt: λ ≥ 0,70 als akzeptabel, λ ≥ 0,80 als gut.</p>
+<ul>
+<li>λ = 0,82: gut — hohe Konstruktrelevanz.</li>
+<li>λ = 0,76: akzeptabel — knapp über der Mindestgrenze.</li>
+<li>λ = 0,51: <strong>problematisch</strong> — der Indikator erklärt nur 0,51² = 26 % der Varianz des latenten Konstrukts; mehr als 74 % seiner Varianz ist Messfehler. Er trägt wenig zur Messung der Markenpräferenz bei.</li>
+</ul>
+<p><strong>Empfehlung:</strong> Der Indikator mit λ = 0,51 sollte aus dem Messmodell entfernt werden (Item Deletion). Das verbleibende 2-Item-Messmodell hat zwar weniger Informationsgehalt, aber höhere durchschnittliche erklärte Varianz (AVE) und damit bessere Konstruktvalidität. Alternativ: Reformulierung des Items und erneute Datenerhebung.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Korrekturkriterien</div>
+<div class="criteria">
+<ul>
+<li><strong>Volle Punktzahl:</strong> Indirekter Effekt als Produkt der Pfadkoeffizienten korrekt; Gesamteffekt korrekt; partielle Mediation inhaltlich erklärt; strategische Doppelstrategie (Qualität UND Sichtbarkeit); λ = 0,51 als problematisch mit Begründung (erklärte Varianz); Empfehlung Item Deletion.</li>
+<li><strong>Teilpunkte:</strong> Indirekter Effekt korrekt, Gesamteffekt fehlt; Ladungsproblem erkannt, aber kein Kriterium genannt.</li>
+<li><strong>Abzug:</strong> Indirekter Effekt als Summe statt Produkt; λ = 0,51 als „niedrig, aber ausreichend" akzeptiert ohne Begründung.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Transfer-Aspekt</div>
+<div class="transfer">Pfadprodukt-Logik für indirekte Effekte, Mediationskonzept und Faktorladungs-Gütebeurteilung mit AVE-Logik gehen deutlich über die Skriptdarstellung hinaus und verlangen eigenständige Schlussfolgerungen.</div>
+</div>
+</div>
+
+<!-- AUFGABE B7 -->
+<div class="task">
+<div class="task-header">
+<span class="task-num">B7</span>
+<div>
+<div class="task-title">Direkte Präferenzanalyse: Gesamtnutzen eines Streamingpakets berechnen <span class="badge badge-ok">Nutzen- & Präferenzmessung</span></div>
+<div class="task-theme">Themenbereich 7 · Direkte Befragung, gewichteter Gesamtnutzen, Idealpunkt-Vergleich</div>
+</div>
+</div>
+
+<div class="scenario">
+<p><strong>Szenario:</strong> Ein Streaming-Dienst evaluiert drei Angebotsvarianten anhand von vier Merkmalen. Ein Befragter bewertet jede Merkmalsausprägung und gibt Gewichte an:</p>
+<table>
+<tr><th>Merkmal</th><th>Ausprägung A</th><th>Ausprägung B</th><th>Ausprägung C</th><th>Gewicht</th></tr>
+<tr><td>Preis (€/Monat)</td><td>7,99 → Bew. 9</td><td>12,99 → Bew. 5</td><td>17,99 → Bew. 1</td><td>8</td></tr>
+<tr><td>Bildqualität</td><td>HD → Bew. 5</td><td>4K → Bew. 9</td><td>4K HDR → Bew. 10</td><td>6</td></tr>
+<tr><td>Downloads</td><td>Nein → Bew. 2</td><td>Ja → Bew. 8</td><td>Ja → Bew. 8</td><td>4</td></tr>
+<tr><td>Anbieter-Marke</td><td>StreamA → Bew. 7</td><td>StreamB → Bew. 6</td><td>StreamC → Bew. 4</td><td>7</td></tr>
+</table>
+<p>Angebot 1 kombiniert: Preis A + Bildqualität A + Downloads A + Marke A.<br>Angebot 2 kombiniert: Preis B + Bildqualität B + Downloads B + Marke B.<br>Angebot 3 kombiniert: Preis C + Bildqualität C + Downloads B + Marke C.</p>
+<p><strong>Aufgabe:</strong> (a) Berechnen Sie den gewichteten Gesamtnutzen für alle drei Angebote nach dem Modell der direkten Präferenzanalyse. (b) Welches Angebot sollte der Konsument gemäß Modell wählen? (c) Nennen Sie zwei grundlegende Kritikpunkte an der direkten Präferenzabfrage (im Vergleich zur Conjointanalyse), die erklären, warum das Modellergebnis die tatsächliche Kaufentscheidung möglicherweise nicht korrekt vorhersagt.</p>
+</div>
+
+<div class="section">
+<div class="section-label">Musterlösung</div>
+<div class="solution">
+<p><strong>(a) Gewichteter Gesamtnutzen</strong></p>
+<p>Formel: U(Angebot) = Σ (Bewertung × Gewicht) über alle Merkmale</p>
+<div class="formula-block">Angebot 1 (A+A+A+A):
+U₁ = (9×8) + (5×6) + (2×4) + (7×7)
+   = 72 + 30 + 8 + 49 = 159
+
+Angebot 2 (B+B+B+B):
+U₂ = (5×8) + (9×6) + (8×4) + (6×7)
+   = 40 + 54 + 32 + 42 = 168
+
+Angebot 3 (C+C+B+C):
+U₃ = (1×8) + (10×6) + (8×4) + (4×7)
+   = 8 + 60 + 32 + 28 = 128</div>
+<p style="margin-top:.75rem"><strong>(b) Modellentscheidung</strong></p>
+<p>Gemäß dem Modell sollte der Konsument <strong>Angebot 2</strong> wählen (U₂ = 168 > U₁ = 159 > U₃ = 128). Angebot 2 bietet die beste Balance aus akzeptablem Preis, guter Bildqualität und verfügbaren Downloads.</p>
+<p style="margin-top:.75rem"><strong>(c) Kritikpunkte der direkten Präferenzabfrage</strong></p>
+<ul>
+<li><strong>Salienz-Bias / Ceiling-Effekt:</strong> Befragte können und wollen alle Merkmale als wichtig bezeichnen. Die direkte Gewichtsabfrage ist anfällig für sozial erwünschte oder inkonsistente Antworten — reale Trade-offs (weniger zahlen = weniger Qualität) werden nicht erzwungen, daher fehlt die Realitätsnähe.</li>
+<li><strong>Fehlende kompensatorische Logik / Konstruktvalidität:</strong> Das Modell unterstellt, dass Merkmale vollständig kompensatorisch sind (ein schlechter Preis kann durch sehr gute Bildqualität ausgeglichen werden). Tatsächlich könnten Konsumenten das teure Angebot kategorisch ablehnen, sobald ein Schwellenwert überschritten wird (lexikographische oder konjunktive Entscheidungsregel) — was das additive Modell nicht abbildet.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Korrekturkriterien</div>
+<div class="criteria">
+<ul>
+<li><strong>Volle Punktzahl:</strong> Alle drei Gesamtnutzenwerte korrekt berechnet; Angebot 2 korrekt identifiziert; zwei inhaltlich verschiedene Kritikpunkte (Salienz-Bias UND Modellstruktur); Bezug zur Conjointanalyse als Vergleichspunkt.</li>
+<li><strong>Teilpunkte:</strong> Rechnerisch korrekt, aber Kritikpunkte nur oberflächlich; ein Kritikpunkt inhaltlich korrekt.</li>
+<li><strong>Abzug:</strong> Bewertungen nicht gewichtet; Angebot 1 gewählt; Kritikpunkte betreffen andere Methode.</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Transfer-Aspekt</div>
+<div class="transfer">Die eigenständige Berechnung für ein neues Anwendungsbeispiel (Streaming statt Sky/TV-Pakete aus dem Skript) sowie die methodenvergleichende Kritik erfordern Übertragungsleistung über die Skriptbeispiele hinaus.</div>
+</div>
+</div>
+
+<!-- AUFGABE B8 -->
+<div class="task">
+<div class="task-header">
+<span class="task-num">B8</span>
+<div>
+<div class="task-title">Ähnlichkeitsmatrix lesen und Dendrogramm interpretieren: Automobilmarken <span class="badge badge-ok">Positionierung, Segmentierung & Güte</span></div>
+<div class="task-theme">Themenbereich 8 · MDS-Ähnlichkeitsmatrix, Dendrogramm, optimale Clusteranzahl, Repositionierung</div>
+</div>
+</div>
+
+<div class="scenario">
+<p><strong>Szenario:</strong> Ein Marktforschungsinstitut hat Konsumenten gebeten, die Ähnlichkeit von fünf Automobilmarken auf einer Skala von 1 (sehr unähnlich) bis 10 (sehr ähnlich) zu beurteilen. Die resultierende Ähnlichkeitsmatrix (Mittelwerte aus n = 200 Befragungen) lautet:</p>
+<table>
+<tr><th></th><th>BMW</th><th>Mercedes</th><th>VW</th><th>Skoda</th><th>Dacia</th></tr>
+<tr><td>BMW</td><td>—</td><td>7,8</td><td>3,1</td><td>2,2</td><td>1,4</td></tr>
+<tr><td>Mercedes</td><td>7,8</td><td>—</td><td>2,9</td><td>2,0</td><td>1,2</td></tr>
+<tr><td>VW</td><td>3,1</td><td>2,9</td><td>—</td><td>6,4</td><td>4,2</td></tr>
+<tr><td>Skoda</td><td>2,2</td><td>2,0</td><td>6,4</td><td>—</td><td>5,9</td></tr>
+<tr><td>Dacia</td><td>1,4</td><td>1,2</td><td>4,2</td><td>5,9</td><td>—</td></tr>
+</table>
+<p><strong>Aufgabe:</strong> (a) Lesen Sie die Ähnlichkeitsmatrix aus: Welche zwei Markenpaare werden als am ähnlichsten wahrgenommen? Welche als am unähnlichsten? Begründen Sie, in wie viele natürliche Cluster sich die fünf Marken aus der Matrix gruppieren lassen — ohne eine formale Clusteranalyse durchzuführen. (b) Beschreiben Sie, wie ein hierarchisch-agglomeratives Clusterverfahren (Ward-Methode) diese Matrix schrittweise verarbeiten würde: Welche beiden Marken würden im ersten Schritt fusioniert, und warum? Wie würde ein Dendrogramm diesen Prozess abbilden? (c) Der Hersteller von Skoda überlegt, sich stärker in Richtung BMW/Mercedes zu repositionieren. Erklären Sie anhand des Wahrnehmungsraumkonzepts (MDS), welche Risiken und Chancen eine solche Repositionierungsstrategie birgt — und welches Gütekriterium geprüft werden muss, bevor die Strategie umgesetzt wird.</p>
+</div>
+
+<div class="section">
+<div class="section-label">Musterlösung</div>
+<div class="solution">
+<p><strong>(a) Matrix-Auswertung und natürliche Cluster</strong></p>
+<p><strong>Ähnlichstes Markenpaar:</strong> BMW–Mercedes (7,8) — werden als sehr ähnlich wahrgenommen (Premium-Segment).<br>
+<strong>Zweitähnlichstes Paar:</strong> VW–Skoda (6,4) — werden als ähnlich im Volumen-/Einstiegssegment wahrgenommen.<br>
+<strong>Unähnlichstes Paar:</strong> Mercedes–Dacia (1,2) — maximale wahrgenommene Distanz (Premium vs. Budget).</p>
+<p>Aus der Matrix lassen sich <strong>drei natürliche Cluster</strong> ableiten: (1) Premium: BMW + Mercedes (hohe gegenseitige Ähnlichkeit, niedrige Ähnlichkeit zu allen anderen). (2) Volumen/Einstieg: VW + Skoda (Ähnlichkeit 6,4). (3) Budget: Dacia (eingeschränkte Ähnlichkeit zu VW/Skoda, sehr geringe zu BMW/Mercedes). Alternativ ist eine 2-Cluster-Lösung plausibel (Premium vs. Non-Premium).</p>
+<p style="margin-top:.75rem"><strong>(b) Hierarchisch-agglomerativer Prozess (Ward-Methode)</strong></p>
+<p>Bei Ähnlichkeitsmatrizen wird im ersten Schritt das Paar mit der <strong>höchsten Ähnlichkeit</strong> (= geringsten Distanz) fusioniert: <strong>BMW und Mercedes</strong> (Ähnlichkeit 7,8 → Distanz = 10 − 7,8 = 2,2 ist am kleinsten). Das resultierende Super-Objekt {BMW+Mercedes} wird dann mit allen verbleibenden Marken verglichen, indem die Distanzen nach der Ward-Methode (Minimierung der internen Varianz) neu berechnet werden. Im zweiten Schritt folgt wahrscheinlich die Fusion von VW und Skoda (Ähnlichkeit 6,4).</p>
+<p>Im <strong>Dendrogramm</strong> erscheinen BMW und Mercedes auf der niedrigsten Fusionierungsstufe (kürzeste horizontale Linie ganz links auf der Distanzachse), dann VW und Skoda auf der nächsten Stufe, schließlich werden diese Cluster sukzessive mit Dacia und dem anderen Cluster zusammengeführt. Der optimale Schnitt liegt am größten Distanzsprung zwischen zwei Fusionierungsschritten (Elbow).</p>
+<p style="margin-top:.75rem"><strong>(c) Repositionierungsrisiken/-chancen und Gütekriterium</strong></p>
+<p><strong>Chancen:</strong> Skoda könnte im Wahrnehmungsraum in die weniger besetzte Premium-Nachbarschaft rücken, höhere Preisprämien erzielen und eine jüngere, aufstiegsorientierte Zielgruppe ansprechen.</p>
+<p><strong>Risiken:</strong> (1) Glaubwürdigkeitslücke — Konsumenten nehmen eine Repositionierung nur wahr, wenn Produktqualität, Preis und Kommunikation konsistent sind. Eine rein kommunikative Repositionierung ohne Produktaufwertung führt zu Dissonanz. (2) Verlust der Stammkunden — Skoda-Käufer, die den Preis-Leistungs-Vorteil schätzen, wandern zu anderen Volumenmarken ab. (3) Wettbewerb mit etablierten Premium-Marken, die tiefere Markenwurzeln haben.</p>
+<p><strong>Gütekriterium:</strong> Vor Strategieumsetzung muss die <strong>Reliabilität</strong> der Wahrnehmungsraumdaten geprüft werden: Ergibt die MDS bei Wiederholung der Studie (z.B. nach 6 Monaten, neue Stichprobe) eine stabile Konfiguration? Nur wenn die Positionierungswahrnehmungen reproduzierbar sind, ist die Positionierungskarte als Entscheidungsgrundlage valide nutzbar.</p>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Korrekturkriterien</div>
+<div class="criteria">
+<ul>
+<li><strong>Volle Punktzahl:</strong> Ähnlichstes und unähnlichstes Paar korrekt aus Matrix gelesen; drei plausible Cluster inhaltlich begründet; erster Fusionsschritt (BMW+Mercedes) korrekt mit Begründung (höchste Ähnlichkeit = kleinste Distanz); Dendrogramm korrekt beschrieben; Chancen und Risiken inhaltlich präzise; Reliabilität als relevantes Gütekriterium mit Begründung.</li>
+<li><strong>Teilpunkte:</strong> Matrix korrekt gelesen, aber Clusterlogik nicht begründet; Ward-Fusion erklärt, aber Dendrogramm nur oberflächlich; Repositionierungsrisiken ohne Markenwurzel-Argument.</li>
+<li><strong>Abzug:</strong> Ähnlichkeit und Distanz verwechselt (Dacia+Mercedes als erstes fusioniert); Validität statt Reliabilität als Gütekriterium (ohne Begründung).</li>
+</ul>
+</div>
+</div>
+
+<div class="section">
+<div class="section-label">Transfer-Aspekt</div>
+<div class="transfer">Das manuelle Lesen einer neuen Ähnlichkeitsmatrix, die Ableitung von Clustern ohne formale Berechnungen und die Übertragung des Repositionierungskonzepts auf einen realen Strategiekontext erfordern durchgängig konzeptionelles Verständnis ohne Formelstützen.</div>
+</div>
+</div>
+
+<div style="border-top:.5px solid var(--color-border-tertiary);padding-top:1rem;margin-top:2rem;font-size:12px;color:var(--color-text-tertiary);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem">
+<span>Klausur B · Marktforschung · SoSe 2026</span>
+<span>8 Aufgaben · Alle verbleibenden Themenbereiche abgedeckt</span>
+</div>
+</div>

@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klausur A – Jahresabschluss | Einführung in das betriebliche Rechnungswesen</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-dark: #185FA5;
+    --blue-mid: #378ADD;
+    --blue-light: #E6F1FB;
+    --teal-dark: #0F6E56;
+    --teal-mid: #1D9E75;
+    --teal-light: #E1F5EE;
+    --amber-dark: #854F0B;
+    --amber-light: #FAEEDA;
+    --red-dark: #A32D2D;
+    --red-light: #FCEBEB;
+    --gray-dark: #2C2C2A;
+    --gray-mid: #5F5E5A;
+    --gray-light: #F1EFE8;
+    --border: #D3D1C7;
+    --text: #1a1a18;
+    --text-muted: #5F5E5A;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--text);
+    background: #fff;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 48px 60px;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    border-bottom: 2px solid var(--blue-dark);
+    padding-bottom: 28px;
+    margin-bottom: 36px;
+  }
+  .cover-institution {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .cover h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--blue-dark);
+    margin-bottom: 4px;
+  }
+  .cover h2 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .cover-meta-item {
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .cover-meta-item .label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+  }
+  .cover-meta-item .value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .cover-instructions {
+    background: var(--blue-light);
+    border-left: 3px solid var(--blue-dark);
+    border-radius: 0 6px 6px 0;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #0C447C;
+    margin-top: 18px;
+    line-height: 1.6;
+  }
+  .cover-instructions strong { font-weight: 600; }
+
+  /* ── Question blocks ── */
+  .question {
+    margin-bottom: 48px;
+    page-break-inside: avoid;
+  }
+  .question-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .q-number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    background: var(--blue-dark);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: 2px;
+  }
+  .q-title-block { flex: 1; }
+  .q-theme {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 2px;
+  }
+  .q-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0;
+  }
+  .q-points {
+    flex-shrink: 0;
+    background: var(--amber-light);
+    color: var(--amber-dark);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 2px;
+  }
+
+  /* scenario box */
+  .scenario {
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .scenario strong { font-weight: 600; }
+
+  /* sub-tasks */
+  .subtasks {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 0;
+  }
+  .subtasks li {
+    display: flex;
+    gap: 10px;
+    padding: 9px 0;
+    border-top: 1px solid var(--border);
+    font-size: 12.5px;
+    line-height: 1.65;
+  }
+  .subtasks li:first-child { border-top: none; }
+  .subtask-label {
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 11px;
+    color: var(--blue-dark);
+    width: 24px;
+    padding-top: 1px;
+  }
+  .pts {
+    flex-shrink: 0;
+    color: var(--text-muted);
+    font-size: 11px;
+    padding-top: 2px;
+    white-space: nowrap;
+  }
+
+  /* solution section */
+  .solution-toggle {
+    margin-top: 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .solution-header {
+    background: var(--teal-light);
+    padding: 8px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    border-bottom: 1px solid #9FE1CB;
+  }
+  .solution-body {
+    padding: 14px 18px;
+    font-size: 12px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  .solution-body h4 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin: 12px 0 5px;
+  }
+  .solution-body h4:first-child { margin-top: 0; }
+  .solution-body p { margin-bottom: 7px; }
+  .solution-body ul, .solution-body ol {
+    padding-left: 18px;
+    margin-bottom: 7px;
+  }
+  .solution-body li { margin-bottom: 3px; }
+
+  /* criteria / transfer */
+  .criteria-box {
+    background: var(--red-light);
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 10px;
+    font-size: 11.5px;
+    line-height: 1.65;
+  }
+  .criteria-box .clabel {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--red-dark);
+    margin-bottom: 4px;
+  }
+  .transfer-box {
+    background: #F0F7FF;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-size: 11.5px;
+    line-height: 1.65;
+    color: #0C447C;
+    border-left: 3px solid var(--blue-mid);
+  }
+  .transfer-box .clabel {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--blue-dark);
+    margin-bottom: 4px;
+  }
+
+  /* tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 10px 0;
+  }
+  th {
+    background: var(--blue-dark);
+    color: #fff;
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+  }
+  td {
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--gray-light); }
+  tr.total td {
+    font-weight: 600;
+    border-top: 2px solid var(--gray-mid);
+    background: #fff;
+  }
+
+  /* bilanz table */
+  .bilanz-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px 0;
+  }
+  .bilanz-side { padding: 12px 14px; }
+  .bilanz-side:first-child { border-right: 1px solid var(--border); }
+  .bilanz-side-header {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  .bilanz-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    font-size: 12px;
+    border-bottom: 1px dotted #e8e6de;
+  }
+  .bilanz-row.indent { padding-left: 12px; font-style: italic; color: var(--text-muted); }
+  .bilanz-row.subtotal {
+    font-weight: 600;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 3px;
+    background: var(--gray-light);
+    padding: 4px 0;
+  }
+  .bilanz-row.total {
+    font-weight: 700;
+    font-size: 13px;
+    border-top: 2px solid var(--blue-dark);
+    margin-top: 6px;
+    padding-top: 5px;
+    border-bottom: none;
+  }
+
+  /* formula */
+  .formula {
+    background: #f9f7f4;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    margin: 8px 0;
+    text-align: center;
+    color: var(--text);
+  }
+
+  /* divider */
+  .divider {
+    border: none;
+    border-top: 1.5px dashed var(--border);
+    margin: 36px 0;
+  }
+
+  /* answer field */
+  .answer-field {
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    min-height: 56px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    color: #ccc;
+    font-size: 11.5px;
+    font-style: italic;
+  }
+
+  /* page break */
+  @media print {
+    .question { page-break-inside: avoid; }
+    .cover { page-break-after: always; }
+    body { padding: 28px 36px; }
+  }
+
+  /* keyword highlight */
+  .kw { 
+    background: var(--amber-light); 
+    color: var(--amber-dark); 
+    padding: 1px 5px; 
+    border-radius: 3px; 
+    font-weight: 600; 
+    font-size: 11.5px;
+  }
+  .kw-green {
+    background: var(--teal-light);
+    color: var(--teal-dark);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 11.5px;
+  }
+  .kw-red {
+    background: var(--red-light);
+    color: var(--red-dark);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 11.5px;
+  }
+  .kw-blue {
+    background: var(--blue-light);
+    color: var(--blue-dark);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 11.5px;
+  }
+
+  .note {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .check-item { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 4px; }
+  .check-icon { color: var(--teal-mid); font-weight: 700; flex-shrink: 0; }
+  .x-icon { color: var(--red-dark); font-weight: 700; flex-shrink: 0; }
+
+  .ebenen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .ebene-box {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .ebene-box-header {
+    background: var(--blue-dark);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 5px 8px;
+    text-align: center;
+    letter-spacing: .04em;
+  }
+  .ebene-box-body {
+    padding: 7px 8px;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .ebene-box-body .plus { color: var(--teal-dark); font-weight: 600; }
+  .ebene-box-body .minus { color: var(--red-dark); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════
+     COVER
+     ══════════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-institution">Georg-August-Universität Göttingen &middot; Wirtschaftswissenschaftliche Fakultät &middot; Professur für Financial Accounting and Sustainability Reporting</div>
+  <h1>Klausur A</h1>
+  <h2>Jahresabschluss – Einführung in das betriebliche Rechnungswesen &nbsp;|&nbsp; SoSe 26</h2>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <div class="label">Bearbeitungszeit</div>
+      <div class="value">90 Minuten</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Gesamtpunktzahl</div>
+      <div class="value">80 Punkte</div>
+    </div>
+    <div class="cover-meta-item">
+      <div class="label">Aufgaben</div>
+      <div class="value">8 Aufgaben</div>
+    </div>
+  </div>
+  <div class="cover-instructions">
+    <strong>Hinweise:</strong> Bitte bearbeiten Sie alle 8 Aufgaben. Schreiben Sie Ihre Matrikelnummer auf jedes Blatt. Zwischenschritte und Herleitungen sind Bestandteil der Bewertung – eine reine Angabe von Ergebnissen ohne Begründung wird nicht gewertet. Taschenrechner sind erlaubt. Erlaubte Hilfsmittel: keine.
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 1 – Bilanzskandale & Stakeholder
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">1</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 1 · Motivation &amp; Bilanzskandale</div>
+      <div class="q-title">Der Fall „NordBio GmbH" – Manipulierte Umsätze und ihre Folgen</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>NordBio GmbH</em>, ein börsennotiertes Biotechnologieunternehmen aus Hamburg, wies in ihren Jahresabschlüssen der Jahre t1 und t2 Umsätze aus einem fiktiven Lizenzgeschäft mit einem asiatischen Partner in Höhe von insgesamt <strong>420 Mio. EUR</strong> aus. Tatsächlich existierten diese Verträge nicht. Die Gewinne wurden durch Scheinbuchungen auf Treuhandkonten geparkt, die angeblich von einem philippinischen Bankenkonsortium verwaltet wurden. In t3 deckte eine investigative Wirtschaftsprüfungsgesellschaft die Manipulation auf. Das Unternehmen konnte seine Schulden nicht mehr bedienen und stellte Insolvenzantrag.<br><br>
+    Sie sind als Junior-Analyst bei einer Ratingagentur tätig und werden gebeten, die Auswirkungen auf verschiedene Interessentengruppen zu analysieren.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Welche konkreten <strong>wirtschaftlichen Schäden</strong> entstehen den folgenden drei Interessentengruppen durch die Bilanzmanipulation? Erläutern Sie jeweils das spezifische Informationsbedürfnis der Gruppe und inwiefern die gefälschte Bilanz dieses Bedürfnis verletzt. Behandeln Sie: (1) Eigenkapitalgeber (Aktionäre), (2) Gläubiger (kreditgebende Banken), (3) Fiskus.<br><span class="note">Begründen Sie nicht nur, dass Schäden entstehen, sondern auch warum das spezifische Informationsbedürfnis dieser Gruppe ursächlich für den Schaden ist. (6 Punkte)</span></span>
+      <span class="pts">(6 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Die gefälschten Umsätze wurden als Forderungen gegenüber einem Dritten in der Bilanz aktiviert. Erläutern Sie, in welcher <strong>Position der Bilanzgliederung</strong> (Aktiva oder Passiva, grober Posten) diese fiktiven Forderungen verbucht wurden und warum eine nicht existierende Forderung das <strong>Eigenkapital</strong> in der Passivseite gleichzeitig aufbläht. Nutzen Sie die Grundgleichung Vermögen = Eigenkapital + Fremdkapital in Ihrer Erklärung.<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+  </ul>
+
+  <!-- SOLUTION -->
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Schäden für die drei Interessentengruppen</h4>
+      <p><strong>(1) Eigenkapitalgeber (Aktionäre):</strong> Ihr Informationsbedürfnis ist die Beurteilung der Ertragskraft und des Unternehmenswerts als Grundlage für Investitionsentscheidungen (Kauf/Halten/Verkauf von Anteilen). Durch die aufgeblähte Gewinndarstellung wurde der Aktienkurs künstlich erhöht. Anleger zahlten einen zu hohen Preis für Anteile oder behielten diese, da sie eine profitable Geschäftstätigkeit vermuteten. Mit der Insolvenz verloren sie den Großteil ihres investierten Kapitals. Der konkrete Schaden: Kapitalverlust durch Kursverfall, kein Insolvenzanspruch vor Gläubigern.</p>
+      <p><strong>(2) Gläubiger (Banken):</strong> Ihr Informationsbedürfnis ist die Beurteilung der Kreditwürdigkeit und Rückzahlungsfähigkeit (Bonität). Die manipulierte Bilanz täuschte eine solide Eigenkapitalquote und Ertragskraft vor, sodass Banken Kredite vergaben oder aufrechterhielten, die sie bei wahrheitsgemäßer Darstellung nicht gewährt hätten. Im Insolvenzfall drohen Forderungsausfälle, da das tatsächliche Vermögen die Schulden nicht deckt.</p>
+      <p><strong>(3) Fiskus:</strong> Sein Informationsbedürfnis ist die korrekte Bemessung der Steuerlast (Körperschaftsteuer, Gewerbesteuer). Die fiktiven Umsätze und die daraus resultierenden Scheingewinne hätten zu einer höheren Steuerzahlung führen müssen. Der Fiskus wurde entweder um Steuereinnahmen gebracht (wenn der ausgewiesene Gewinn zu niedrig versteuert wurde) oder das Unternehmen erlangte rechtswidrig Steuervorteile.</p>
+
+      <h4>b) Buchhalterische Mechanik der Aufblähung</h4>
+      <p>Nicht existierende Forderungen werden auf der <span class="kw-blue">Aktivseite</span> im Bereich <em>Umlaufvermögen, Unterposition II. Forderungen und sonstige Vermögensgegenstände</em> ausgewiesen.</p>
+      <p>Über die Grundgleichung gilt zwingend:</p>
+      <div class="formula">Vermögen (Aktiva) = Eigenkapital + Fremdkapital (Passiva)</div>
+      <p>Da das Fremdkapital durch die Scheinbuchung nicht erhöht wird (es entsteht keine echte Verbindlichkeit), muss die künstliche Zunahme auf der Aktivseite spiegelbildlich zu einer Zunahme des <span class="kw">Eigenkapitals</span> auf der Passivseite führen – konkret als höherer ausgewiesener <em>Jahresüberschuss</em>, der wiederum über die GuV als Ertrag (Umsatzerlös) erfasst wurde. Die Bilanz „balanciert" stets, die Fälschung erhöht simultan Aktiva und Eigenkapital.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Für jede Stakeholder-Gruppe: spezifisches Informationsbedürfnis korrekt benannt (+1P) + konkreter Schaden kausal hergeleitet (+1P) = max. 6P</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Korrekte Zuordnung zu Bilanzposition (Umlaufvermögen / Forderungen) (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Grundgleichung korrekt angewandt, simultane EK-Erhöhung erklärt (+2P); nur Gleichung ohne Erklärung (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Punktabzug: allgemeine Aussagen wie „alle verlieren Geld" ohne Bezug zum Informationsbedürfnis</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Der NordBio-Fall ist dem Wirecard-Muster nachempfunden, aber vollständig neu konstruiert. Die Studierenden müssen nicht nur den Skandal nacherzählen, sondern die kausale Verknüpfung zwischen dem Informationsbedürfnis einer Interessentengruppe und dem konkreten Schaden durch Bilanzverfälschung selbstständig herstellen – dies erfordert echtes Systemverständnis.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 2 – Interessenten & Teilbereiche
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">2</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 2 · Definition, Aufbau &amp; Interessenten</div>
+      <div class="q-title">Welches Rechnungswesen braucht wer? – Die RheinsteinLogistik AG</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>RheinsteinLogistik AG</em> betreibt ein europäisches Frachtunternehmen. Im Laufe eines Jahres treffen folgende vier Informationsanfragen beim CFO ein:<br><br>
+    <strong>(A)</strong> Das Finanzamt Koblenz fordert den Jahresabschluss für steuerliche Veranlagungszwecke an.<br>
+    <strong>(B)</strong> Die Produktionsleitung möchte wissen, ob der neue Fuhrpark in München kostendeckend arbeitet und wo Einsparpotenziale liegen.<br>
+    <strong>(C)</strong> Eine Investorengruppe erwägt den Kauf von 15 % der Aktien und verlangt Informationen über Vermögens-, Finanz- und Ertragslage.<br>
+    <strong>(D)</strong> Der Vorstand plant eine Erweiterung des Lagerstandorts Duisburg und braucht eine Analyse der langfristigen Rentabilität dieser Investition.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Ordnen Sie jede der vier Anfragen (A–D) einem <strong>konkreten Teilbereich des betrieblichen Rechnungswesens</strong> zu (z. B. steuerrechtlicher Jahresabschluss, Geschäftsbericht, Kosten- und Leistungsrechnung, Investitions- und Finanzierungsrechnung) und begründen Sie, warum dieser Teilbereich das passende Instrument ist. Klassifizieren Sie dabei auch, ob es sich um <strong>internes oder externes</strong> Rechnungswesen handelt.<br><span class="note">(8 Punkte – je 2P pro Anfrage)</span></span>
+      <span class="pts">(8 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Erläutern Sie in zwei bis drei Sätzen, was das betriebswirtschaftliche Rechnungswesen grundlegend von einer einfachen Kassenführung unterscheidet. Was bedeutet es, dass Daten „nach zweckgerichteten Gesichtspunkten aufbereitet" werden?<br><span class="note">(2 Punkte)</span></span>
+      <span class="pts">(2 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Zuordnung der vier Anfragen</h4>
+      <table>
+        <thead>
+          <tr><th>Anfrage</th><th>Teilbereich</th><th>Intern / Extern</th><th>Begründung</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>(A) Finanzamt</strong></td>
+            <td>Steuerrechtlicher Jahresabschluss</td>
+            <td>Extern</td>
+            <td>Adressat ist der Fiskus; die Aufbereitung erfolgt nach steuerrechtlichen Vorschriften (z. B. EStG, KStG). Ziel: korrekte Steuerbemessung.</td>
+          </tr>
+          <tr>
+            <td><strong>(B) Produktionsleitung</strong></td>
+            <td>Kosten- und Leistungsrechnung (KLR)</td>
+            <td>Intern</td>
+            <td>Die KLR analysiert Kostenträger und -stellen nach betriebswirtschaftlichen Gesichtspunkten und unterstützt interne Steuerung und Kontrolle einzelner Unternehmensteile (hier: Fuhrpark München).</td>
+          </tr>
+          <tr>
+            <td><strong>(C) Investorengruppe</strong></td>
+            <td>Geschäftsbericht (handelsrechtlicher Jahresabschluss + Lagebericht)</td>
+            <td>Extern</td>
+            <td>Adressaten sind Aktionäre und Kapitalgeber; der Geschäftsbericht informiert nach HGB über Vermögens-, Finanz- und Ertragslage. Ziel: Rechenschaftslegung und Entscheidungsunterstützung für externe Kapitalgeber.</td>
+          </tr>
+          <tr>
+            <td><strong>(D) Vorstand / Erweiterung</strong></td>
+            <td>Investitions- und Finanzierungsrechnung</td>
+            <td>Intern</td>
+            <td>Langfristige Rentabilitätsanalysen einer Investition (z. B. Kapitalwertmethode) gehören zur internen Investitionsrechnung. Adressat ist die Unternehmensleitung; Ziel: Planung und Steuerung des Kapitalseinsatzes.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4>b) Abgrenzung zur Kassenführung</h4>
+      <p>Eine einfache Kassenführung erfasst nur tatsächliche Geldbewegungen (Einzahlungen und Auszahlungen). Das betriebliche Rechnungswesen geht weit darüber hinaus: Es erfasst <em>mengen- und wertmäßig</em> auch nicht-monetäre Vorgänge (z. B. Maschinenverschleiß, Forderungen), bewertet sie künstlich in Geldeinheiten und bereitet die Daten zielgruppenspezifisch auf – etwa für steuerliche, handelsrechtliche oder betriebswirtschaftliche Entscheidungszwecke. „Zweckgerichtet" bedeutet: dieselbe Datenbasis kann je nach Adressat und Fragestellung unterschiedlich strukturiert und ausgewertet werden.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Pro Anfrage: richtiger Teilbereich (+1P) + korrekte intern/extern-Klassifikation und Begründung (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Teilpunkt für intern/extern auch bei falschem Teilbereich, wenn Klassifikation logisch begründet wird</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Abzug wenn „Geschäftsbericht" als allgemeiner Begriff für alle externen Anfragen verwendet wird, ohne steuerrechtliche Abgrenzung</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) vollen Punkt: Erklärung enthält Aspekte (i) Über-Kassenführung hinaus + (ii) zweckgerichtet = für verschiedene Adressaten</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Die vier Anfragen spiegeln reale Unternehmensszenarien wider, die im Skript nicht in dieser Kombination auftraten. Studierende müssen die Teilbereiche nicht nur benennen, sondern deren Adressaten und Zwecke verstehen, um die richtige Zuordnung zu begründen.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 3 – Vermögen, Kapital, Bewertung
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">3</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 3 · Grundlagen der Erfolgsermittlung – Vermögen, Kapital &amp; Bewertung</div>
+      <div class="q-title">Frau Kessler und die Frage nach dem „echten" Gewinn</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Frau Kessler gründet zum 1. Januar t1 ein Unternehmen zur Produktion hochwertiger Keramikartikel (<em>KeraCraft GmbH</em>). Sie bringt 40.000 EUR Eigenkapital ein und nimmt einen Bankkredit über 60.000 EUR auf. Für 80.000 EUR kauft sie eine Brennofenanlage (die sie auf 8 Jahre linear abschreiben wird) und legt 20.000 EUR in Rohstoffe an. Am Ende von t1 hat sie noch Rohstoffe im Wert von 8.000 EUR auf Lager und ein Bankguthaben von 30.000 EUR. Die Brennofenanlage hat planmäßig an Wert verloren. Schulden bestehen noch in Höhe von 55.000 EUR.<br><br>
+    Frau Kessler sagt: „Mein Bankguthaben ist am Jahresende höher als am Anfang – ich habe also Gewinn gemacht, oder?"
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Erklären Sie, warum Frau Kesslers Aussage <strong>methodisch falsch</strong> ist. Was ist der entscheidende konzeptionelle Unterschied zwischen dem Finanzmittelbestand und dem betriebswirtschaftlichen Vermögen? Nennen Sie, welche Position in ihrem Unternehmen sie bei der Beurteilung ihres Bankguthabens völlig außer Acht lässt.<br><span class="note">(3 Punkte)</span></span>
+      <span class="pts">(3 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Berechnen Sie den <strong>Wert der Brennofenanlage</strong> zum 31.12.t1 und erläutern Sie, warum dieser Werteverzehr als <strong>Bewertung im betriebswirtschaftlichen Sinne</strong> aufgefasst werden kann. Was meint der Begriff der „Wiedergeldwerdung" in diesem Kontext?<br><span class="note">(3 Punkte)</span></span>
+      <span class="pts">(3 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">c)</span>
+      <span>Stellen Sie das <strong>Gesamtvermögen</strong> und das <strong>Eigenkapital</strong> der KeraCraft GmbH zum 31.12.t1 dar. Verwenden Sie dafür die Gleichungen: Vermögen = Kapital sowie EK = Vermögen − Fremdkapital. Hat Frau Kessler einen Gewinn oder Verlust erzielt?<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Fehler im Argument von Frau Kessler</h4>
+      <p>Der Finanzmittelbestand (Bankguthaben) bildet nur die <span class="kw-blue">Zahlungsmittelebene</span> ab – also Ein- und Auszahlungen. Das betriebswirtschaftliche Vermögen umfasst zusätzlich alle <em>sachlichen Produktionsmittel</em> (hier: Brennofen) sowie Forderungen, bewertet zu ihrem aktuellen Geldwert. Frau Kessler ignoriert vollständig, dass die Brennofenanlage im Laufe des Jahres durch Abschreibung an Wert verloren hat. Ein höheres Bankguthaben allein sagt nichts über den Gesamterfolg aus – der Werteverzehr des Brennofens ist ein realer wirtschaftlicher Vorgang, der den Gewinn mindert.</p>
+
+      <h4>b) Bewertung der Brennofenanlage &amp; Wiedergeldwerdung</h4>
+      <p>Lineare Abschreibung über 8 Jahre auf Anschaffungskosten von 80.000 EUR:</p>
+      <div class="formula">AfA<sub>jährlich</sub> = 80.000 EUR ÷ 8 Jahre = <strong>10.000 EUR/Jahr</strong></div>
+      <div class="formula">Buchwert Brennofen (31.12.t1) = 80.000 − 10.000 = <strong>70.000 EUR</strong></div>
+      <p>Die Bewertung überführt einen nicht-monetären Gegenstand (Maschine) „künstlich" in einen Geldwert. Dies ist notwendig, weil die Maschine nicht sofort zu Geld wird, sondern über ihre Nutzungsdauer schrittweise wieder in Geld „zurückfließt" – durch die Erlöse, die sie ermöglicht. Dieser Prozess heißt <span class="kw">Wiedergeldwerdung</span>. Die Abschreibung bildet diesen Werteverzehr periodengerecht ab.</p>
+
+      <h4>c) Gesamtvermögen und EK zum 31.12.t1</h4>
+      <table>
+        <thead><tr><th>Position</th><th style="text-align:right">Betrag (EUR)</th></tr></thead>
+        <tbody>
+          <tr><td>Brennofenanlage (nach Abschreibung)</td><td style="text-align:right">70.000</td></tr>
+          <tr><td>Rohstoffe (Restbestand)</td><td style="text-align:right">8.000</td></tr>
+          <tr><td>Bankguthaben</td><td style="text-align:right">30.000</td></tr>
+          <tr class="total"><td><strong>Gesamtvermögen</strong></td><td style="text-align:right"><strong>108.000</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="formula">EK = Vermögen − Fremdkapital = 108.000 − 55.000 = <strong>53.000 EUR</strong></div>
+      <div class="formula">Periodenerfolg = EK<sub>t1</sub> − EK<sub>t0</sub> = 53.000 − 40.000 = <strong>+13.000 EUR (Gewinn)</strong></div>
+      <p>Trotz der Abschreibung erzielt Frau Kessler einen Gewinn von 13.000 EUR, da ihr Eigenkapital gestiegen ist.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>a) Abschreibung/Anlagevermögen als vergessene Position explizit benannt (+1P) + Unterschied ZM-Bestand vs. Vermögen klar formuliert (+2P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Berechnung AfA und Buchwert korrekt (+1P) + Wiedergeldwerdung inhaltlich erklärt (+2P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>c) Alle drei Positionen korrekt (+1P) + EK-Berechnung korrekt (+1P) + Periodenerfolg mit Vergleich (+2P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Fehler: Brennofen mit 80.000 statt 70.000 ansetzen (−1P für Rechenfolge); FK-Abzug vergessen (−1P)</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Studierende müssen erkennen, dass ein höherer Kassenbestand nicht mit Gewinn gleichzusetzen ist – dies verlangt das Verständnis des Bewertungskonzepts und der Abschreibungslogik, nicht nur deren Reproduktion. Die Aufgabe integriert Vermögens-, Bewertungs- und EK-Konzepte.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 4 – Eigenkapitalvergleich
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">4</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 4 · Erfolgsermittlung durch Eigenkapitalvergleich</div>
+      <div class="q-title">Die WestSolar GbR – Gewinn oder Verlust nach einem turbulenten Jahr?</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die zwei Gesellschafter der <em>WestSolar GbR</em> haben zu Beginn von t1 gemeinsam 50.000 EUR Eigenkapital eingebracht. Zusätzlich besteht ein Lieferantenkredit (Verbindlichkeit) von 30.000 EUR. Zum Jahresende zeigt sich folgendes Bild:<br><br>
+    <strong>Aktiva zum 31.12.t1:</strong> Photovoltaikanlagen 45.000 EUR · Forderungen gegen Kunden 18.000 EUR · Vorräte (Kabelreste, Halterungen) 4.000 EUR · Kassenbestand 6.000 EUR · Bankguthaben 14.000 EUR<br><br>
+    <strong>Passiva zum 31.12.t1:</strong> Verbindlichkeiten gegenüber Lieferanten 22.000 EUR · Bankdarlehen (neu aufgenommen) 20.000 EUR · Eigenkapital = ?<br><br>
+    Im Laufe des Jahres haben die Gesellschafter außerdem insgesamt 5.000 EUR privat entnommen (Privatentnahme).
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Ermitteln Sie das <strong>Eigenkapital zum 31.12.t1</strong> rechnerisch aus der Bilanzgleichung. Berechnen Sie anschließend den <strong>Periodenerfolg</strong> mittels Eigenkapitalvergleich.<br><span class="note">(5 Punkte)</span></span>
+      <span class="pts">(5 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Die Privatentnahme von 5.000 EUR muss bei der <strong>Gewinnermittlung durch Eigenkapitalvergleich berücksichtigt</strong> werden. Erläutern Sie, warum eine Privatentnahme den ausgewiesenen Eigenkapitalrückgang <em>nicht</em> als Verlust qualifiziert, und geben Sie die <strong>korrekte Formel</strong> für den bereinigten Periodenerfolg an.<br><span class="note">(3 Punkte)</span></span>
+      <span class="pts">(3 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">c)</span>
+      <span>Hat die WestSolar GbR im Sinne des betriebswirtschaftlichen Unternehmererfolgs einen <strong>Gewinn oder Verlust</strong> erzielt? Geben Sie die Höhe an und beurteilen Sie knapp, ob sich die Unternehmertätigkeit für die Gesellschafter „gelohnt" hat (Vergleich mit dem eingesetzten EK).<br><span class="note">(2 Punkte)</span></span>
+      <span class="pts">(2 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) EK zum 31.12.t1 und Periodenerfolg</h4>
+      <table>
+        <thead><tr><th>Aktiva 31.12.t1</th><th style="text-align:right">EUR</th></tr></thead>
+        <tbody>
+          <tr><td>Photovoltaikanlagen</td><td style="text-align:right">45.000</td></tr>
+          <tr><td>Forderungen</td><td style="text-align:right">18.000</td></tr>
+          <tr><td>Vorräte</td><td style="text-align:right">4.000</td></tr>
+          <tr><td>Kassenbestand</td><td style="text-align:right">6.000</td></tr>
+          <tr><td>Bankguthaben</td><td style="text-align:right">14.000</td></tr>
+          <tr class="total"><td><strong>Summe Aktiva</strong></td><td style="text-align:right"><strong>87.000</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="formula">EK<sub>31.12.t1</sub> = Vermögen − Fremdkapital = 87.000 − (22.000 + 20.000) = 87.000 − 42.000 = <strong>45.000 EUR</strong></div>
+      <div class="formula">Δ EK (roh) = EK<sub>t1</sub> − EK<sub>t0</sub> = 45.000 − 50.000 = <strong>−5.000 EUR</strong></div>
+
+      <h4>b) Bereinigung um Privatentnahmen</h4>
+      <p>Eine Privatentnahme mindert das Eigenkapital, ist aber <em>keine Folge der Unternehmertätigkeit</em>, sondern eine eigentümerinitiierte Kapitalrückführung. Sie darf daher den Periodenerfolg (der nur die unternehmerische Leistung misst) nicht verzerren. Die korrekte Bereinigungsformel lautet:</p>
+      <div class="formula">Periodenerfolg = EK<sub>t1</sub> − EK<sub>t0</sub> + Privatentnahmen − Privateinlagen</div>
+      <div class="formula">Periodenerfolg = −5.000 + 5.000 − 0 = <strong>0 EUR</strong></div>
+
+      <h4>c) Beurteilung</h4>
+      <p>Die WestSolar GbR hat einen <span class="kw">Periodenerfolg von 0 EUR</span> erzielt – weder Gewinn noch Verlust. Das eingesetzte EK von 50.000 EUR wurde erhalten. Dies entspricht einem neutralen Ergebnis: Die Gesellschafter haben ihre Einlage real erhalten, jedoch keine Rendite erwirtschaftet. Ob sich die Tätigkeit „gelohnt" hat, hängt von Opportunitätskosten ab – eine alternative Anlage hätte ggf. Zinserträge erbracht.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Aktiva korrekt summiert (+1P) · FK korrekt summiert (+1P) · EK<sub>t1</sub> korrekt (+1P) · Δ EK korrekt (+1P) · EK-Vergleich aufgestellt (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Erklärung Privatentnahme ≠ Unternehmertätigkeit (+1P) · Formel korrekt (+1P) · Berechnung 0 EUR (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>c) „Break-even" korrekt identifiziert (+1P) · betriebswirtschaftliche Interpretation (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Gravierender Fehler: Privatentnahme als Verlust werten (−2P); FK falsch addieren</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Das „Break-even"-Ergebnis und die Notwendigkeit, Privatentnahmen herauszurechnen, sind prüfungsrelevante Komplikationen, die nicht explizit im Folienbeispiel vorkamen. Studierende müssen das Konzept des Eigenkapitalvergleichs strukturell verstanden haben, um die Bereinigung korrekt anzuwenden.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 5 – Zahlungsmittel & Geldvermögen
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">5</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 5 · Vermögens- und Erfolgsebenen – Zahlungsmittel &amp; Geldvermögen</div>
+      <div class="q-title">Die AlpenKäse OHG – Sechs Geschäftsvorfälle auf dem Prüfstand</div>
+    </div>
+    <div class="q-points">12 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>AlpenKäse OHG</em> verarbeitet Milch zu Premiumkäse. Im Laufe des Monats Oktober ereignen sich folgende sechs Geschäftsvorfälle. Ihre Aufgabe ist eine systematische Einordnung in die Vermögens- und Erfolgsebenen.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Ordnen Sie jeden der sechs Geschäftsvorfälle in die untenstehende Tabelle ein. Geben Sie für jede der drei Ebenen (Zahlungsmittel, Geldvermögen, Reinvermögen) an, ob sich die jeweilige Größe erhöht (<strong>+</strong>), verringert (<strong>−</strong>), oder unverändert bleibt (<strong>0</strong>). Benennen Sie außerdem das jeweils treffende Erfolgsmaß aus: {Einzahlung / Auszahlung / Einnahme / Ausgabe / Ertrag / Aufwand / keines}.<br><span class="note">Es sind auch Mehrfachnennungen möglich, wenn mehrere Ebenen gleichzeitig betroffen sind. (12 Punkte – je 2P pro Vorfall)</span></span>
+      <span class="pts">(12 P.)</span>
+    </li>
+  </ul>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:35%">Geschäftsvorfall</th>
+        <th>Zahlungsmittel</th>
+        <th>Geldvermögen</th>
+        <th>Reinvermögen</th>
+        <th>Erfolgsmaß</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>(1)</strong> Kauf von Milch für 3.000 EUR per Banküberweisung</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><strong>(2)</strong> Verkauf von Käse für 8.000 EUR auf Ziel (Rechnung wird in 30 Tagen bezahlt). Einkaufspreis der Waren: 4.000 EUR.</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><strong>(3)</strong> Aufnahme eines Bankkredits über 15.000 EUR (Gutschrift auf Konto)</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><strong>(4)</strong> Ein Kunde überweist eine seit letztem Monat ausstehende Rechnung über 5.000 EUR.</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><strong>(5)</strong> Erfassung der monatlichen Abschreibung auf den Kühlraum: 800 EUR.</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td><strong>(6)</strong> Zahlung der Löhne an Mitarbeiter per Überweisung: 6.000 EUR.</td>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>Vollständige Einordnung</h4>
+      <table>
+        <thead>
+          <tr><th>Vorfall</th><th>Zahlungsmittel</th><th>Geldvermögen</th><th>Reinvermögen</th><th>Erfolgsmaß</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>(1)</strong> Milchkauf, Banküberweisung 3.000 EUR</td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td><span class="kw-red">Auszahlung</span><br><em>Tausch: Bank − gegen Vorräte (Sachvermögen) +; ZM sinkt, Sach steigt → GV und RV gleich</em></td>
+          </tr>
+          <tr>
+            <td><strong>(2)</strong> Käseverkauf auf Ziel 8.000 EUR (EK: 4.000 EUR)</td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td style="text-align:center"><span class="kw-green">+</span></td>
+            <td style="text-align:center"><span class="kw-green">+</span></td>
+            <td><span class="kw-green">Einnahme</span> (Forderung entsteht) + <span class="kw-green">Ertrag</span> (Reinvermögen ↑ durch Handelsmarge 4.000 EUR)<br><em>Achtung: Sachvermögen ↓ 4.000, Forderung ↑ 8.000 → RV +4.000</em></td>
+          </tr>
+          <tr>
+            <td><strong>(3)</strong> Bankkredit 15.000 EUR aufnehmen</td>
+            <td style="text-align:center"><span class="kw-green">+</span></td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td><span class="kw-green">Einzahlung</span><br><em>ZM ↑, aber Verbindlichkeit ↑ in gleicher Höhe → GV und RV unverändert</em></td>
+          </tr>
+          <tr>
+            <td><strong>(4)</strong> Kunde zahlt Rechnung 5.000 EUR</td>
+            <td style="text-align:center"><span class="kw-green">+</span></td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td><span class="kw-green">Einzahlung</span><br><em>Forderung ↓, Bank ↑ → nur Umschichtung im GV; kein neuer Ertrag</em></td>
+          </tr>
+          <tr>
+            <td><strong>(5)</strong> Abschreibung Kühlraum 800 EUR</td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td style="text-align:center"><span class="kw">0</span></td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td><span class="kw-red">Aufwand</span><br><em>Nur Sachvermögen sinkt, kein Geldfluss, keine Geldschuld</em></td>
+          </tr>
+          <tr>
+            <td><strong>(6)</strong> Löhne per Überweisung 6.000 EUR</td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td><span class="kw-red">Auszahlung + Ausgabe + Aufwand</span><br><em>Alle drei Ebenen betroffen: simultane Abnahme auf allen Ebenen</em></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Pro Vorfall: alle 3 Ebenen korrekt (+1P) + Erfolgsmaß korrekt benannt (+1P) = max. 2P</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Vorfall (2): Teilpunkt wenn Einnahme oder Ertrag genannt, voller Punkt nur wenn beide erklärt</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Häufiger Fehler: Bei (3) Kredit als Ertrag werten → 0P für Reinvermögen und Erfolgsmaß</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Bei (4) Einnahme statt Einzahlung: logisch inkonsistent, da Forderung bereits in Vorperiode als Einnahme zählte</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Bei (5) Auszahlung genannt: −1P (keine Zahlung fließt)</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Vorfall (2) enthält bewusst einen Zweiebenen-Effekt (Einnahme + Ertrag durch Handelsmarge); Vorfall (4) ist eine klassische „Falle" (Einzahlung ≠ Einnahme in dieser Periode). Vorfall (6) zeigt, dass alle drei Ebenen gleichzeitig betroffen sein können. Diese Kombinationen verlangen Systemverständnis, nicht Reproduktion.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 6 – Reinvermögen & Abschreibungen
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">6</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 6 · Vermögens- und Erfolgsebenen – Reinvermögen, Abschreibungen &amp; Gesamtbild</div>
+      <div class="q-title">Die DroneFleet GmbH – Verschleiß sichtbar machen</div>
+    </div>
+    <div class="q-points">8 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>DroneFleet GmbH</em> betreibt eine Flotte von Industriedrohnen für Vermessungsarbeiten. Im Monat November haben drei Ereignisse stattgefunden:<br><br>
+    <strong>(I)</strong> Eine Drohne (Anschaffungskosten: 24.000 EUR, Nutzungsdauer 4 Jahre, lineare Abschreibung) erreicht ihren Jahres-Abschreibungsbetrag.<br>
+    <strong>(II)</strong> Ein Zinsanspruch gegenüber der Hausbank (für ein gewährtes Tagesgeld) in Höhe von 200 EUR entsteht – wird aber erst im nächsten Monat ausgezahlt.<br>
+    <strong>(III)</strong> Die GmbH zahlt aus dem Bankguthaben eine ausstehende Verbindlichkeit gegenüber einem Lieferanten über 3.500 EUR.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Ordnen Sie die drei Ereignisse systematisch in die <strong>drei Vermögens- und Erfolgsebenen</strong> ein (Zahlungsmittel, Geldvermögen, Reinvermögen: +, −, 0) und benennen Sie die jeweils zutreffenden Erfolgsmaße. Begründen Sie Ihre Einordnung kurz.<br><span class="note">(6 Punkte – je 2P)</span></span>
+      <span class="pts">(6 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Erläutern Sie das <strong>betriebswirtschaftliche Prinzip</strong>, das es rechtfertigt, einen Werteverzehr ohne Geldfluss (wie die Drohnenabschreibung) als <strong>Aufwand</strong> zu erfassen. Was wäre die Konsequenz für den ausgewiesenen Gewinn, wenn man Abschreibungen ignorieren würde?<br><span class="note">(2 Punkte)</span></span>
+      <span class="pts">(2 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Einordnung der drei Ereignisse</h4>
+      <p><strong>Ereignis (I) – Abschreibung Drohne:</strong><br>
+      Jahresabschreibung = 24.000 ÷ 4 = <strong>6.000 EUR</strong><br>
+      Zahlungsmittel: <span class="kw">0</span> (kein Geldfluss) · Geldvermögen: <span class="kw">0</span> (kein monetärer Anspruch/Schuld) · Reinvermögen: <span class="kw-red">−</span> (Sachvermögen ↓)<br>
+      Erfolgsmaß: <span class="kw-red">Aufwand</span> — Abnahme des Reinvermögens durch Werteverzehr.</p>
+
+      <p><strong>Ereignis (II) – Zinsforderung 200 EUR (noch nicht ausgezahlt):</strong><br>
+      Zahlungsmittel: <span class="kw">0</span> (keine Zahlung eingegangen) · Geldvermögen: <span class="kw-green">+</span> (Geldforderung entsteht) · Reinvermögen: <span class="kw-green">+</span> (Eigenkapital ↑)<br>
+      Erfolgsmaß: <span class="kw-green">Einnahme</span> (Zunahme Geldvermögen) + <span class="kw-green">Ertrag</span> (Zunahme Reinvermögen)</p>
+
+      <p><strong>Ereignis (III) – Tilgung Verbindlichkeit 3.500 EUR:</strong><br>
+      Zahlungsmittel: <span class="kw-red">−</span> (Bankguthaben ↓) · Geldvermögen: <span class="kw">0</span> (Bank ↓ und Verbindlichkeit ↓ in gleicher Höhe) · Reinvermögen: <span class="kw">0</span><br>
+      Erfolgsmaß: <span class="kw-red">Auszahlung</span> (kein Aufwand, da Schuld bereits in Vorperiode als Ausgabe erfasst)</p>
+
+      <h4>b) Betriebswirtschaftliches Prinzip der Abschreibung</h4>
+      <p>Das Prinzip der <strong>periodengerechten Erfolgsermittlung</strong> (Accrual-Prinzip) verlangt, dass Aufwendungen der Periode zugerechnet werden, in der der wirtschaftliche Verbrauch stattfindet – unabhängig vom Zeitpunkt der Zahlung. Die Drohne wurde zwar vollständig bezahlt, erbringt aber ihren Nutzen über 4 Jahre. Die Abschreibung verteilt den Werteverzehr verursachungsgerecht auf diese Perioden und bildet das Sachvermögen realistisch ab (Wiedergeldwerdung). Würde man Abschreibungen ignorieren, würde der Gewinn systematisch <em>überhöht</em> ausgewiesen, da der Werteverzehr unberücksichtigt bliebe – eine fehlerhafte Darstellung der wirtschaftlichen Lage.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Je Ereignis: Ebenen korrekt (+1P) + Erfolgsmaß korrekt benannt und begründet (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Ereignis (II): Vollpunkt nur wenn <em>beide</em> Erfolgsmaße genannt (Einnahme + Ertrag)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Accrual/Periodengerechtigkeitsprinzip genannt (+1P) + Konsequenz überhöhter Gewinn erklärt (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Häufiger Fehler: Ereignis (III) als Aufwand werten → keine Punkte für Erfolgsmaß</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Ereignis (III) ist eine bewusste Falle: Studierende, die „Zahlung = Aufwand" denken, werden scheitern. Ereignis (II) testet, ob der Unterschied zwischen Einnahme (Geldvermögen) und Ertrag (Reinvermögen) wirklich verstanden wurde, wenn kein Geld fließt.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 7 – Grundaufbau der Bilanz
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">7</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 7 · Grundaufbau der Bilanz</div>
+      <div class="q-title">Fehlersuche in der Bilanz der „GreenPack AG"</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Ein Berufseinsteiger in der Buchhaltungsabteilung der <em>GreenPack AG</em> (Hersteller nachhaltiger Verpackungen) hat folgenden Bilanzentwurf zum 31.12.t1 vorgelegt. Die Bilanz enthält jedoch <strong>vier systematische Fehler</strong>. Sie sind der leitende Wirtschaftsprüfer und müssen die Fehler identifizieren und korrigieren.
+
+    <br><br><strong>Fehlerhafter Bilanzentwurf:</strong>
+  </div>
+
+  <div class="bilanz-table" style="margin: 12px 0 14px;">
+    <div class="bilanz-side">
+      <div class="bilanz-side-header">Passiva (Kapital)</div>
+      <div class="bilanz-row"><span>Maschinen</span><span>85.000</span></div>
+      <div class="bilanz-row"><span>Bankguthaben</span><span>42.000</span></div>
+      <div class="bilanz-row"><span>Forderungen a. LL</span><span>18.000</span></div>
+      <div class="bilanz-row"><span>Rohstoffe</span><span>12.000</span></div>
+      <div class="bilanz-row"><span>Firmenfahrzeuge</span><span>30.000</span></div>
+      <div class="bilanz-row total"><span>Summe</span><span>187.000</span></div>
+    </div>
+    <div class="bilanz-side">
+      <div class="bilanz-side-header">Aktiva (Vermögen)</div>
+      <div class="bilanz-row"><span>Eigenkapital</span><span>90.000</span></div>
+      <div class="bilanz-row"><span>Jahresüberschuss</span><span>12.000</span></div>
+      <div class="bilanz-row"><span>Bankdarlehen</span><span>60.000</span></div>
+      <div class="bilanz-row"><span>Verbindl. a. LL</span><span>25.000</span></div>
+      <div class="bilanz-row total"><span>Summe</span><span>187.000</span></div>
+    </div>
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Identifizieren und benennen Sie <strong>vier Fehler</strong> in diesem Bilanzentwurf. Erläutern Sie jeweils, welches betriebswirtschaftliche Grundprinzip des Bilanzkonstrukts verletzt wird.<br><span class="note">(6 Punkte – 1,5P je Fehler)</span></span>
+      <span class="pts">(6 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Erstellen Sie eine <strong>korrekte Bilanz</strong> mit allen Positionen in der richtigen Struktur (Aktiva / Passiva, Bezeichnung der Seiten).<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Die vier Fehler</h4>
+      <ol style="padding-left: 18px; margin-bottom: 8px;">
+        <li style="margin-bottom: 6px;"><strong>Fehler 1 – Seiten vertauscht:</strong> Die linke Seite heißt „Passiva (Kapital)" und enthält Vermögenspositionen (Maschinen, Bankguthaben etc.). Die rechte Seite heißt „Aktiva (Vermögen)" und enthält Kapitalpositionen. Korrekt: links = Aktiva (Vermögen), rechts = Passiva (Kapital). Verletztes Prinzip: Grundaufbau des Bilanzkontos.</li>
+        <li style="margin-bottom: 6px;"><strong>Fehler 2 – Vermögenspositionen auf der Kapitalseite:</strong> Maschinen, Bankguthaben, Forderungen, Rohstoffe und Fahrzeuge gehören auf die <em>Aktivseite</em> (Vermögensseite), da sie den Einsatz von Kapital in konkreten Vermögenswerten zeigen – nicht auf die Passivseite, die die <em>Finanzierungsquellen</em> ausweist.</li>
+        <li style="margin-bottom: 6px;"><strong>Fehler 3 – Eigenkapital und Jahresüberschuss auf falscher Seite:</strong> EK und Jahresüberschuss gehören als Finanzierungsquellen auf die <em>Passivseite</em>. Im Entwurf stehen sie auf der rechten Seite (fälschlich als „Aktiva" bezeichnet), was konzeptionell falsch ist.</li>
+        <li style="margin-bottom: 6px;"><strong>Fehler 4 – Jahresüberschuss als separate Position neben EK:</strong> Formal zulässig als „V. Jahresüberschuss" unter Eigenkapital – aber kein eigenständiger Fehler, wenn unter EK subsumiert. Als selbstständige Bilanzposition neben EK könnte eine Doppelerfassung vorliegen. <em>(Alternativ akzeptierbar als Fehler: fehlende Gliederung nach Liquidität/Fälligkeit auf der korrekten Seite.)</em></li>
+      </ol>
+
+      <h4>b) Korrekte Bilanz</h4>
+      <div class="bilanz-table">
+        <div class="bilanz-side">
+          <div class="bilanz-side-header">Aktiva (Vermögensseite)</div>
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: var(--text-muted); padding-top:6px">A. Anlagevermögen</div>
+          <div class="bilanz-row indent"><span>Maschinen</span><span>85.000</span></div>
+          <div class="bilanz-row indent"><span>Firmenfahrzeuge</span><span>30.000</span></div>
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: var(--text-muted); padding-top:6px">B. Umlaufvermögen</div>
+          <div class="bilanz-row indent"><span>Rohstoffe</span><span>12.000</span></div>
+          <div class="bilanz-row indent"><span>Forderungen a. LL</span><span>18.000</span></div>
+          <div class="bilanz-row indent"><span>Bankguthaben</span><span>42.000</span></div>
+          <div class="bilanz-row total"><span><strong>Summe Aktiva</strong></span><span><strong>187.000</strong></span></div>
+        </div>
+        <div class="bilanz-side">
+          <div class="bilanz-side-header">Passiva (Kapitalseite)</div>
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: var(--text-muted); padding-top:6px">A. Eigenkapital</div>
+          <div class="bilanz-row indent"><span>Gezeichnetes Kapital</span><span>90.000</span></div>
+          <div class="bilanz-row indent"><span>Jahresüberschuss</span><span>12.000</span></div>
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: var(--text-muted); padding-top:6px">B. Fremdkapital</div>
+          <div class="bilanz-row indent"><span>Bankdarlehen</span><span>60.000</span></div>
+          <div class="bilanz-row indent"><span>Verbindlichkeiten a. LL</span><span>25.000</span></div>
+          <div class="bilanz-row total"><span><strong>Summe Passiva</strong></span><span><strong>187.000</strong></span></div>
+        </div>
+      </div>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Je Fehler: Benennung korrekt (+0,5P) + verletztes Prinzip genannt (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Bezeichnung Aktiva/Passiva korrekt (+1P) · AV/UV-Gliederung links (+1P) · EK/FK-Gliederung rechts (+1P) · Bilanzsummen übereinstimmend (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Abzug wenn betragsmäßige Übereinstimmung fehlt oder Summen abweichen</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Das Auffinden von Fehlern in einer fremden Bilanz erfordert ein tiefes Verständnis des Grundaufbaus – es reicht nicht, die Bilanzstruktur auswendig zu kennen; man muss erkennen, <em>warum</em> eine Seite die Finanzierungsquelle und die andere die Mittelverwendung darstellt.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 8 – Inhalt und Gliederung der Bilanz
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">8</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 8 · Inhalt und Gliederung der Bilanz</div>
+      <div class="q-title">Die UrbanSeed GmbH – Bilanz aus dem Chaos</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>UrbanSeed GmbH</em> betreibt eine Stadtgärtnerei und hat ihre Buchhaltung bislang informell geführt. Am 31.12.t1 legt die Gründerin Frau Tanaka folgende <strong>unsortierte Liste</strong> an Bilanzpositionen vor. Ihre Aufgabe ist es, eine strukturierte Bilanz nach dem Mindestgliederungsschema für kleine Kapitalgesellschaften zu erstellen.
+
+    <br><br>
+    <strong>Unsortierte Positionen (alle in EUR):</strong><br>
+    Gewinnrücklage 8.000 · Betriebliche Fahrzeuge 22.000 · Verbindlichkeiten ggü. Kreditinstituten 35.000 · Saatgutvorräte 9.000 · Gezeichnetes Kapital 25.000 · Büroausstattung und Werkzeuge 6.500 · Forderungen aus Lieferungen und Leistungen 11.500 · Rückstellungen für Pensionen 4.000 · Jahresüberschuss 14.000 · Kassenbestand 3.200 · Bankguthaben (täglich verfügbar) 18.800 · Immaterielle Vermögensgegenstände (Softwarelizenz) 5.000 · Verbindlichkeiten aus Lieferungen und Leistungen 10.000
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Erstellen Sie eine <strong>vollständige, strukturierte Bilanz</strong> zum 31.12.t1 nach dem Mindestgliederungsschema. Gliedern Sie die Aktivseite nach <strong>zeitlicher Bindung im Leistungsprozess</strong> (Anlage- / Umlaufvermögen) und die Passivseite nach <strong>Fälligkeit</strong> (Eigenkapital / Rückstellungen / Verbindlichkeiten). Weisen Sie jeweils Zwischensummen und die Bilanzsumme aus.<br><span class="note">(7 Punkte)</span></span>
+      <span class="pts">(7 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Erläutern Sie in zwei bis drei Sätzen, warum die Aktivseite nach <strong>zeitlicher Bindung</strong> und die Passivseite nach <strong>Fälligkeit</strong> gegliedert wird. Welche Information gewinnt ein externer Gläubiger aus dieser Gegenüberstellung?<br><span class="note">(3 Punkte)</span></span>
+      <span class="pts">(3 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Strukturierte Bilanz zum 31.12.t1</h4>
+      <div class="bilanz-table">
+        <div class="bilanz-side">
+          <div class="bilanz-side-header">Aktiva (Vermögen)</div>
+
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: #185FA5; padding-top:6px">A. Anlagevermögen</div>
+          <div class="bilanz-row indent"><span>I. Immaterielle Vermögensgegenstände</span><span>5.000</span></div>
+          <div class="bilanz-row indent"><span>II. Sachanlagen (Fahrzeuge + Büro)</span><span>28.500</span></div>
+          <div class="bilanz-row subtotal"><span>&nbsp;&nbsp;&nbsp;Zwischensumme AV</span><span>33.500</span></div>
+
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: #185FA5; padding-top:6px">B. Umlaufvermögen</div>
+          <div class="bilanz-row indent"><span>I. Vorräte (Saatgut)</span><span>9.000</span></div>
+          <div class="bilanz-row indent"><span>II. Forderungen a. LL</span><span>11.500</span></div>
+          <div class="bilanz-row indent"><span>IV. Finanzmittel (Kasse + Bank)</span><span>22.000</span></div>
+          <div class="bilanz-row subtotal"><span>&nbsp;&nbsp;&nbsp;Zwischensumme UV</span><span>42.500</span></div>
+
+          <div class="bilanz-row total"><span><strong>Bilanzsumme Aktiva</strong></span><span><strong>76.000</strong></span></div>
+        </div>
+        <div class="bilanz-side">
+          <div class="bilanz-side-header">Passiva (Kapital)</div>
+
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: #185FA5; padding-top:6px">A. Eigenkapital</div>
+          <div class="bilanz-row indent"><span>I. Gezeichnetes Kapital</span><span>25.000</span></div>
+          <div class="bilanz-row indent"><span>III. Gewinnrücklage</span><span>8.000</span></div>
+          <div class="bilanz-row indent"><span>V. Jahresüberschuss</span><span>14.000</span></div>
+          <div class="bilanz-row subtotal"><span>&nbsp;&nbsp;&nbsp;Zwischensumme EK</span><span>47.000</span></div>
+
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: #185FA5; padding-top:6px">B. Rückstellungen</div>
+          <div class="bilanz-row indent"><span>Pensionsrückstellungen</span><span>4.000</span></div>
+
+          <div class="bilanz-row" style="font-weight:600; font-size:11px; color: #185FA5; padding-top:6px">C. Verbindlichkeiten</div>
+          <div class="bilanz-row indent"><span>ggü. Kreditinstituten</span><span>35.000</span></div>
+          <div class="bilanz-row indent"><span>aus L+L</span><span>10.000</span></div>
+          <div class="bilanz-row subtotal"><span>&nbsp;&nbsp;&nbsp;Zwischensumme FK</span><span>29.000</span></div>
+
+          <div class="bilanz-row total"><span><strong>Bilanzsumme Passiva</strong></span><span><strong>76.000</strong></span></div>
+        </div>
+      </div>
+
+      <p class="note">Probe: 5.000 + 28.500 + 9.000 + 11.500 + 22.000 = 76.000 &nbsp;=&nbsp; 47.000 + 4.000 + 35.000 + 10.000 = 76.000 ✓</p>
+      <p class="note">Sachanlagen: Fahrzeuge 22.000 + Büroausstattung 6.500 = 28.500 &nbsp;|&nbsp; Finanzmittel: Kasse 3.200 + Bank 18.800 = 22.000</p>
+
+      <h4>b) Gliederungsprinzipien und Gläubigerinfo</h4>
+      <p>Die Aktivseite wird nach der <strong>zeitlichen Bindung im Leistungsprozess</strong> gegliedert, weil dies zeigt, wie lange die investierten Mittel dem Unternehmen entzogen sind: Anlagevermögen dient dauerhaft (über ein Jahr) dem Betrieb, Umlaufvermögen wird kurzfristig umgeschlagen. Die Passivseite nach <strong>Fälligkeit</strong> zeigt, wann Verbindlichkeiten zurückzuzahlen sind. Für einen externen Gläubiger ist diese Gegenüberstellung entscheidend: Er kann beurteilen, ob kurzfristig fällige Schulden durch kurzfristig liquidierbare Vermögenswerte gedeckt sind (<em>Liquiditätsanalyse</em>) – und damit abschätzen, ob sein Rückzahlungsanspruch gefährdet ist.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Korrekte Seiten (Aktiva links / Passiva rechts) und Bezeichnung (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>AV vollständig und korrekt subsumiert (+1P) · UV vollständig und korrekt (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>EK-Positionen korrekt (+1P) · Rückstellungen als eigenständige Kategorie (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Verbindlichkeiten korrekt (+1P) · Bilanzsumme ausgeglichen (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Gliederungsprinzip AV/UV erklärt (+1P) · Fälligkeitsprinzip erklärt (+1P) · Gläubigerinformation Liquiditätsanalyse (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Abzug: Rückstellungen direkt unter Fremdkapital subsumiert (kein separater Gliederungspunkt) −1P</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Bilanzsummen nicht ausgeglichen → −1P für Probe</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Die unsortierte Liste zwingt Studierende, aktiv kategorisieren zu müssen. Besondere Fallstricke: Pensionsrückstellungen als eigene Kategorie (nicht FK), die Zusammenfassung von Kasse und Bank zu „Finanzmitteln" (UV IV), und die korrekte Subsumtion von Büroausstattung unter Sachanlagen. Das Gliederungswissen muss angewandt, nicht reproduziert werden.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     PUNKTEÜBERSICHT
+     ══════════════════════════════════════════════════════ -->
+<hr class="divider">
+<div style="background: var(--blue-light); border-radius: 10px; padding: 18px 22px; margin-top: 8px;">
+  <div style="font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--blue-dark); margin-bottom: 10px;">Punkteübersicht – Klausur A</div>
+  <table style="margin: 0;">
+    <thead>
+      <tr style="background: var(--blue-dark);">
+        <th>Aufg.</th><th>Themenbereich</th><th style="text-align:right">Punkte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Motivation &amp; Bilanzskandale</td><td style="text-align:right">10</td></tr>
+      <tr><td>2</td><td>Definition, Aufbau &amp; Interessenten</td><td style="text-align:right">10</td></tr>
+      <tr><td>3</td><td>Vermögen, Kapital &amp; Bewertung</td><td style="text-align:right">10</td></tr>
+      <tr><td>4</td><td>Erfolgsermittlung – Eigenkapitalvergleich</td><td style="text-align:right">10</td></tr>
+      <tr><td>5</td><td>Vermögens- und Erfolgsebenen (ZM &amp; Geldvermögen)</td><td style="text-align:right">12</td></tr>
+      <tr><td>6</td><td>Vermögens- und Erfolgsebenen (Reinvermögen &amp; Gesamtbild)</td><td style="text-align:right">8</td></tr>
+      <tr><td>7</td><td>Grundaufbau der Bilanz</td><td style="text-align:right">10</td></tr>
+      <tr><td>8</td><td>Inhalt und Gliederung der Bilanz</td><td style="text-align:right">10</td></tr>
+      <tr class="total"><td colspan="2"><strong>Gesamt</strong></td><td style="text-align:right"><strong>80</strong></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size: 11px; color: #0C447C; margin-top: 10px;">Bestehensschwelle: 40 Punkte (50 %) · Note 1,0: ≥ 72 Punkte</div>
+</div>
+
+<div style="text-align: center; color: var(--text-muted); font-size: 10px; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 14px;">
+  Klausur A · Jahresabschluss SoSe 26 · Prof. Dr. Vanessa Flagmeier · Georg-August-Universität Göttingen
+</div>
+
+</body>
+</html>

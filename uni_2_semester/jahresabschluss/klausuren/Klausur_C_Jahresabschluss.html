@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Klausur C – Jahresabschluss | Einführung in das betriebliche Rechnungswesen</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --acc: #0F6E56;
+    --acc-light: #E1F5EE;
+    --acc-mid: #1D9E75;
+    --blue-dark: #185FA5;
+    --blue-light: #E6F1FB;
+    --amber-dark: #854F0B;
+    --amber-light: #FAEEDA;
+    --red-dark: #A32D2D;
+    --red-light: #FCEBEB;
+    --gray-light: #F1EFE8;
+    --border: #D3D1C7;
+    --text: #1a1a18;
+    --text-muted: #5F5E5A;
+    --coral-dark: #993C1D;
+    --coral-light: #FAECE7;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px; line-height: 1.65;
+    color: var(--text); background: #fff;
+    max-width: 860px; margin: 0 auto;
+    padding: 40px 48px 60px;
+  }
+
+  /* Cover */
+  .cover { border-bottom: 2px solid var(--acc); padding-bottom: 28px; margin-bottom: 36px; }
+  .cover-institution { font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
+  .cover h1 { font-size: 22px; font-weight: 600; color: var(--acc); margin-bottom: 4px; }
+  .cover h2 { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 16px; }
+  .cover-meta { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-top: 16px; }
+  .cover-meta-item { background: var(--gray-light); border-radius: 8px; padding: 10px 14px; }
+  .cover-meta-item .label { font-size: 10px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
+  .cover-meta-item .value { font-size: 13px; font-weight: 500; }
+  .cover-instructions { background: var(--acc-light); border-left: 3px solid var(--acc); border-radius: 0 6px 6px 0; padding: 10px 14px; font-size: 12px; color: var(--acc); margin-top: 18px; line-height: 1.6; }
+  .difficulty-banner { display: flex; align-items: center; gap: 10px; background: var(--coral-light); border: 1px solid #F0997B; border-radius: 8px; padding: 10px 14px; margin-top: 14px; font-size: 12px; color: var(--coral-dark); }
+  .difficulty-banner strong { font-weight: 600; }
+
+  /* Question */
+  .question { margin-bottom: 48px; }
+  .question-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+  .q-number { flex-shrink:0; width:36px; height:36px; background: var(--acc); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:14px; margin-top:2px; }
+  .q-title-block { flex:1; }
+  .q-theme { font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color: var(--acc); margin-bottom:2px; }
+  .q-title { font-size:15px; font-weight:600; color: var(--text); }
+  .q-difficulty { flex-shrink:0; font-size:10px; font-weight:600; padding:3px 9px; border-radius:20px; white-space:nowrap; align-self:flex-start; margin-top:2px; }
+  .q-difficulty.adv { background: var(--coral-light); color: var(--coral-dark); }
+  .q-points { flex-shrink:0; background: var(--amber-light); color: var(--amber-dark); font-size:11px; font-weight:600; padding:4px 10px; border-radius:20px; white-space:nowrap; align-self:flex-start; margin-top:2px; }
+
+  .scenario { background: var(--gray-light); border-radius:8px; padding:14px 18px; margin-bottom:14px; font-size:12.5px; line-height:1.7; }
+  .scenario strong { font-weight:600; }
+
+  .subtasks { padding-left:0; list-style:none; }
+  .subtasks li { display:flex; gap:10px; padding:9px 0; border-top:1px solid var(--border); font-size:12.5px; line-height:1.65; }
+  .subtasks li:first-child { border-top:none; }
+  .subtask-label { flex-shrink:0; font-weight:600; font-size:11px; color: var(--acc); width:24px; padding-top:1px; }
+  .pts { flex-shrink:0; color: var(--text-muted); font-size:11px; padding-top:2px; white-space:nowrap; }
+
+  .solution-toggle { margin-top:14px; border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+  .solution-header { background: var(--acc-light); padding:8px 14px; font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color: var(--acc); border-bottom:1px solid #9FE1CB; }
+  .solution-body { padding:14px 18px; font-size:12px; line-height:1.75; }
+  .solution-body h4 { font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color: var(--acc); margin:12px 0 5px; }
+  .solution-body h4:first-child { margin-top:0; }
+  .solution-body p { margin-bottom:7px; }
+  .solution-body ul, .solution-body ol { padding-left:18px; margin-bottom:7px; }
+  .solution-body li { margin-bottom:3px; }
+
+  .criteria-box { background: var(--red-light); border-radius:6px; padding:10px 14px; margin-top:10px; font-size:11.5px; line-height:1.65; }
+  .criteria-box .clabel { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color: var(--red-dark); margin-bottom:4px; }
+  .transfer-box { background: var(--acc-light); border-radius:6px; padding:10px 14px; margin-top:8px; font-size:11.5px; line-height:1.65; color: var(--acc); border-left:3px solid var(--acc); }
+  .transfer-box .clabel { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color: var(--acc); margin-bottom:4px; }
+
+  table { width:100%; border-collapse:collapse; font-size:12px; margin:10px 0; }
+  th { background: var(--acc); color:#fff; padding:7px 10px; text-align:left; font-weight:500; font-size:11px; }
+  td { padding:6px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:nth-child(even) td { background: var(--gray-light); }
+  tr.total td { font-weight:600; border-top:2px solid var(--text-muted); background:#fff; }
+  tr.subtotal td { font-weight:600; border-top:1px solid var(--border); background: var(--gray-light); }
+
+  .bilanz-table { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--border); border-radius:8px; overflow:hidden; margin:10px 0; }
+  .bilanz-side { padding:12px 14px; }
+  .bilanz-side:first-child { border-right:1px solid var(--border); }
+  .bilanz-side-header { font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color: var(--acc); margin-bottom:8px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  .bilanz-row { display:flex; justify-content:space-between; padding:3px 0; font-size:12px; border-bottom:1px dotted #e8e6de; }
+  .bilanz-row.indent { padding-left:12px; font-style:italic; color: var(--text-muted); }
+  .bilanz-row.subtotal { font-weight:600; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background: var(--gray-light); padding:4px 0; margin-top:3px; }
+  .bilanz-row.total { font-weight:700; font-size:13px; border-top:2px solid var(--acc); margin-top:6px; padding-top:5px; border-bottom:none; }
+  .bilanz-section-label { font-weight:600; font-size:11px; color: var(--acc); padding-top:6px; display:flex; justify-content:space-between; }
+
+  .formula { background:#f9f7f4; border:1px solid var(--border); border-radius:6px; padding:10px 16px; font-family:'Georgia',serif; font-size:13px; margin:8px 0; text-align:center; }
+
+  .divider { border:none; border-top:1.5px dashed var(--border); margin:36px 0; }
+  .note { font-size:11px; color: var(--text-muted); font-style:italic; margin-top:4px; }
+
+  @media print { .question { page-break-inside:avoid; } .cover { page-break-after:always; } body { padding:28px 36px; } }
+
+  .kw { background: var(--amber-light); color: var(--amber-dark); padding:1px 5px; border-radius:3px; font-weight:600; font-size:11.5px; }
+  .kw-green { background: var(--acc-light); color: var(--acc); padding:1px 5px; border-radius:3px; font-weight:600; font-size:11.5px; }
+  .kw-red { background: var(--red-light); color: var(--red-dark); padding:1px 5px; border-radius:3px; font-weight:600; font-size:11.5px; }
+  .kw-blue { background: var(--blue-light); color: var(--blue-dark); padding:1px 5px; border-radius:3px; font-weight:600; font-size:11.5px; }
+
+  .check-item { display:flex; gap:8px; align-items:flex-start; margin-bottom:4px; }
+  .check-icon { color: var(--acc-mid); font-weight:700; flex-shrink:0; }
+  .x-icon { color: var(--red-dark); font-weight:700; flex-shrink:0; }
+
+  .timeline { border-left:3px solid var(--acc); padding-left:16px; margin:10px 0; }
+  .timeline-item { margin-bottom:10px; position:relative; }
+  .timeline-item::before { content:''; position:absolute; left:-21px; top:5px; width:9px; height:9px; background: var(--acc-mid); border-radius:50%; }
+  .timeline-item .t-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color: var(--acc); }
+  .timeline-item .t-text { font-size:12px; line-height:1.6; }
+
+  .answer-box { border:1px dashed var(--border); border-radius:6px; min-height:48px; margin-top:6px; padding:8px; font-size:11.5px; color:#ccc; font-style:italic; }
+
+  .two-col-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:8px 0; }
+  .mini-box { border:1px solid var(--border); border-radius:6px; padding:10px 12px; font-size:12px; }
+  .mini-box .mb-title { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color: var(--text-muted); margin-bottom:5px; }
+
+  .warn-box { background: var(--amber-light); border:1px solid #FAC775; border-radius:6px; padding:10px 14px; margin:8px 0; font-size:12px; color: var(--amber-dark); }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-institution">Georg-August-Universität Göttingen &middot; Wirtschaftswissenschaftliche Fakultät &middot; Professur für Financial Accounting and Sustainability Reporting</div>
+  <h1>Klausur C</h1>
+  <h2>Jahresabschluss – Einführung in das betriebliche Rechnungswesen &nbsp;|&nbsp; SoSe 26 &nbsp;|&nbsp; Erhöhter Schwierigkeitsgrad</h2>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><div class="label">Bearbeitungszeit</div><div class="value">90 Minuten</div></div>
+    <div class="cover-meta-item"><div class="label">Gesamtpunktzahl</div><div class="value">80 Punkte</div></div>
+    <div class="cover-meta-item"><div class="label">Aufgaben</div><div class="value">8 Aufgaben</div></div>
+    <div class="cover-meta-item"><div class="label">Niveau</div><div class="value" style="color: var(--coral-dark);">Fortgeschritten</div></div>
+  </div>
+  <div class="difficulty-banner">
+    <span style="font-size:16px">&#9888;</span>
+    <span><strong>Hinweis zum Schwierigkeitsgrad:</strong> Diese Klausur enthält mehrperiodische Szenarien, Aufgaben zur kritischen Analyse von Jahresabschlüssen sowie Fälle, in denen Konzepte aus verschiedenen Themenbereichen kombiniert werden müssen. Begründungen und Herleitungen sind zwingend erforderlich.</span>
+  </div>
+  <div class="cover-instructions">
+    <strong>Allgemeine Hinweise:</strong> Alle 8 Aufgaben sind zu bearbeiten. Matrikelnummer auf jedes Blatt. Rechenwege und betriebswirtschaftliche Begründungen sind Bewertungsgegenstand. Taschenrechner erlaubt. Kein Zugang zu Gesetzestexten oder Unterlagen.
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 1 – Skandal: Systemanalyse über mehrere Perioden
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">1</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 1 · Motivation &amp; Bilanzskandale</div>
+      <div class="q-title">Die „OceanShip AG" – Drei Perioden Bilanzmanipulation und ihre Spuren</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>OceanShip AG</em> betreibt internationale Frachtschifffahrt. Über drei Jahre haben Manager folgende Manipulationen vorgenommen:<br><br>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="t-label">Periode t1</div>
+        <div class="t-text">Nicht realisierte Gewinne aus einem Termingeschäft (noch schwebend, d. h. kein Recht auf die Zahlung entstanden) in Höhe von <strong>90 Mio. EUR</strong> werden als Erträge in der GuV und als Forderung auf der Aktivseite erfasst.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-label">Periode t2</div>
+        <div class="t-text">Drohende Verluste aus veralteten Frachter-Flotten werden <em>nicht</em> durch Abschreibungen erfasst, obwohl der Marktwert um <strong>60 Mio. EUR</strong> gesunken ist (Verstoß gegen das Niederstwertprinzip).</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-label">Periode t3</div>
+        <div class="t-text">Rückstellungen für laufende Rechtsstreitigkeiten (wahrscheinliche Verpflichtung: <strong>40 Mio. EUR</strong>) werden bewusst nicht gebildet, um den Jahresabschluss nicht zu belasten.</div>
+      </div>
+    </div>
+    In t4 deckt eine neue Wirtschaftsprüfungsgesellschaft alle drei Manipulationen auf und korrigiert die Bilanzen rückwirkend.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Analysieren Sie für jede der drei Perioden: <strong>(i)</strong> In welche Richtung wurde der ausgewiesene Jahresgewinn verfälscht (zu hoch / zu niedrig)? <strong>(ii)</strong> Welchen konkreten Effekt hat die Manipulation auf <strong>Aktiva</strong> und <strong>Eigenkapital</strong>? Nutzen Sie die Grundgleichung zur Begründung. Stellen Sie Ihre Antwort in Tabellenform dar.<br><span class="note">(6 Punkte – 2P je Periode)</span></span>
+      <span class="pts">(6 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Erläutern Sie, warum die <strong>kumulierte Wirkung</strong> von drei Perioden Bilanzmanipulation für externe Interessenten besonders gefährlich ist. Nennen Sie zwei strukturelle Gründe, warum Manipulationen über mehrere Perioden schwerer zu entdecken sind als einmalige Fälschungen.<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Periodenanalyse</h4>
+      <table>
+        <thead>
+          <tr><th>Periode</th><th>Manipulation</th><th>Gewinn zu hoch / zu niedrig?</th><th>Effekt Aktiva</th><th>Effekt EK</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>t1</strong></td>
+            <td>Nicht realisierter Ertrag 90 Mio. aktiviert</td>
+            <td><span class="kw-red">zu hoch (+90 Mio.)</span></td>
+            <td>Forderung ↑ 90 Mio. (fiktiv)</td>
+            <td>EK ↑ 90 Mio. via Jahresüberschuss</td>
+          </tr>
+          <tr>
+            <td><strong>t2</strong></td>
+            <td>Abschreibung 60 Mio. unterlassen</td>
+            <td><span class="kw-red">zu hoch (+60 Mio.)</span></td>
+            <td>AV ↑ 60 Mio. (nicht abgeschrieben)</td>
+            <td>EK ↑ 60 Mio. (kein Aufwand erfasst)</td>
+          </tr>
+          <tr>
+            <td><strong>t3</strong></td>
+            <td>Rückstellung 40 Mio. nicht gebildet</td>
+            <td><span class="kw-red">zu hoch (+40 Mio.)</span></td>
+            <td>Aktiva unverändert</td>
+            <td>EK ↑ 40 Mio. (kein Aufwand, keine Schuld passiviert)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p><strong>Erklärung via Grundgleichung:</strong></p>
+      <div class="formula">t1: Aktiva ↑ 90 (Forderung) → FK ± 0, also EK ↑ 90 &nbsp;|&nbsp; t2: Aktiva ↑ 60 (kein Aufwand) → EK ↑ 60 &nbsp;|&nbsp; t3: Aktiva ±0, aber FK ↓ (keine Rückstellung) → EK ↑ 40</div>
+      <p>Kumuliert ist das ausgewiesene Eigenkapital um <strong>190 Mio. EUR</strong> zu hoch ausgewiesen.</p>
+
+      <h4>b) Kumulierte Wirkung und Entdeckungsschwierigkeit</h4>
+      <p><strong>Gefährlichkeit der Kumulierung:</strong> Externe Interessenten (Investoren, Banken) sehen in jedem Jahresabschluss einen scheinbar validen Wert. Das Gesamtbild erscheint kohärent, da sich die Manipulationen nicht gegenseitig offenbaren. Im Fall einer Insolvenz ist das reale EK um 190 Mio. EUR geringer als ausgewiesen – Gläubiger und Aktionäre werden mit einem viel höheren Verlust konfrontiert als erwartet.</p>
+      <p><strong>Zwei strukturelle Gründe für Entdeckungsschwierigkeit:</strong></p>
+      <ol>
+        <li><strong>Periodische Gewöhnung:</strong> Einmal in die Bilanz aufgenommene Fiktivposten (z. B. fiktive Forderung aus t1) werden in Folgeperioden nicht neu hinterfragt – Prüfer und Analysten neigen dazu, Vorjahreswerte als Ausgangspunkt zu akzeptieren (sog. „rollierender Fehler").</li>
+        <li><strong>Kompensationseffekte:</strong> In einer Periode kann ein überhöhter Gewinn durch schwache operative Ergebnisse kaschiert werden; im Gesamtbild bleibt die Manipulation unsichtbar. Mehrperiodische Manipulationen nutzen gezielt solche Glättungseffekte.</li>
+      </ol>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Je Periode: Gewinneffekt korrekt (+0,5P) · Aktiva-Effekt korrekt (+0,5P) · EK-Effekt über Grundgleichung begründet (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>t3: Erkennen dass Aktiva ±0, aber EK trotzdem überhöht durch nicht-passivierten Aufwand = anspruchsvoll → vollen Punkt nur wenn korrekt erklärt</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Kumulierungseffekt 190 Mio. quantifiziert (+1P) · Gefährlichkeit für Interessenten erklärt (+1P) · 2 strukturelle Gründe je (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>t3: „Aktiva sinken weil Rückstellung entsteht" → falsch (Rückstellung ist Passiva, nicht Aktiva-Abnahme) → −1P</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Die mehrperiodische Analyse verbindet drei verschiedene Manipulationstechniken (fiktiver Ertrag, unterlassene Abschreibung, fehlende Rückstellung) und verlangt, deren unterschiedliche buchhalterische Mechanismen präzise über die Grundgleichung herzuleiten. Dies geht deutlich über das Klausur-A-Niveau hinaus.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 2 – Interessenten: Interessenkonflikt + Grenzen des RW
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">2</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 2 · Definition, Aufbau &amp; Interessenten</div>
+      <div class="q-title">Wenn ein Rechnungswesen nicht reicht – Die „BioFarm GmbH" zwischen Steuer, Investor und Controlling</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>BioFarm GmbH</em> produziert Bio-Lebensmittel. Der Geschäftsführer Dr. Vogel steht vor einem Dilemma: Er hat einen einzigen Jahresabschluss erstellt, den er gleichzeitig an das Finanzamt schickt, Investoren vorlegt und intern für Steuerungsaufgaben verwendet. Seine Steuerberaterin weist ihn darauf hin, dass dies problematisch sei.<br><br>
+    Folgende drei Situationen treten auf:<br><br>
+    <strong>(X)</strong> Der steuerliche Abschluss weist niedrige Gewinne aus (durch steuerrechtliche Abschreibungen), um Steuer zu sparen. Denselben Abschluss legt Dr. Vogel einem Risikokapitalgeber vor.<br>
+    <strong>(Y)</strong> Die Produktionsleitung nutzt denselben Abschluss, um die Profitabilität des Produkts „Bio-Müsli" zu beurteilen – obwohl der Abschluss nur unternehmensweite Gesamtzahlen ausweist.<br>
+    <strong>(Z)</strong> Ein potenzieller Käufer des Unternehmens (M&amp;A-Transaktion) möchte den „echten" Unternehmenswert kennen, nicht nur den Buchwert aus dem Abschluss.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Erläutern Sie für jede Situation (X–Z), <strong>welches Rechnungswesen-Teilsystem geeignet wäre</strong> und warum der einheitliche Jahresabschluss jeweils scheitert. Nutzen Sie die Unterscheidung intern/extern und die Zweckgebundenheit des jeweiligen Teilbereichs.<br><span class="note">(6 Punkte – 2P je Situation)</span></span>
+      <span class="pts">(6 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Formulieren Sie eine betriebswirtschaftliche Begründung dafür, warum das Rechnungswesen in der Praxis <strong>mehrere parallele Systeme</strong> braucht – und nicht ein universelles. Argumentieren Sie anhand des Begriffs der „zweckgerichteten Aufbereitung des Datenmaterials".<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Analyse der drei Situationen</h4>
+      <p><strong>(X) Steuerlicher Abschluss ≠ Investoreninformation:</strong><br>
+      Der steuerrechtliche Jahresabschluss ist nach den Vorschriften des Steuerrechts aufzustellen (Maßgeblichkeitsprinzip) und soll die steuerliche Bemessungsgrundlage möglichst niedrig halten. Er ist darauf optimiert, legal Steuern zu minimieren. Ein Risikokapitalgeber hingegen benötigt den <em>handelsrechtlichen Jahresabschluss</em> (Teil des Geschäftsberichts), der nach HGB die Vermögens-, Finanz- und Ertragslage wahrheitsgemäß darstellen soll. Ein steuerlich optimierter Abschluss unterschätzt die Ertragskraft systematisch und führt den Investor in die Irre.</p>
+      <p><strong>(Y) Jahresabschluss ≠ Produktcontrolling:</strong><br>
+      Der handelrechtliche Jahresabschluss aggregiert Informationen auf Unternehmensebene und ist auf externe Adressaten ausgerichtet. Für die Profitabilitätsbewertung eines einzelnen Produkts braucht die Produktionsleitung die <em>Kosten- und Leistungsrechnung</em> (intern). Die KLR weist Stückkosten, Deckungsbeiträge und Kostenträgerergebnisse aus – eine Informationstiefe, die der Jahresabschluss grundsätzlich nicht liefern kann.</p>
+      <p><strong>(Z) Buchwert ≠ Unternehmenswert:</strong><br>
+      Der Jahresabschluss weist historische Anschaffungskosten (Buchwerte) aus, keine Marktwerte oder Zukunftspotenziale. Für eine M&amp;A-Transaktion sind Ertragswertmethoden oder Discounted-Cashflow-Modelle relevant – Instrumente der <em>Investitions- und Finanzierungsrechnung</em> bzw. der Unternehmensbewertung. Der Buchwert unterschätzt i. d. R. den echten Wert (stille Reserven, Goodwill bleiben unsichtbar).</p>
+
+      <h4>b) Warum mehrere parallele Systeme</h4>
+      <p>Das Rechnungswesen kann das Datenmaterial <em>nach zweckgerichteten Gesichtspunkten für spezielle Informationsbedürfnisse</em> aufbereiten – aber nur dann, wenn der Zweck vorab klar definiert ist. Da unterschiedliche Adressaten grundlegend verschiedene Fragen stellen (Wie viel Steuer? Welche Produktmarge? Ist das Unternehmen kreditwürdig?), existiert kein universelles System, das alle Fragen gleichzeitig optimal beantwortet. Steuerrecht bevorzugt Vorsicht und legale Minderung; der handelrechtliche Abschluss Informationsvermittlung; die KLR betriebswirtschaftliche Effizienz. Ein einziges System würde entweder zu hohe Steuern erzwingen, Investoren falsch informieren oder unbrauchbare Controllingdaten liefern. Die Multiplizität der Systeme ist also kein Fehler, sondern eine logische Konsequenz der Zweckdivergenz.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Je Situation: richtiger Teilbereich genannt (+1P) · Erklärung warum einheitlicher Abschluss scheitert (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Begriff „zweckgerichtete Aufbereitung" inhaltlich genutzt (+2P) · konkrete Zweck-Divergenz zweier Systeme kontrastiert (+2P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>(Y) nur „Jahresabschluss reicht nicht" ohne KLR zu nennen: 0,5P</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>(Z) „Investitionsrechnung" als Teilbereich: Punkt wenn begründet; Unternehmensbewertung als Antwort ebenfalls akzeptabel</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Diese Aufgabe verlangt nicht nur die Kenntnis der Teilbereiche, sondern das Verständnis ihrer inhärenten Grenzen und der Konsequenzen, wenn das falsche System für einen Zweck genutzt wird. Die Synthese aus drei Situationen erfordert Transfer auf ein Meta-Niveau.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 3 – Bewertung: stille Reserven + Überbewertung
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">3</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 3 · Grundlagen der Erfolgsermittlung – Bewertung &amp; Kapital</div>
+      <div class="q-title">Stille Reserven und der „wahre" Unternehmenswert der MountainBike OHG</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>MountainBike OHG</em> produziert hochwertige Fahrräder. Zum 31.12.t3 zeigt die Bilanz folgende Werte (vereinfacht):<br><br>
+    <strong>Aktiva:</strong> Produktionsmaschinen (Buchwert) 30.000 EUR · Grundstück (Buchwert: Anschaffungskosten vor 15 Jahren) 40.000 EUR · Lagerbestand 25.000 EUR · Bankguthaben 15.000 EUR · Summe: 110.000 EUR<br>
+    <strong>Passiva:</strong> Eigenkapital 60.000 EUR · Bankdarlehen 50.000 EUR · Summe: 110.000 EUR<br><br>
+    Ein Gutachter stellt fest: Die Produktionsmaschinen sind im Markt tatsächlich 50.000 EUR wert (Buchwert: 30.000 EUR). Das Grundstück ist auf 90.000 EUR gestiegen (Buchwert: 40.000 EUR). Der Lagerbestand enthält veraltete Komponenten im Wert von 8.000 EUR, die am Markt nur noch für 3.000 EUR verkäuflich sind.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Erläutern Sie die Begriffe <strong>stille Reserve</strong> (bei Maschinen und Grundstück) und <strong>stiller Verlust</strong> (beim Lager). Berechnen Sie den jeweiligen Betrag und erklären Sie, warum diese Werte in der regulären Bilanz <em>nicht sichtbar</em> sind.<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Berechnen Sie das <strong>„wahre" Eigenkapital</strong> der OHG unter Berücksichtigung der stillen Reserven und des stillen Verlusts. Erläutern Sie, welche Aussage über den Periodenerfolg sich ändern würde, wenn die Bilanz zu Marktwerten aufgestellt würde.<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">c)</span>
+      <span>Warum erlaubt das Vorsichtsprinzip einerseits die Bildung stiller Reserven (Unterbewertung von Aktiva), verlangt aber andererseits die Erfassung stiller Verluste (Niederstwertprinzip)? Ist das ein Widerspruch? Begründen Sie Ihre Antwort in drei bis vier Sätzen.<br><span class="note">(2 Punkte)</span></span>
+      <span class="pts">(2 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Stille Reserven und stille Verluste</h4>
+      <p><strong>Stille Reserve</strong> = Differenz zwischen dem tatsächlichen Marktwert eines Vermögensgegenstands und seinem niedrigeren Buchwert in der Bilanz. Sie ist „still", weil sie nicht im Abschluss ausgewiesen wird.</p>
+      <ul>
+        <li>Maschinen: Marktwert 50.000 − Buchwert 30.000 = <span class="kw-green">stille Reserve 20.000 EUR</span></li>
+        <li>Grundstück: 90.000 − 40.000 = <span class="kw-green">stille Reserve 50.000 EUR</span></li>
+      </ul>
+      <p>Sie sind nicht sichtbar, weil das HGB das <strong>Anschaffungskostenprinzip</strong> vorschreibt: Vermögensgegenstände dürfen maximal zu ihren historischen Anschaffungskosten (abzgl. Abschreibungen) angesetzt werden, nicht zu gestiegenen Marktwerten.</p>
+      <p><strong>Stiller Verlust</strong> = Differenz zwischen Buchwert und niedrigerem erzielbaren Wert (hier beim Lager).</p>
+      <ul>
+        <li>Veralteter Lagerbestand: Buchwert 8.000 − Nettoveräußerungswert 3.000 = <span class="kw-red">stiller Verlust 5.000 EUR</span></li>
+      </ul>
+      <p>In der regulären Bilanz nicht sichtbar, weil eine Abschreibung (Aufwand) noch nicht vorgenommen wurde.</p>
+
+      <h4>b) „Wahres" Eigenkapital zu Marktwerten</h4>
+      <table>
+        <thead><tr><th>Korrektur</th><th style="text-align:right">EUR</th></tr></thead>
+        <tbody>
+          <tr><td>EK laut Bilanz</td><td style="text-align:right">60.000</td></tr>
+          <tr><td>+ Stille Reserve Maschinen</td><td style="text-align:right">+20.000</td></tr>
+          <tr><td>+ Stille Reserve Grundstück</td><td style="text-align:right">+50.000</td></tr>
+          <tr><td>− Stiller Verlust Lager</td><td style="text-align:right">−5.000</td></tr>
+          <tr class="total"><td><strong>„Wahres" EK (Marktwertbasis)</strong></td><td style="text-align:right"><strong>125.000 EUR</strong></td></tr>
+        </tbody>
+      </table>
+      <p>Das tatsächliche Eigenkapital ist mehr als doppelt so hoch wie ausgewiesen. Würde die Bilanz zu Marktwerten aufgestellt, wären in t3 Erträge von 70.000 EUR (Wertsteigerungen) und Aufwand von 5.000 EUR zu erfassen – der ausgewiesene Periodenerfolg wäre um netto 65.000 EUR höher als im HGB-Abschluss.</p>
+
+      <h4>c) Vorsichtsprinzip – kein Widerspruch</h4>
+      <p>Das Vorsichtsprinzip ist asymmetrisch konstruiert: Es verbietet die Erfassung nicht realisierter <em>Gewinne</em> (Aktiva werden nicht über AK bewertet → stille Reserven bleiben), verpflichtet aber zur sofortigen Erfassung nicht realisierter <em>Verluste</em> (Niederstwertprinzip bei dauerhafter Wertminderung). Dies ist kein Widerspruch, sondern gewollte <strong>Imparität</strong>: Gläubiger werden vor zu optimistischen Bilanzen geschützt. Verluste sollen nicht verschleiert werden, Gewinne aber auch nicht vorzeitig ausgewiesen. Das Prinzip dient dem Schutz externer Kapitalansprüche.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>a) Definitionen korrekt (+1P) · alle drei Beträge berechnet (+1P) · Anschaffungskostenprinzip als Grund genannt (+1P) · Niederstwert als Grund für stille Verluste (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) EK-Berechnung vollständig (+2P) · Aussage über Periodenerfolg korrekt (+2P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>c) Asymmetrie des Vorsichtsprinzips erklärt (+1P) · Imparitätsbegriff oder Gläubigerschutz als Begründung (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>b) stille Verluste beim Lager vergessen oder addiert statt subtrahiert: −1P</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Das Konzept stiller Reserven und die Asymmetrie des Vorsichtsprinzips wurden im Skript nicht explizit behandelt, sind aber direkte Konsequenzen der Bewertungslogik. Studierende müssen aus dem Konzept der Wiedergeldwerdung und dem Niederstwertprinzip eigenständig auf diese Mechanismen schließen.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 4 – EK-Vergleich über zwei Perioden
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">4</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 4 · Erfolgsermittlung durch Eigenkapitalvergleich</div>
+      <div class="q-title">Zwei Jahre, eine Frage: Hat die „DesignStudio GbR" Fortschritte gemacht?</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>DesignStudio GbR</em> bietet Grafikdesign-Dienstleistungen an. Sie erhalten folgende Informationen für zwei Perioden:<br><br>
+
+    <div class="two-col-grid">
+      <div class="mini-box">
+        <div class="mb-title">31.12.t1 (Periodenbeginn t2)</div>
+        Bankguthaben: 18.000 EUR<br>
+        Forderungen: 9.000 EUR<br>
+        Büroausstattung (Buchwert): 15.000 EUR<br>
+        Verbindlichkeiten: 12.000 EUR<br>
+        Bankdarlehen: 10.000 EUR<br>
+        <em>EK = ?</em>
+      </div>
+      <div class="mini-box">
+        <div class="mb-title">31.12.t2</div>
+        Bankguthaben: 24.000 EUR<br>
+        Forderungen: 6.000 EUR<br>
+        Büroausstattung (Buchwert): 11.000 EUR<br>
+        Verbindlichkeiten: 8.000 EUR<br>
+        Bankdarlehen: 8.000 EUR<br>
+        <em>EK = ?</em>
+      </div>
+    </div>
+
+    Weitere Informationen: In t1 (also der Vorperiode) gab es eine Privatentnahme von 4.000 EUR, in t2 eine Privateinlage von 6.000 EUR. Das ursprüngliche Gründungskapital (t0) betrug 20.000 EUR.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Berechnen Sie das <strong>EK zum 31.12.t1 und zum 31.12.t2</strong> jeweils aus der Bilanzgleichung.<br><span class="note">(4 Punkte – 2P je Periode)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Berechnen Sie den <strong>bereinigten Periodenerfolg für t1 und für t2</strong> separat. Nutzen Sie dafür jeweils die vollständige Bereinigungsformel. Welche Periode war wirtschaftlich erfolgreicher?<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">c)</span>
+      <span>Die Büroausstattung wurde über beide Perioden abgeschrieben. Können Sie aus den gegebenen Buchwerten auf die <strong>jährliche Abschreibung</strong> schließen? Was sagt ein sinkender Buchwert über das Vermögen und den Periodenerfolg aus?<br><span class="note">(2 Punkte)</span></span>
+      <span class="pts">(2 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) EK berechnen</h4>
+      <div class="formula">EK<sub>31.12.t1</sub> = (18.000 + 9.000 + 15.000) − (12.000 + 10.000) = 42.000 − 22.000 = <strong>20.000 EUR</strong></div>
+      <div class="formula">EK<sub>31.12.t2</sub> = (24.000 + 6.000 + 11.000) − (8.000 + 8.000) = 41.000 − 16.000 = <strong>25.000 EUR</strong></div>
+
+      <h4>b) Bereinigte Periodenerfolge</h4>
+      <p><strong>Periode t1</strong> (t0→t1):</p>
+      <div class="formula">Erfolg<sub>t1</sub> = (EK<sub>t1</sub> − EK<sub>t0</sub>) + Entnahmen − Einlagen = (20.000 − 20.000) + 4.000 − 0 = <strong>+4.000 EUR (Gewinn)</strong></div>
+      <p><strong>Periode t2</strong> (t1→t2):</p>
+      <div class="formula">Erfolg<sub>t2</sub> = (EK<sub>t2</sub> − EK<sub>t1</sub>) + Entnahmen − Einlagen = (25.000 − 20.000) + 0 − 6.000 = 5.000 − 6.000 = <strong>−1.000 EUR (Verlust)</strong></div>
+      <p>Obwohl das EK in t2 gestiegen ist (scheinbar positiv), war die <em>unternehmerische Leistung</em> in t2 ein Verlust – die Privateinlage hat das EK optisch gehoben. <strong>Periode t1 war wirtschaftlich erfolgreicher</strong> (+4.000 vs. −1.000 EUR).</p>
+
+      <h4>c) Abschreibung und Bedeutung</h4>
+      <p>Buchwert t1: 15.000 EUR → Buchwert t2: 11.000 EUR → Abschreibung t2 = <strong>4.000 EUR/Jahr</strong>.<br>
+      Ein sinkender Buchwert der Büroausstattung bedeutet: Das Sachvermögen des Unternehmens nimmt ab (Reinvermögen wird kleiner), gleichzeitig wird die Abschreibung als Aufwand erfasst und mindert den Periodenerfolg – ohne dass ein Geldfluss stattfindet.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>a) EK<sub>t1</sub> = 20.000 (+2P) · EK<sub>t2</sub> = 25.000 (+2P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Formel t1 korrekt (+1P) · Ergebnis t1 (+0,5P) · Formel t2 korrekt (+1P) · Ergebnis t2 (+0,5P) · Vergleich/Urteil (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>c) Abschreibung 4.000 EUR identifiziert (+1P) · Effekt auf Vermögen und Erfolg erklärt (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>b) t2 als Gewinn werten weil EK gestiegen: schwerer konzeptueller Fehler −2P</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Gründungskapital t0 nicht als Basis für t1-Berechnung genutzt: −1P</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Die Mehrperioden-Berechnung ist die entscheidende Steigerung. Besonders tückisch: In t2 ist das EK gestiegen, der bereinigte Erfolg aber negativ. Nur wer die Formel wirklich versteht (nicht auswendig kann), trifft das richtige Urteil.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 5 – Ebenen: Komplexer Geschäftszyklus
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">5</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 5 · Vermögens- und Erfolgsebenen – Zahlungsmittel &amp; Geldvermögen</div>
+      <div class="q-title">Die TextilCraft GmbH – Ein vollständiger Geschäftszyklus in acht Schritten</div>
+    </div>
+    <div class="q-points">12 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>TextilCraft GmbH</em> produziert Designerkleidung. Verfolgen Sie einen vollständigen Geschäftszyklus: Vom Rohstoffkauf bis zur Tilgung. Die acht Schritte bauen konzeptionell aufeinander auf.<br><br>
+    <div class="warn-box">Achtung: Bei Schritt (3) und (7) sind mehrere Ebenen gleichzeitig betroffen. Bei Schritt (8) liegt ein komplexer Mischvorgang vor. Begründungen sind hier zwingend erforderlich.</div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th style="width:38%">Vorfall</th><th style="width:8%">ZM</th><th style="width:8%">GV</th><th style="width:8%">RV</th><th>Erfolgsmaß + Pflichtbegründung bei *</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>(1)</strong> Aufnahme eines Betriebsmittelkredits: 50.000 EUR (Gutschrift Konto)</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><strong>(2)</strong> Kauf von Stoffen und Garnen per Banküberweisung: 20.000 EUR</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><strong>(3) *</strong> Verkauf von Kleidungsstücken auf Ziel: 35.000 EUR. Herstellungskosten (Sachvermögen): 14.000 EUR.</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><strong>(4)</strong> Monatliche Lohnzahlung per Überweisung: 8.000 EUR</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><strong>(5)</strong> Jahresabschreibung auf Nähmaschinen: 6.000 EUR</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><strong>(6)</strong> Kunde überweist offene Rechnung aus Schritt (3): 35.000 EUR</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><strong>(7) *</strong> Eine Forderung aus einem anderen Auftrag (3.000 EUR) wird zur Hälfte als uneinbringlich ausgebucht.</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td><strong>(8) *</strong> Tilgung des Kredits aus Schritt (1): 50.000 EUR + Zinsen 2.500 EUR in einer Überweisung.</td><td></td><td></td><td></td><td></td></tr>
+    </tbody>
+  </table>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+      <h4>Vollständige Einordnung</h4>
+      <table>
+        <thead><tr><th>Vorfall</th><th>ZM</th><th>GV</th><th>RV</th><th>Erfolgsmaß + Erläuterung</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>(1)</strong> Kredit 50.000 EUR</td>
+            <td style="text-align:center"><span class="kw-green">+</span></td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center">0</td>
+            <td><span class="kw-green">Einzahlung</span> — Bank ↑, Verbindlichkeit ↑ → GV und RV neutral.</td>
+          </tr>
+          <tr>
+            <td><strong>(2)</strong> Rohstoffeinkauf 20.000 EUR</td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center">0</td>
+            <td><span class="kw-red">Auszahlung</span> — Tausch Bank gegen Sachvermögen (Vorräte); GV und RV neutral.</td>
+          </tr>
+          <tr>
+            <td><strong>(3) *</strong> Zielverkauf 35.000 EUR (HK 14.000)</td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center"><span class="kw-green">+</span></td>
+            <td style="text-align:center"><span class="kw-green">+</span></td>
+            <td><span class="kw-green">Einnahme + Ertrag</span> — Forderung ↑ 35.000 (GV ↑); Sachvermögen ↓ 14.000, Forderung ↑ 35.000 → RV netto +21.000 (Handelsmarge = Ertrag). Kein Geldfluss.</td>
+          </tr>
+          <tr>
+            <td><strong>(4)</strong> Löhne 8.000 EUR</td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td><span class="kw-red">Auszahlung + Ausgabe + Aufwand</span> — alle Ebenen simultane Abnahme.</td>
+          </tr>
+          <tr>
+            <td><strong>(5)</strong> Abschreibung 6.000 EUR</td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td><span class="kw-red">Aufwand</span> — nur Sachvermögen ↓; kein Geldfluss.</td>
+          </tr>
+          <tr>
+            <td><strong>(6)</strong> Forderungseingang 35.000 EUR</td>
+            <td style="text-align:center"><span class="kw-green">+</span></td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center">0</td>
+            <td><span class="kw-green">Einzahlung</span> — Forderung war bereits GV; Überweisung tauscht Forderung gegen Bank (Umschichtung im GV).</td>
+          </tr>
+          <tr>
+            <td><strong>(7) *</strong> Forderungsausfall 1.500 EUR (Hälfte)</td>
+            <td style="text-align:center">0</td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td><span class="kw-red">Aufwand</span> — Forderung ↓ 1.500 (GV ↓, RV ↓). Die verbliebenen 1.500 EUR Forderung bleiben bestehen. Kein Geldfluss. Betrag: nur die abgeschriebene Hälfte (1.500 EUR) ist relevant.</td>
+          </tr>
+          <tr>
+            <td><strong>(8) *</strong> Tilgung + Zinsen (50.000 + 2.500)</td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td style="text-align:center"><span class="kw-red">−</span></td>
+            <td>Zwei Komponenten: (a) Tilgung 50.000: Auszahlung (ZM −) + Schuld ↓ (GV neutral bleibt) → <span class="kw-red">Auszahlung</span>, kein Aufwand. (b) Zinsen 2.500: Auszahlung (ZM −) + Ausgabe (GV −) + <span class="kw-red">Aufwand</span> (RV −). Gesamt: ZM −52.500, GV −2.500, RV −2.500.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Je Vorfall 1,5P: Ebenen korrekt (+0,75P) + Erfolgsmaß (+0,5P) + Begründung bei * (+0,25P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Vorfall (3): RV +21.000 (nicht +35.000) → Vollpunkt nur wenn Handelsmarge als Ertrag identifiziert</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>Vorfall (8): Trennung Tilgung (kein Aufwand) vs. Zinsen (Aufwand) → Vollpunkt nur bei Trennung beider Komponenten</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>Häufigste Fehler: (6) als Einnahme; (8) Tilgung als Aufwand; (7) Betrag 3.000 statt 1.500</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>(8) Zinsaufwand vergessen: −0,5P</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Vorfall (8) ist die anspruchsvollste Aufgabe der Reihe: Eine Überweisung enthält zwei konzeptionell verschiedene Vorgänge (Tilgung = kein Aufwand; Zinsen = Aufwand), die sauber getrennt werden müssen. Das verlangt strukturelles Denken auf höchstem Niveau.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 6 – Reinvermögen: Maschinenkauf + Abschreibung + Verkauf
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">6</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 6 · Vermögens- und Erfolgsebenen – Reinvermögen &amp; Gesamtbild</div>
+      <div class="q-title">Kauf, Nutzung, Verkauf – Die vollständige Maschinen-Biographie der „SpeedCut GmbH"</div>
+    </div>
+    <div class="q-points">8 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>SpeedCut GmbH</em> kauft am 01.01.t1 eine CNC-Fräsmaschine für <strong>60.000 EUR</strong> per Banküberweisung. Geplante Nutzungsdauer: <strong>5 Jahre</strong>, lineare Abschreibung, Restwert 0 EUR.<br><br>
+    Am 31.12.t3 (nach 3 vollen Jahren Abschreibung) wird die Maschine für <strong>28.000 EUR</strong> an ein anderes Unternehmen bar verkauft.
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Berechnen Sie die <strong>jährliche Abschreibung</strong> und den <strong>Buchwert</strong> der Maschine am 31.12.t3 (vor dem Verkauf).<br><span class="note">(2 Punkte)</span></span>
+      <span class="pts">(2 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Analysieren Sie den <strong>Verkaufsvorgang</strong> am 31.12.t3 vollständig. Welche Vorgänge auf welchen Ebenen (ZM, GV, RV: +/−/Betrag) löst der Verkauf aus? Wie hoch ist der <strong>Buchgewinn oder -verlust</strong> aus dem Verkauf? Handelt es sich um einen Ertrag oder Aufwand – und warum?<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">c)</span>
+      <span>Erläutern Sie, wie der gesamte Lebenszyklus der Maschine (Kauf → Abschreibung → Verkauf) das <strong>Reinvermögen</strong> über die drei Perioden beeinflusst hat. Welchen <strong>Gesamteffekt</strong> auf das RV hat der Maschineneinsatz über alle Perioden zusammen (summieren Sie alle RV-Effekte)?<br><span class="note">(2 Punkte)</span></span>
+      <span class="pts">(2 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Abschreibung und Buchwert</h4>
+      <div class="formula">AfA<sub>jährlich</sub> = 60.000 ÷ 5 = <strong>12.000 EUR/Jahr</strong></div>
+      <div class="formula">Buchwert 31.12.t3 = 60.000 − 3 × 12.000 = 60.000 − 36.000 = <strong>24.000 EUR</strong></div>
+
+      <h4>b) Verkaufsanalyse</h4>
+      <p>Beim Verkauf laufen zwei Vorgänge gleichzeitig ab:</p>
+      <ol>
+        <li><strong>Abgang der Maschine zum Buchwert:</strong> Sachvermögen ↓ 24.000 EUR (RV ↓ 24.000)</li>
+        <li><strong>Eingang des Verkaufserlöses:</strong> Kasse ↑ 28.000 EUR (ZM ↑ 28.000, GV ↑ 28.000, RV ↑ 28.000)</li>
+      </ol>
+      <div class="formula">Buchgewinn = Verkaufserlös − Buchwert = 28.000 − 24.000 = <strong>+4.000 EUR</strong></div>
+      <p>Nettoeffekt auf RV: +28.000 (Erlös) − 24.000 (Abgang Sachvermögen) = <span class="kw-green">+4.000 EUR Ertrag</span><br>
+      Dies ist ein <span class="kw-green">Ertrag</span>, weil das Reinvermögen netto zunimmt – der Verkaufserlös übersteigt den Buchwert (stille Reserve wurde realisiert).</p>
+
+      <table>
+        <thead><tr><th>Vorgang</th><th>ZM</th><th>GV</th><th>RV</th><th>Erfolgsmaß</th></tr></thead>
+        <tbody>
+          <tr><td>Maschinenabgang (Buchwert 24.000)</td><td>0</td><td>0</td><td>−24.000</td><td>Aufwand 24.000</td></tr>
+          <tr><td>Kasseneingang Erlös 28.000</td><td>+28.000</td><td>+28.000</td><td>+28.000</td><td>Einzahlung + Einnahme + Ertrag</td></tr>
+          <tr class="total"><td><strong>Netto</strong></td><td><strong>+28.000</strong></td><td><strong>+28.000</strong></td><td><strong>+4.000</strong></td><td>Ertrag netto 4.000</td></tr>
+        </tbody>
+      </table>
+
+      <h4>c) Gesamteffekt RV über alle Perioden</h4>
+      <table>
+        <thead><tr><th>Zeitpunkt/Vorgang</th><th style="text-align:right">RV-Effekt (EUR)</th></tr></thead>
+        <tbody>
+          <tr><td>01.01.t1: Kauf (ZM → Sachvermögen, Tausch)</td><td style="text-align:right">0</td></tr>
+          <tr><td>31.12.t1: Abschreibung 12.000</td><td style="text-align:right">−12.000</td></tr>
+          <tr><td>31.12.t2: Abschreibung 12.000</td><td style="text-align:right">−12.000</td></tr>
+          <tr><td>31.12.t3: Abschreibung 12.000</td><td style="text-align:right">−12.000</td></tr>
+          <tr><td>31.12.t3: Verkauf (Netto RV-Effekt)</td><td style="text-align:right">+4.000</td></tr>
+          <tr class="total"><td><strong>Gesamt-RV-Effekt</strong></td><td style="text-align:right"><strong>−32.000 EUR</strong></td></tr>
+        </tbody>
+      </table>
+      <p>Das RV ist durch den gesamten Maschineneinsatz netto um <strong>32.000 EUR gesunken</strong> – was genau dem Nettoaufwand entspricht: Anschaffungskosten 60.000 − Verkaufserlös 28.000 = 32.000 EUR. Dies ist der tatsächliche wirtschaftliche Verbrauch der Maschine über die Nutzungsdauer.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>a) AfA 12.000 (+1P) · Buchwert 24.000 (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) Buchgewinn 4.000 korrekt berechnet (+1P) · Zerlegung in zwei Vorgänge (+1P) · RV-Effekte korrekt (+1P) · Ertrag korrekt qualifiziert (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>c) Gesamteffekt −32.000 korrekt (+1P) · Interpretation als „tatsächlicher Verbrauch" (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>b) Buchgewinn vergessen oder Erlös direkt als vollen Ertrag: −2P</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>c) Kauf als RV-Abnahme verbucht: −1P (Kauf ist ZM-Auszahlung, aber RV neutral)</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Der Maschinenverkauf mit Buchgewinn/-verlust ist die komplexeste Einzelaufgabe in der Ebenensystematik. Das Lebenszykluskonzept in c) verknüpft alle drei Perioden zu einem kohärenten Bild und zeigt, dass der Gesamtaufwand = AK − Erlös ist – eine Erkenntnis, die echtes systemisches Verständnis erfordert.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 7 – Bilanzaufbau: Kritische Analyse eines Abschlusses
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">7</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 7 · Grundaufbau der Bilanz</div>
+      <div class="q-title">Der kritische Blick: Was sagt die Bilanz der „CityBike GmbH" über ihre Finanzstruktur?</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Ihnen liegt die folgende (korrekte und ausgeglichene) Bilanz der <em>CityBike GmbH</em> vor. Sie sollen diese als externer Investor analysieren – nicht nur lesen.
+  </div>
+
+  <div class="bilanz-table" style="margin-bottom:14px;">
+    <div class="bilanz-side">
+      <div class="bilanz-side-header">Aktiva – 31.12.t1</div>
+      <div class="bilanz-row bilanz-section-label"><span>A. Anlagevermögen</span><span>EUR</span></div>
+      <div class="bilanz-row indent"><span>I. Patente / Lizenzen</span><span>8.000</span></div>
+      <div class="bilanz-row indent"><span>II. Maschinen, Fuhrpark</span><span>95.000</span></div>
+      <div class="bilanz-row subtotal"><span>&nbsp;Summe AV</span><span>103.000</span></div>
+      <div class="bilanz-row bilanz-section-label"><span>B. Umlaufvermögen</span></div>
+      <div class="bilanz-row indent"><span>I. Vorräte</span><span>12.000</span></div>
+      <div class="bilanz-row indent"><span>II. Forderungen a. LL</span><span>7.000</span></div>
+      <div class="bilanz-row indent"><span>IV. Finanzmittel</span><span>3.000</span></div>
+      <div class="bilanz-row subtotal"><span>&nbsp;Summe UV</span><span>22.000</span></div>
+      <div class="bilanz-row total"><span><strong>Bilanzsumme</strong></span><span><strong>125.000</strong></span></div>
+    </div>
+    <div class="bilanz-side">
+      <div class="bilanz-side-header">Passiva – 31.12.t1</div>
+      <div class="bilanz-row bilanz-section-label"><span>A. Eigenkapital</span><span>EUR</span></div>
+      <div class="bilanz-row indent"><span>Gezeichnetes Kapital</span><span>15.000</span></div>
+      <div class="bilanz-row indent"><span>Jahresüberschuss</span><span>5.000</span></div>
+      <div class="bilanz-row subtotal"><span>&nbsp;Summe EK</span><span>20.000</span></div>
+      <div class="bilanz-row bilanz-section-label"><span>B. Rückstellungen</span></div>
+      <div class="bilanz-row indent"><span>Pensionsrückstellungen</span><span>10.000</span></div>
+      <div class="bilanz-row bilanz-section-label"><span>C. Verbindlichkeiten</span></div>
+      <div class="bilanz-row indent"><span>ggü. Kreditinstituten</span><span>80.000</span></div>
+      <div class="bilanz-row indent"><span>aus Lieferungen u. Leistungen</span><span>15.000</span></div>
+      <div class="bilanz-row subtotal"><span>&nbsp;Summe FK</span><span>105.000</span></div>
+      <div class="bilanz-row total"><span><strong>Bilanzsumme</strong></span><span><strong>125.000</strong></span></div>
+    </div>
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Berechnen Sie die <strong>Eigenkapitalquote</strong> (EK / Bilanzsumme) und die <strong>Fremdkapitalquote</strong>. Erläutern Sie, was diese Kennzahlen einem potenziellen Gläubiger über das Risiko eines neuen Kredits sagen.<br><span class="note">(3 Punkte)</span></span>
+      <span class="pts">(3 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Beurteilen Sie, ob die Bilanz eine <strong>Fristenkongruenz</strong> aufweist: Sind langfristig gebundene Aktiva (AV) durch langfristiges Kapital gedeckt? Analysieren Sie das Verhältnis von AV zu EK und langfristigem FK. Welches Signal ergibt sich für einen Gläubiger?<br><span class="note">(4 Punkte)</span></span>
+      <span class="pts">(4 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">c)</span>
+      <span>Die Bilanz ist formal korrekt und ausgeglichen. Nennen Sie zwei strukturelle Informationen, die eine Bilanz <em>prinzipbedingt nicht liefern kann</em> und die für eine vollständige Unternehmensbewertung notwendig wären. Erläutern Sie kurz den Grund.<br><span class="note">(3 Punkte)</span></span>
+      <span class="pts">(3 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Kapitalstrukturkennzahlen</h4>
+      <div class="formula">EK-Quote = EK / Bilanzsumme = 20.000 / 125.000 = <strong>16,0 %</strong></div>
+      <div class="formula">FK-Quote = (10.000 + 105.000) / 125.000 = 105.000 / 125.000 = <strong>84,0 %</strong></div>
+      <p>Eine EK-Quote von nur 16 % signalisiert einem potenziellen Gläubiger: Das Unternehmen ist stark fremdfinanziert. Im Insolvenzfall steht sehr wenig Eigenkapital als Puffer zur Verfügung – die Insolvenzwahrscheinlichkeit und das Ausfallrisiko für Gläubiger sind damit überdurchschnittlich hoch. Ein neuer Kredit würde das Risiko weiter erhöhen.</p>
+
+      <h4>b) Fristenkongruenz</h4>
+      <p>Fristenkongruenz bedeutet: Langfristig gebundene Aktiva sollten durch langfristiges Kapital finanziert sein.</p>
+      <div class="formula">AV = 103.000 &nbsp;|&nbsp; EK = 20.000 &nbsp;|&nbsp; langfristiges FK = Bankdarlehen 80.000 + Pensionsrückst. 10.000 = 90.000</div>
+      <div class="formula">Langfristiges Kapital gesamt = 20.000 + 90.000 = 110.000 EUR</div>
+      <div class="formula">Deckung AV: 110.000 > 103.000 → AV ist durch langfristiges Kapital gedeckt (+7.000 EUR Puffer)</div>
+      <p>Die goldene Bilanzregel ist damit eingehalten – das AV ist vollständig durch langfristiges Kapital gedeckt. Der positive Überschuss von 7.000 EUR steht als langfristiger Anteil zur UV-Finanzierung zur Verfügung. Für den Gläubiger ist dies ein positives Signal hinsichtlich der strukturellen Fristenkongruenz, obwohl die niedrige EK-Quote problematisch bleibt.</p>
+
+      <h4>c) Grenzen der Bilanz</h4>
+      <ol>
+        <li><strong>Ertragspotenzial / zukünftige Cashflows:</strong> Die Bilanz ist zeitpunktbezogen und bildet historische Werte ab. Welche Umsätze und Gewinne das Unternehmen künftig erzielen wird, lässt sich daraus nicht ableiten – notwendig wäre eine Investitionsrechnung oder Planbilanz.</li>
+        <li><strong>Qualitative Faktoren / immaterielles Vermögen:</strong> Markenwert, Mitarbeiterkompetenz, Kundenbeziehungen oder Technologie-Know-how erscheinen nicht in der Bilanz (selbst erstellte immaterielle Werte dürfen nach HGB i. d. R. nicht aktiviert werden). Diese können einen erheblichen Teil des tatsächlichen Unternehmenswerts ausmachen.</li>
+      </ol>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>a) EK-Quote 16 % (+1P) · FK-Quote 84 % (+0,5P) · Risikobeurteilung für Gläubiger (+1,5P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) AV korrekt (103.000) (+0,5P) · langfristiges Kapital korrekt berechnet (+1P) · Deckungsvergleich (+1P) · betriebswirtschaftliche Interpretation (+1,5P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>c) Zwei strukturell verschiedene Grenzen je (+1P) + Begründung je (+0,5P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>b) Pensionsrückstellungen nicht als langfristiges Kapital gewertet: akzeptabel wenn begründet, aber Abzug wenn kommentarlos weggelassen</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Diese Aufgabe verbindet Bilanzaufbau mit Bilanzanalyse – eine Kompetenz, die über den Kursinhalt hinausgeht, aber direkt aus dem Verständnis der Struktur folgt. Fristenkongruenz und Kapitalstrukturkennzahlen sind praxisrelevante Instrumente, die hier erstmals geprüft werden.
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+
+<!-- ══════════════════════════════════════════════════════
+     AUFGABE 8 – Gliederung: Vollständige Bilanz + Fehlerkorrektur + Analyse
+     ══════════════════════════════════════════════════════ -->
+<div class="question">
+  <div class="question-header">
+    <div class="q-number">8</div>
+    <div class="q-title-block">
+      <div class="q-theme">Themenbereich 8 · Inhalt und Gliederung der Bilanz</div>
+      <div class="q-title">Die „SolarPower GmbH" – Bilanz aufstellen, prüfen, interpretieren</div>
+    </div>
+    <div class="q-points">10 Punkte</div>
+  </div>
+
+  <div class="scenario">
+    <strong>Szenario:</strong> Die <em>SolarPower GmbH</em> produziert Photovoltaikanlagen. Zum 31.12.t2 liegen folgende Positionen vor (alle Angaben in EUR):<br><br>
+    Solarmodule (Fertigprodukte, Lager): 22.000 · Verbindlichkeiten ggü. Kreditinstituten (langfristig): 65.000 · Gezeichnetes Kapital: 40.000 · Forderungen a. LL: 19.500 · Produktionsmaschinen (Buchwert nach AfA): 78.000 · Steuerrückstellungen: 7.500 · Bankguthaben: 16.000 · Gewinnrücklage: 12.000 · Rohstoffe (Siliziumplatten): 14.000 · Verbindlichkeiten aus L+L: 11.000 · Passiver Rechnungsabgrenzungsposten (RAP): 4.000 · Patente (selbst angemeldet, erlaubt zu aktivieren): 9.000 · Jahresüberschuss: ?
+  </div>
+
+  <ul class="subtasks">
+    <li>
+      <span class="subtask-label">a)</span>
+      <span>Erstellen Sie die vollständige strukturierte Bilanz nach dem Mindestgliederungsschema. Berechnen Sie den <strong>Jahresüberschuss</strong> als Schlussgröße (aus der Differenz Aktiva − bekannte Passiva-Positionen). Weisen Sie alle Zwischensummen aus.<br><span class="note">(5 Punkte)</span></span>
+      <span class="pts">(5 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">b)</span>
+      <span>Der passive RAP (4.000 EUR) steht auf der <strong>Passivseite</strong>. Erläutern Sie wirtschaftlich, was ein passiver RAP bedeutet und warum er auf der Passivseite korrekt platziert ist. Was unterscheidet ihn vom aktiven RAP?<br><span class="note">(3 Punkte)</span></span>
+      <span class="pts">(3 P.)</span>
+    </li>
+    <li>
+      <span class="subtask-label">c)</span>
+      <span>Ein Kollege behauptet: „Selbst erstellte Patente dürfen nach deutschem HGB grundsätzlich nicht aktiviert werden." Stimmt diese Aussage? Begründen Sie in zwei Sätzen und erläutern Sie, was dies für den Informationsgehalt der Bilanz bedeutet.<br><span class="note">(2 Punkte)</span></span>
+      <span class="pts">(2 P.)</span>
+    </li>
+  </ul>
+
+  <div class="solution-toggle">
+    <div class="solution-header">&#9998;&nbsp; Musterlösung &amp; Korrekturhinweise</div>
+    <div class="solution-body">
+
+      <h4>a) Strukturierte Bilanz</h4>
+      <p><em>Schritt 1: Aktiva summieren</em></p>
+      <div class="formula">Aktiva = 9.000 + 78.000 + 14.000 + 22.000 + 19.500 + 16.000 = <strong>158.500 EUR</strong></div>
+      <p><em>Schritt 2: Bekannte Passiva summieren</em></p>
+      <div class="formula">Bekannte Passiva = 40.000 (GK) + 12.000 (GewRücklage) + 7.500 (SteuRückst.) + 65.000 (Bankdarl.) + 11.000 (VerbLL) + 4.000 (pass. RAP) = 139.500 EUR</div>
+      <div class="formula">Jahresüberschuss = Aktiva − bekannte Passiva = 158.500 − 139.500 = <strong>19.000 EUR</strong></div>
+
+      <div class="bilanz-table">
+        <div class="bilanz-side">
+          <div class="bilanz-side-header">Aktiva (Vermögen)</div>
+          <div class="bilanz-row bilanz-section-label"><span>A. Anlagevermögen</span></div>
+          <div class="bilanz-row indent"><span>I. Immaterielle VG (Patente)</span><span>9.000</span></div>
+          <div class="bilanz-row indent"><span>II. Sachanlagen (Maschinen)</span><span>78.000</span></div>
+          <div class="bilanz-row subtotal"><span>&nbsp;Summe AV</span><span>87.000</span></div>
+          <div class="bilanz-row bilanz-section-label"><span>B. Umlaufvermögen</span></div>
+          <div class="bilanz-row indent"><span>I. Vorräte (Rohst. 14+Fertig. 22)</span><span>36.000</span></div>
+          <div class="bilanz-row indent"><span>II. Forderungen a. LL</span><span>19.500</span></div>
+          <div class="bilanz-row indent"><span>IV. Finanzmittel (Bank)</span><span>16.000</span></div>
+          <div class="bilanz-row subtotal"><span>&nbsp;Summe UV</span><span>71.500</span></div>
+          <div class="bilanz-row total"><span><strong>Bilanzsumme Aktiva</strong></span><span><strong>158.500</strong></span></div>
+        </div>
+        <div class="bilanz-side">
+          <div class="bilanz-side-header">Passiva (Kapital)</div>
+          <div class="bilanz-row bilanz-section-label"><span>A. Eigenkapital</span></div>
+          <div class="bilanz-row indent"><span>I. Gezeichnetes Kapital</span><span>40.000</span></div>
+          <div class="bilanz-row indent"><span>III. Gewinnrücklage</span><span>12.000</span></div>
+          <div class="bilanz-row indent"><span>V. Jahresüberschuss</span><span>19.000</span></div>
+          <div class="bilanz-row subtotal"><span>&nbsp;Summe EK</span><span>71.000</span></div>
+          <div class="bilanz-row bilanz-section-label"><span>B. Rückstellungen</span></div>
+          <div class="bilanz-row indent"><span>Steuerrückstellungen</span><span>7.500</span></div>
+          <div class="bilanz-row bilanz-section-label"><span>C. Verbindlichkeiten</span></div>
+          <div class="bilanz-row indent"><span>ggü. Kreditinstituten</span><span>65.000</span></div>
+          <div class="bilanz-row indent"><span>aus L+L</span><span>11.000</span></div>
+          <div class="bilanz-row subtotal"><span>&nbsp;Summe Verbindl.</span><span>76.000</span></div>
+          <div class="bilanz-row bilanz-section-label"><span>D. Rechnungsabgrenzung</span></div>
+          <div class="bilanz-row indent"><span>Passiver RAP</span><span>4.000</span></div>
+          <div class="bilanz-row total"><span><strong>Bilanzsumme Passiva</strong></span><span><strong>158.500</strong></span></div>
+        </div>
+      </div>
+
+      <h4>b) Passiver Rechnungsabgrenzungsposten</h4>
+      <p>Ein passiver RAP entsteht, wenn eine Einnahme (Einzahlung) bereits in der laufenden Periode eingegangen ist, die zugehörige Leistung aber erst in einer <em>späteren</em> Periode zu erbringen ist (z. B. Vorauszahlung eines Kunden für eine Serviceleistung im nächsten Jahr). Er steht auf der Passivseite, weil er eine zukünftige <em>Verpflichtung</em> darstellt: Das Unternehmen schuldet dem Kunden noch eine Leistung – er ist wirtschaftlich ähnlich wie eine Verbindlichkeit. Im Gegensatz dazu steht der aktive RAP auf der Aktivseite: Hier hat das Unternehmen bereits gezahlt, erhält aber die Leistung erst später (Anspruch auf zukünftige Gegenleistung = Vermögenswert).</p>
+
+      <h4>c) Aktivierung selbst erstellter Patente</h4>
+      <p>Die Aussage des Kollegen ist in dieser Absolutheit <strong>falsch</strong>: Nach § 248 Abs. 2 HGB (seit BilMoG 2009) dürfen selbst erstellte immaterielle Vermögensgegenstände des Anlagevermögens – darunter Patente – aktiviert werden, sofern sie konkret und bewertbar sind (Aktivierungswahlrecht). Wenn solche selbst erstellten Werte nicht aktiviert werden (Wahlrecht nicht ausgeübt), enthält die Bilanz stille Reserven, was ihren Informationsgehalt über die wahre Vermögenslage einschränkt.</p>
+
+      <div class="criteria-box">
+        <div class="clabel">Korrekturkriterien</div>
+        <div class="check-item"><span class="check-icon">✓</span><span>a) Aktiva-Summe korrekt (+1P) · JÜ berechnet (+1P) · Gliederung korrekt (+1P) · Rückstellungen als eigene Kategorie (+1P) · Bilanz ausgeglichen (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>b) wirtschaftliche Bedeutung passiver RAP (+1P) · Passivseite begründet (+1P) · Abgrenzung zu aktivem RAP (+1P)</span></div>
+        <div class="check-item"><span class="check-icon">✓</span><span>c) Aktivierungswahlrecht korrekt benannt (+1P) · Konsequenz für Informationsgehalt (+1P)</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>a) passiver RAP auf Aktivseite platziert: −1P</span></div>
+        <div class="check-item"><span class="x-icon">✗</span><span>c) Aussage als „richtig" bestätigt ohne Einschränkung: 0P</span></div>
+      </div>
+      <div class="transfer-box">
+        <div class="clabel">Transfer-Aspekt</div>
+        Klausur C enthält drei Neuerungen gegenüber den Vorklausuren: Passiver RAP (Passivseite-Pendant), Aktivierungswahlrecht für selbst erstellte immaterielle VG sowie die Berechnung des JÜ als Schlussgröße – alle drei erfordern Wissen, das über das Mindestgliederungsschema hinausgeht und echte konzeptionelle Tiefe verlangt.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PUNKTEÜBERSICHT -->
+<hr class="divider">
+<div style="background: var(--acc-light); border-radius: 10px; padding: 18px 22px; margin-top: 8px;">
+  <div style="font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--acc); margin-bottom: 10px;">Punkteübersicht – Klausur C (Fortgeschritten)</div>
+  <table style="margin: 0;">
+    <thead>
+      <tr style="background: var(--acc);">
+        <th>Aufg.</th><th>Themenbereich</th><th>Schwerpunkt-Upgrade (neu in Klausur C)</th><th style="text-align:right">Punkte</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Bilanzskandale</td><td>Drei Perioden, drei Manipulationstechniken, kumulierte Wirkung</td><td style="text-align:right">10</td></tr>
+      <tr><td>2</td><td>Interessenten &amp; Teilbereiche</td><td>Grenzen einzelner Teilbereiche; Meta-Argument für Systemvielfalt</td><td style="text-align:right">10</td></tr>
+      <tr><td>3</td><td>Bewertung &amp; Kapital</td><td>Stille Reserven, stille Verluste, Asymmetrie des Vorsichtsprinzips</td><td style="text-align:right">10</td></tr>
+      <tr><td>4</td><td>Eigenkapitalvergleich</td><td>Zwei Perioden, beide richtungen Bereinigung, Kaschierungsurteil</td><td style="text-align:right">10</td></tr>
+      <tr><td>5</td><td>ZM &amp; Geldvermögen (Ebenen)</td><td>Vollständiger Geschäftszyklus; Zinsen vs. Tilgung getrennt</td><td style="text-align:right">12</td></tr>
+      <tr><td>6</td><td>Reinvermögen &amp; Gesamtbild</td><td>Maschinenverkauf mit Buchgewinn; Lebenszyklusanalyse</td><td style="text-align:right">8</td></tr>
+      <tr><td>7</td><td>Grundaufbau der Bilanz</td><td>Bilanzanalyse: EK-Quote, Fristenkongruenz, Grenzen der Bilanz</td><td style="text-align:right">10</td></tr>
+      <tr><td>8</td><td>Inhalt und Gliederung</td><td>Passiver RAP, JÜ als Schlussgröße, Aktivierungswahlrecht</td><td style="text-align:right">10</td></tr>
+      <tr class="total"><td colspan="3"><strong>Gesamt</strong></td><td style="text-align:right"><strong>80</strong></td></tr>
+    </tbody>
+  </table>
+  <div style="font-size: 11px; color: var(--acc); margin-top: 10px;">Bestehensschwelle: 40 Punkte (50 %) · Note 1,0: ≥ 72 Punkte · Empfohlen nach vollständiger Bearbeitung von Klausur A und B</div>
+</div>
+
+<div style="text-align: center; color: var(--text-muted); font-size: 10px; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 14px;">
+  Klausur C · Fortgeschrittenes Niveau · Jahresabschluss SoSe 26 · Prof. Dr. Vanessa Flagmeier · Georg-August-Universität Göttingen
+</div>
+
+</body>
+</html>

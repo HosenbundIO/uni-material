@@ -1,4 +1,4 @@
-setwd("~/Documents/uni_material/uni_2_semester/statistik/Datensätze/")
+# setwd("~/Documents/uni_material/uni_2_semester/statistik/Datensätze/")
 
 Gewicht_m <- c(
   76, 71, 73, 68, 93, 65, 53, 75, 85, 83, 85, 75, 85, 67, 68,
@@ -59,9 +59,25 @@ rohdaten <- rep(semester, teilnehmer)
 median_teilnehmer <- median(rohdaten) # [1] 4
 
 max_val <- which.max(teilnehmer) # [1] 2
-modalwert_teilnehmer <- semester[häufigste_ausprägung] # [2] 3
+modalwert_teilnehmer <- semester[max_val] # [2] 3
 
 varianz_helper <- semester^2
 varianz_teilnehmer <- (1 / 23) * sum(teilnehmer * varianz_helper) - mittelwert_teilnehmer^2 # [1] 2.245747
 
 standardabweichung_teilnehmer <- sqrt(varianz_teilnehmer) # [1] 1.498582
+
+# Aufgabe 7
+x <- c(4, 2, 1, 6, 3, 1, 1, 7, 13, 4, 6, 6, 1, 14, 5, 9, 3, 2, 6, 3)
+x <- sort(x)
+boxplot(x, main = "Boxplot", ylab = "Anzahl der Semester")
+
+# Aufgabe 7b)
+xrow <- 6 + 1.5 * (6 - 2) # [1] 12
+# xow = 9
+xruw <- 2 - 1.5 * (6 - 2) # [1] -4
+# xuw = 1
+box <- boxplot(x, main = "Boxplot", ylab = "Anzahl der Semester", plot = FALSE)
+
+
+# Aufgabe 7c)
+

@@ -2,8 +2,8 @@
 
 # Aufgabe 1
 # a)
-set.seed(5) 
-Stichprobe <- sample (0:6, 20, replace=T)
+set.seed(5)
+Stichprobe <- sample(0:6, 20, replace = T)
 
 table(Stichprobe)
 sort(Stichprobe)
@@ -14,33 +14,33 @@ table(Stichprobe) / 20
 prop.table(table(Stichprobe))
 
 # c)
-hist(Stichprobe, breaks=c(0,2,4,6))
+hist(Stichprobe, breaks = c(0, 2, 4, 6))
 
-hist(Stichprobe, breaks=c(0,2,4,6), prob=T)
-hist(Stichprobe, breaks=c(0,2,4,6), freq=F)
+hist(Stichprobe, breaks = c(0, 2, 4, 6), prob = T)
+hist(Stichprobe, breaks = c(0, 2, 4, 6), freq = F)
 
 
 # Aufgabe 4
-Metacritic <- c(6.5, 7.1, 8.1, 9.3, 7.8, 8.1, 8.6, 9.3, 9.4, 9.0) 
+Metacritic <- c(6.5, 7.1, 8.1, 9.3, 7.8, 8.1, 8.6, 9.3, 9.4, 9.0)
 RottenTomatoes <- c(8.5, 8.6, 9.4, 9.2, 9.8, 9.2, 9.4, 9.6, 9.8, 9.7)
 
 # a)
-plot(Metacritic, RottenTomatoes, xlab="Metacritic", ylab="RottenTomatoes")
+plot(Metacritic, RottenTomatoes, xlab = "Metacritic", ylab = "RottenTomatoes")
 
 # b)
 # i)
-cor(Metacritic, RottenTomatoes, method="pearson")
+cor(Metacritic, RottenTomatoes, method = "pearson")
 
 # Hinweis: cor(...) anschauen, was ist die Default-Einstellung?
 
 # ii)
-cor(Metacritic, RottenTomatoes, method="spearman")
+cor(Metacritic, RottenTomatoes, method = "spearman")
 
 
 # Aufgabe 5
 
 # Erstellung der ursprünglichen Tabelle mit absoluten Häufigkeiten
-abs_tabelle <- matrix(c(30, 14, 2, 18, 10, 2, 12, 6, 6), byrow=T, nrow=3)
+abs_tabelle <- matrix(c(30, 14, 2, 18, 10, 2, 12, 6, 6), byrow = T, nrow = 3)
 
 # a)
 rel_tabelle <- abs_tabelle / 100
@@ -48,33 +48,33 @@ rel_tabelle
 
 # Randhäufigkeiten zum Beispiel mit dem "sum(...)" Befehl ausgeben lassen.
 # Beispiel Randhäufigkeit für Y = 0, entspricht der Summe der ersten Spalte über alle Zeilen
-sum(rel_tabelle[,1])
+sum(rel_tabelle[, 1])
 
 # Beispiel Randhäufigkeit für X = 0, entspricht der Summe der ersten Zeile über alle Spalten
-sum(rel_tabelle[1,])
+sum(rel_tabelle[1, ])
 
 
 # Aufgabe 6
 
 # a)
-par(mfrow=c(3, 1))
+par(mfrow = c(3, 1))
 
 plot(schein)
 # Darstellung mit Achsenbeschriftungen und Überschrift
 # plot(schein, xlab="Anzahl an Neuzulassungen von PKW",
 # ylab="Anzahl Gefangene in Deutschland",
-# main="Neuzulassungen PKW/ Gefangene in Deutschland 1998-2007", xlim=c(3100000,3810000), 
+# main="Neuzulassungen PKW/ Gefangene in Deutschland 1998-2007", xlim=c(3100000,3810000),
 # ylim=c(68000, 80000), bty="l", xaxs="i", yaxs="i", pch=19)
 
 plot(groegewicht)
 # Darstellung mit Achsenbeschriftungen und Überschrift
-# plot(groegewicht, xlab="Größe", ylab="Gewicht", 
-# main="Größe/Gewicht von 227 Studierenden", bty="l", xlim=c(150, 205), 
+# plot(groegewicht, xlab="Größe", ylab="Gewicht",
+# main="Größe/Gewicht von 227 Studierenden", bty="l", xlim=c(150, 205),
 # ylim=c(40, 140), xaxs="i", yaxs="i", pch=19)
 
 plot(QF)
 # Darstellung mit Achsenbeschriftungen und Überschrift
-# plot(QF, xlab="x", ylab="x^2", 
+# plot(QF, xlab="x", ylab="x^2",
 # main="Zufallszahlen einer Rechteckverteilung mit a=-1, b=1 und deren Quadrate",
 # bty="l", xlim=c(-1,1), ylim=c(0,1), xaxs="i", yaxs="i", pch=19)
 
@@ -123,16 +123,19 @@ names(divorce_margarine)
 # Das erste Argument von der plot() Funktion sind die Werte von der X-Achse
 # Das zweite Argument sind dementsprechent die Werte von der Y-Achse
 # Man kann zusätzlich die Achsen mit dem Argument xlab bzw. ylab beschriften
-plot(divorce_margarine$margarine_consumption_per_capita,divorce_margarine$divorce_rate_maine,
-     xlab="margarine_consumption_per_capita", ylab="divorce_rate_maine")
+plot(divorce_margarine$margarine_consumption_per_capita, divorce_margarine$divorce_rate_maine,
+  xlab = "margarine_consumption_per_capita", ylab = "divorce_rate_maine"
+)
 
 # c)
 # Die Funktion cor() berechnet den Pearson- oder Spearmankorrelationskoeffizient
 # je nach Methode wählt (method = "pearson" oder method = "spearman")
-cor(divorce_margarine$margarine_consumption_per_capita,divorce_margarine$divorce_rate_maine,
-    method="pearson")
 cor(divorce_margarine$margarine_consumption_per_capita, divorce_margarine$divorce_rate_maine,
-    method="spearman")
+  method = "pearson"
+)
+cor(divorce_margarine$margarine_consumption_per_capita, divorce_margarine$divorce_rate_maine,
+  method = "spearman"
+)
 
 # d)
 # Beide Korrelationskoeffizienten sind nahe an 1 --> wir haben einen starken

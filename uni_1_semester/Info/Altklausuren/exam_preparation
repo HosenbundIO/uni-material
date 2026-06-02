@@ -1,0 +1,613 @@
+Methoden:
+– Funktion: Methode mit Rückgabewert
+– Prozedur: void, Methode ohne Rückhabewert
+
+EVA:
+  Eingabe → Verarbeitung (Unter Nutzung des Speichers) → Ausgabe
+
+Logik
+– Konjunktion
+– Disjunktion
+– Implikation
+– Verneinung
+– XOR
+
+  a   b   a => b  a∧b   a∨b   ¬a
+  0   0   1       0     0     1
+  0   1   1       0     1     1
+  1   0   0       0     1     0
+  1   1   1       1     1     0
+
+  Idempotenzgesetz
+  Absorptionsgesetz
+  Komplementärgesetz
+  Extremalgesetz
+  Dualitätsgesetz
+  Neutralitätsgesetz
+
+  "wenn E und W, dann P": !(e && w) || p
+
+
+Formalparameter: lokale Variablen (im Methodenkopf definiert)
+Aktualparameter
+Gültigkeitsbereich [Bereich, in dem die Definition gültig ist]
+
+Rekursion: Basisfall
+Traversierung von Bäumen
+
+Elementare Datentypen (int, char, …), integrierte Datentypen (String + Elementare Datentypen) vs. Strukturierte Daten (Strings, Arrays)
+
+Call by Value, Call by Reference
+
+Statische Datenstrukturen vs. Dynamische Datenstrukturen (gegenseitiger Bezug durch Knoten)
+
+Lebenszeit (dynamisch; Zeit, in der Bezeichner Speicher zugeordnet ist)
+
+
+Binärkomplement:
+  – -(0000 0001) = 1111 1111 [Zweierkomplement plus eins]
+
+  int x = Integer.MAX_VALUE;  //  2147483647
+  int y = Integer.MIN_VALUE;  // -2147483648
+
+  System.out.println( x + y); // -1
+  System.out.println(-x + y); // 1
+  System.out.println( x + 1); // -2147483648
+  System.out.println( 4 * y); // -2147483648
+
+
+Speicherbereiche
+
+– Method Area
+  – speichert Bytecode benötigter Klassen sowie Klassenattribute, sprich statische Daten
+    – Methoden, Klassenvariablen
+  – Lebenszeit = Laufzeit der Klasse
+
+– Stack (strukturiert)
+  – speichert Aktivierungssätze von Methoden, Konstruktoren
+  – Lebenszeit = Ausführungszeit des Konstruktors / der Methode
+
+– Heap (unstrukturiert)
+  – Objekte
+  – Lebenszeit: ab Initialisierung mindestens so lange, wie von Method Area oder Stack aus erreichbar
+  – wird von Garbage Collector gereinigt
+  – Inhalt: Arrayinhalte, Verbunddaten
+
+
+Traversierung
+– Infix, Postfix
+– Postfix: nach jedem Operator folgt implizit eine schließende Klammer
+– ein Operator verarbeitet die beiden zuvorigen Ausdrücke zu einem Ergebnis  // Stack-Prinzip
+
+
+Infix         Postfix
+a-b/c*(d+e)   abc/de+*-
+a-(b-c)/d*e   abc-d/e*-
+a+(b+c)+d-e   abc++d+e-
+a-(b+c)-d+e   abc+-d-e+
+
+
+
+Überschreiben
+– Methoden mit gleichem Bezeichner und gleicher Signatur
+– Sichtbarkeit von überschriebenen Methoden darf nicht eingeschränkt werden
+– Klassenmethoden können nicht überschrieben werden
+
+@Override-annotation // nicht nötig
+– toString();
+– equals(Object o);
+– super.x() zum Aufruf der überschriebenen Methode x()
+
+
+Überladen
+– Methoden mit gleichem Bezeichner und unterschiedlicher Signatur
+
+Verdecken
+– Variablen mit gleichem Bezeichner
+– this.x zum Aufruf des verdeckten Bezeichners x (Bezug auf aktuelles Objekt)
+
+super()
+this.
+
+rekursives Grundschema: Initialisiere - Finalisiere (falls trivial) - Rekurriere
+iterative Grundmuster: Initialisiere - Iteriere - Finalisiere
+– for:
+– while: iteration
+– do while:
+
+Von-Neumann
+– Eingabewerk, Ausgabewerk
+– Speicherwerk
+  – Hauptspeicher
+– Prozessor
+  – Rechenwerk (ALU)
+  – Steuerwerk
+  – Register
+– Bus-System
+
+
+Notation Bezeichner
+– variable
+– method()
+– Class
+– CONSTANT
+
+
+Java-Laufzeitumgebung: JVM, Java-API (Standardbibliotheken)
+
+
+Ausdruck: 1+1
+Anweisung: if()
+
+
+Algorithmen
+– Performance
+  – Laufzeit
+    – Systemeigenschaften
+    – Systemlast
+    – Laufzeitumgebung
+
+
+
+    – asymptotisches Laufzeitverhalten (~: "ist asymptotisch gleich")
+      – f(N) ~ g(N) ←→ lim(N→unendlich) (f(N) / g(N)) = 1
+      – V(N) ~ N
+
+      – empirisch
+      – analytisch (Eigenschaften der Algorithmen)
+
+    – Grobanalyse [O-Notation]
+      V(N) <= c * f(N)
+      V(N) = O(f(N))
+
+      Die O-Notation gibt eine Wachstumsordnung an:
+      Wie schnell wächst die Laufzeit bei wachsender Problemgröße?
+
+    – Feinanalyse [Tilde-Notation]
+
+  – Speicherplatz
+    – elementare Daten: 1 - 8 Byte
+    – Referenzvariablen: 4 oder 8 Byte
+    – Objekte
+      – Instanzvariablen
+      – Objekt-Overhead (bei Feldern zusätzlich length; Referenz auf Bytecode der Klasse)
+
+    – in-place: Speicherbedarf ~n
+
+
+Postulate
+– sinnvolle Annahmen bzgl. elementarer "Schritte"
+  – Speicherzugriff, Registerzugriff, Methodenaufruf kosten konstante Zeit
+
+Aktivierungssatz
+
+
+Laufzeit bestimmen
+– O-Notation
+– Tilde-Notation
+
+Algorithmus     Komplexität   Begründung / Bemerkung                                  Faktor Laufzeit bei Verdoppelung der Werte
+binäre Suche    O(log(n))     Liste wird immer halbiert, muss aber sortiert sein  ca. 1 (logarithmisch)
+lineare Suche   O(n)          alle Zahlen müssen angeschaut werden                    2 (linear)
+
+Quicksort       O(n log(n))                                                       ca. 2 ("linearithmisch")
+Bubblesort      O(n²)         Gauß’sche Summenformel enthält n 2                      4 (quadratisch)
+Selection sort  O(n²) | ~(n(n-1)/2)+n         wie Bubblesort                          4 (quadratisch)
+Insertion sort
+Merge-Sort      O(2n log(n))  Hilfsarray notwendig; nicht in-place
+Radix-Sort                    nicht vergleichsbasiert, sondern Wetbasiert; Bsp. PLZ; Aufgeteilt in Phasen, Vergleich beginnen mit kleinster Ziffer; Vorwissen über Werte notwendig
+
+Türme von Hannoi  2^(O(n))                                                            2^n (exponentiell)
+
+
+Verfahren         Idee        in-place  stabil    best          worst         average
+BubbleSort        Vergl.-b.   ja        ja        O(N)          O(N 2 )       O(N 2 )
+SelectionSort     Vergl.-b.   ja        nein      O(N 2 )       O(N 2 )       O(N 2 )
+InsertionSort     Vergl.-b.   ja        ja        O(N)          O(N 2 )       O(N 2 )
+MergeSort         Vergl.-b.   nein      ja        O(N log N)    O(N log N)    O(N log N)
+QuickSort         Vergl.-b.   ja        nein      O(N log N)    O(N 2 )       O(N log N)
+RadixSort         Wert-b.     nein      ja        O(N)          O(N)          O(N)
+
+
+Binärbaum
+  suchen
+  einfügen      O(log(n))     Jeder Schritt sucht nur noch im halben Baum weiter
+  löschen
+
+einfach verkettete Liste
+  prepend       O(1)          Liste muss nur Referenzen am Anfang ändern
+  append        O(n)          Cursor muss erst bis ans Ende laufen
+  delete        O(n)          Knoten muss erst gesucht werden
+
+
+
+Dynamisches und statisches Binden
+– Klassenmethoden und Konstruktoren werden statisch gebunden
+– Instanzmethoden [kein static] werden dynamisch gebunden
+
+– Statische Referenzvariable
+  – Typ der Klasse bei Deklaration
+– Dynamische Referenzvariable (Laufzeit)
+  – Typ des aktuell referenzierten Objekts  // kann wechseln, siehe Polymorphie
+
+Static: Klassenniveau
+non-static: Objektniveau
+
+Binary Search Tree
+
+Datenstrukturen
+– Verkettete Liste
+– Doppelt verkettete Liste
+– Warteschlage (FIFO)
+  – enqueue
+  – dequeue
+– Stack (LIFO)
+  – push
+  – pop
+– Binärbaum
+
+
+Binary trees
+– W: Wurzel     +
+– L: Links      a
+– R: Rechts     b
+
+Reihenfolge     Ergebnis     Name
+LWR             a+b          inorder
+LRW             ab+          postorder
+WLR             +ab          preorder
+
+
+
+type casting
+
+
+Klassenelement
+– auf oberster Ebene innerhalb von Klassen definiert
+  – Methoden-Deklarationen
+    – <Objekt>.<Methode>(<Parameter>)
+  – Konstruktor-Deklarationen
+  – Deklaration von Instanzvariablen
+    – <Objekt>.<Variable>
+  – Statische Methoden (Klassenmethode) / Variablen (Klassenvariablen)
+    – <Klasse>.<Methode>(<Parameter>)
+– Scope gilt für ganze Klasse, auch wenn erst später in Klasse definiert
+
+Objekte
+– Realisierung / Instantiierung einer Klasse
+– new
+  1. Speicher anfordern
+  2. Konstruktor aufrufen
+  3. Referenz erzeugen
+
+– Zustand (Wert)
+– Identität (Adresse)
+– Verhalten (non-static methods)
+
+Typanpassung
+  byte → short → int → long → float → double
+
+
+Tiefe des Binärbaums:
+  Mindestens log(N-1)
+  Höchstens N-1
+
+Objektorientierung
+– Datenkapselung
+
+– Vererbung
+  – Basisklasse A
+    – Erweiterungsklasse B
+
+  class A {
+  }
+  class B extends A {
+    public B {
+      super();  // Konstruktoraufruf von Parent; nur als 1. Aufruf innerhalb eines Konstruktors
+    }
+  }
+
+  – wird nicht vererbt
+    – private
+    – static [ Damit eine Variable static ist, also eine feste Adresse im Speicher hat, muss das explizit deklariert werden. Innerhalb von Methoden können Variablen jedoch nicht static gesetzt werden.]
+
+– Polymorphie
+
+  SubClass sc = new SubClass();
+  BaseClass bc = sc; // impliziter Type Cast
+
+  – der Klassenkontext darf durch Zuweisung oder Casts eingeschränkt, jedoch nicht erweitert werden
+  – von SubClass überschriebene Methoden werden anstelle der überschriebenen Methoden aufgerufen
+  – eventuell expliziter cast nötig, um Zugriff auf Attribute und Methoden von SubClass zu erhalten, die nur dort existieren, da sonst Compilzeit-Fehler:
+
+  ((SubClass) bc).x()
+
+
+Abstrakte Klassen + abstrakte Methoden
+– können nicht initialisiert werden
+– zwingen, abstrakte Methoden in Erweiterungsklasse zu implementieren
+
+
+Abstrakte Datentypen (ADT) [Beispiele: Stack, Queue]
+– Schnittstellen"vererbung" von mehreren Schnittstellen möglich
+– haben Axiome / Eigenschaften (+ Zustand)
+– getrennte Implementation und Schnittstelle
+
+  public interface Stack {
+    public boolean empty();
+    public void push(Object o);
+    public void pop();
+    public Object top();
+  }
+  public class TestStack implements Stack, Queue {
+    public static void main(String[] args) {
+      Stack s = new TestStack;  // statischer Typ Stack, dynamischer Typ TestStack
+    }
+  }
+
+Generische Datentypen
+– Typsicherheit (Objekt immer nur von einem Typ)
+
+  public class Stack<Item> {  // Item == Platzhalter
+    ...
+  }
+  public class TestStack {
+    Stack<Integer> p = new Stack<Integer>();
+  }
+
+
+
+
+public abstract class X {
+  public abstract void plot();
+}
+
+
+Finale Klassen
+final class
+– können nicht beerbt werden
+
+
+Wrapper-Klassen
+  String s = "5";
+  Integer i = new Integer(4);
+  int j = i.intValue();
+  int k = Integer.parseInt(s);
+
+Integer.parseInt(args[0]);
+
+
+
+Konstruktoren
+class A {
+  private string s;
+  public A() {
+    this("AA");  // eigener Konstruktoraufruf; nur als 1. Aufruf innerhalb eines Konstruktors
+  }
+  public A(String s) {
+    this.s = s;
+  }
+}
+
+
+  Typ     Size  Literal
+  short   2
+  int     4
+  long    8     L, l
+  float   4     F, f
+  double  8     D, d
+  boolean 1
+  char    2
+  signed
+  unsigned
+                E, e   [+|–]‹Ziffer›  [10-Exponent]
+
+  short, int, long, float, double, boolean, char: Werttyp
+  String: Referenztyp
+
+
+Modifizierer
+– Zugriffsmodifizierer: Sichtbarkeit
+  – private: Klasse
+  – protected: Klasse + Unterklassen
+  – <implizit>: gleiches Paket
+  – public: global
+
+– Speicherklassenmodifizierer: Lebensdauer
+  – static → Variable, Methode wird Klassenmember
+  – <implizit> → Instanzmember
+
+– ???
+  – abstract
+  – final
+  – <implizit>
+
+Methode
+– Kopf
+  – Parameterliste
+  – Rückgabewert
+– Rumpf
+
+– Prozedur
+  – void-Methode
+– Funktion
+  – Rückgabetyp != void
+
+Methodensignatur
+– Rückgabetyp
+– alle Parametertypen
+
+Exceptions
+– throws
+– throw new RuntimeException("Hello World!");
+
+new
+
+Punkt-Operator
+– Dereferenzierung
+
+
+Auswerten von Ausdrücken
+– Wertestack (double)
+– Operatorstack (char)
+
+if (c == '('); // ignorieren
+if (c == <zahl>) valstack.push(c);
+if (c == <operator>) opstack.push(c);
+if (c == ')') { verrechne Operator mit Operanden; opstack.pop(); valstack.pop(); valstack.push(ergebnis); }
+
+
+Bitoperationen
+  &, &=         // bitwise AND
+  |, |=         // bitwise OR
+  ^, ^?         // bitwise XOR
+  ~             // bitwise Complement
+  <<l, <<=l     // Linksschift um l Positionen, 0-Ergänzung
+  >>l, >>=l     // Rechtsschift um l Positionen, Ergänzung durch Führungsbit
+  >>>l, >>>=l   // Rechtsschift um l Positionen, 0-Ergänzug
+
+
+
+Arrays
+  int[] x = new int[2];
+  int y = x.length;
+  int[][] z = {{0,1,2,3},{4,5,6}};
+  z[0].length;
+
+  Default-Initialisierung; 0, 0.0, false
+
+
+public interface Comparable<T>
+– public int compareTo(T other);  // Integer, Character, ..., String
+
+public class PriorityQueue<T extends Comparable <T>> {
+}
+
+
+Integer.parseInt(String s)  // Konvertiert Daten von String in [Typ]
+
+public interface Comparable<T>
+  public int compareTo(T other);
+
+
+
+Math
+  ??.sqrt()
+  ??.sin
+  ??.e
+
+
+Arrays
+  .sort
+
+System
+  .out.print(String s)
+  .out.println(String s)
+  .currentTimeMillis();
+  .err.print(Strin s);
+
+StdDraw
+  .setPenColor(StdDraw.RED)
+  .text(int x, int y, String text)
+  .setScale(int min, int max)
+
+  void setXscale(double x0, double x1)
+  void setYscale(double y0, double y1)
+  void setPenRadius(double x)
+  void point(int x, int y)
+  void line(double x0, double y0, double x1, double y1)
+  void clear()
+  void show(int ms)
+
+StdIn
+  .readLine()
+  .readInt()
+  .isEmpty()
+
+String
+  .length()
+  .chatAt(int i)
+  .equals(String t)
+  .compareTo(String t) // s < t → return < 0
+  .concat(String t)
+  ??.format
+
+Math
+  .random()
+  .pow(double a, double b)
+  .exp(double a)
+  .log(double a)
+
+
+Präfix    Suffix
+0b        b
+0         o
+–         d
+0x        h
+
+___
+Mathematik + Graphen
+
+
+Horner-Schema
+
+Graphen und Adjazenzmatrizen
+– Transitiver Abschluss
+
+Matrixmultiplikation
+– Akkumulator
+
+
+call by value, call by reference
+
+es wird gerechnet mit mindestens int, double
+
+quoted printable
+base64
+
+
+Zeitlicher Ablauf der Entwicklung
+  Spezifikation
+  Lösungsidee
+  Algorithmus
+  Editor
+  Quelltext
+  Compiler
+  Zielcode
+  Testen
+
+___
+Java-Specifics
+
+1 == 1.0
+a == 97
+'c' + 1 == 100
+char('c' + 1) == 'd'
+char: ''
+String: ""
+int f = i // wird trotz "int" in Schleife neu zugewiesen
+
+nicht möglich
+  100++
+  'C'++   // Inkrement etc. nur auf Variablen anwendbar, nicht auf Int-Werte
+
+
+switch(tag) {
+  case 1: ...; break;
+  case 2: ...;
+}
+
+int[][] a = new int[][];
+a.length;
+a[0].length;
+
+if (o instanceof Double) { ... }
+
+Java ist immer call by value
+
+eine .class-Datei für jede Klasse
+  auch für geschachtelte Klassen
+
+kein signed / unsigned
+
+bei mehrfacher Rekursion: immer erst den ganz linken Baum bis zum Blatt, danach

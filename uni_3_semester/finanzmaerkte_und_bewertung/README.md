@@ -6,6 +6,7 @@
 
 | Ordner | Inhalt |
 | --- | --- |
+| [00_organisation/](00_organisation/) | Kursorganisation und Importlisten der heruntergeladenen Archive |
 | [01_vorlesungen/](01_vorlesungen/) | Folien, Skripte und Mitschriften |
 | [02_uebungen/](02_uebungen/) | Aufgabenblätter und eigene Lösungen |
 | [03_tutorien/](03_tutorien/) | Material und Notizen aus Tutorien |
@@ -14,3 +15,9 @@
 | [06_zusammenfassungen/](06_zusammenfassungen/) | Lernzettel, Zusammenfassungen und Formelsammlungen |
 | [99_klausurvorbereitung/altklausuren/](99_klausurvorbereitung/altklausuren/) | Altklausuren und zugehörige Lösungen |
 | [99_klausurvorbereitung/probeklausuren/](99_klausurvorbereitung/probeklausuren/) | Probeklausuren und Übungsklausuren |
+
+## Einsortierte Materialien
+
+- Vorlesungen: Kapitel 0 bis 5 aus dem Wintersemester 2026/2027.
+- Übungen: Übungsblätter 1 bis 9.
+- Die Zuordnung der allgemein benannten Archive `Vorlesungsfolien.zip` und `Übungsblätter.zip` wurde anhand der PDF-Titel „Finanzmärkte und Bewertung“ geprüft.

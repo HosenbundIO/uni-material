@@ -1,0 +1,435 @@
+\documentclass[11pt]{beamer}
+\usetheme{cambridgeUS}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\author{Maria Kosche}
+\title{Latex Einführung}
+\subtitle{Basierend auf einem Vortrag von Janina Schmidt}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Warum Latex?}
+\begin{frame}{Warum Latex?}
+\begin{itemize}
+	\item Professionelles Layout
+	\item Einfache Umsetzung von mathematischem Zeichensatz
+	\item Verwendung für Bachelor- und Masterthesis
+	\item Unterstützung auf allen Plattformen
+\end{itemize}
+\end{frame}
+
+\section{Welcher Editor?}
+\begin{frame}{Welcher Editor?}
+\begin{itemize}
+	\item<1-> Sharelatex als online Lösung der GWDG
+	\url{https://sharelatex.gwdg.de}
+	\item<2-> Kile auf den Rechnern des CIP-Pools
+	
+	\texttt{sudo apt-get install kile}
+	\item<4-> texmaker 
+	
+	\texttt{sudo apt-get install texmaker}
+	\item<5-> TeXstudio
+	\url{https://www.texstudio.org/}
+	\item<6-> Hilfe und Dokumentation unter \url{https://en.wikibooks.org/wiki/LaTeX}
+\end{itemize}
+\end{frame}
+
+\section{Minimalbeispiel}
+\begin{frame}[fragile]
+\frametitle{Minimalbeispiel}
+
+\begin{itemize}
+	\item Grundsätzlich unterteilen wir ein \LaTeX-Dokument in Preamble und Body
+	\item Preamble stellt das Fundament dar (Dokumentenklasse, Spracheinstellungen, zu ladende Pakete, $\ldots$)
+	\item Body enthält den zu setzenden Text:
+	$\rightarrow$ \verb|\begin{document} ... \end{document}|
+\end{itemize}
+
+\begin{verbatim}
+\documentclass[11pt]{article}
+
+% Kommentare in LaTeX beginnen mit einem %-Zeichen
+% In der Preamble werden Dokumenteinstellungen festgelegt und Pakete geladen
+
+\begin{document}
+% Im Dokumentenkörper wird der eigentliche Text gesetzt.
+Hello, World.
+\end{document}
+\end{verbatim}
+\end{frame}
+
+
+\section{Dokumentklasssen}
+\begin{frame}{Dokumentklassen}
+\begin{itemize}
+\item article
+\item beamer
+\item letter
+\item book
+\item tikzposter
+\item Definition eigener Dokumentklassen möglich
+\end{itemize}
+\end{frame}
+
+\section{Dokumentstruktur}
+\begin{frame}[fragile]
+\frametitle{\secname}
+\begin{itemize}
+	\item<1-> Aufteilen des Dokuments in logische Abschnitte
+	\item<2-> \begin{verbatim}
+	\section{name} \subsection \subsubsection{} 
+	\paragraph{•}
+	\end{verbatim}
+	\item<3-> Standardmäßig nummeriert, wenn nicht gewünscht \verb|\section*{}|
+	\item<4-> Automatisch erstelltes und sich selbst anpassendes Inhaltsverzeichnis mit \textbackslash tableofcontents
+	\item<5-> Im erstellten pdf-Dokument sind Seiten über das Inhaltsverzeichnis verlinkt.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{\secname\ II}
+	\begin{itemize}
+		\item<1-> Sektionen, Kapitel usw. für die logische Strukturierung des Textes
+		\item<2-> Sogenannte Umgebungen für die Strukturierung des Textsatzes
+		\item<3-> Umgebungen legen fest, wie Text gesetzt werden
+		\item<4-> Beispiel einer Tabellenumgebung: \verb|\begin{tabular} ... \end{tabular}|
+		\item<5-> Weitere Beispiele und Verwendungshinweise in diesem Vortrag
+	\end{itemize}
+\end{frame}
+
+
+\section{Textformatierung -- Schrift}
+\begin{frame}[fragile]
+\frametitle{\secname}
+\begin{itemize}
+	\item<1-> Reiner Text, der mit Latex gesetzt wird, kann mittels verschiedener Befehle formatiert werden
+	\item<2-> Für \textbf{Fettschrift} kann beispielsweise \verb|\textbf{<text>}| verwendet werden
+	\item<3-> Schriftgröße wird grundsätzlich mit der Dokumentenklasse oder in der Preamble ausgewählt (z.B. \verb|\documentclass[11pt]{article}|)
+	\item<4-> Auch die {\huge temporäre} {\tiny Veränderung} der Schriftgröße ist möglich mit Befehlen wie \verb|\large| oder \verb|\tiny|
+	\item<5-> \url{https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_styles}
+\end{itemize}
+\end{frame}
+
+\section{Gruppen}
+\begin{frame}[fragile]
+	\frametitle{\secname}
+	\begin{itemize}
+		\item<1-> Gruppen: Text mit bestimmten Eigenschaften gruppieren
+		\item<2-> Formatierung und Definitionen verlieren bei Gruppenende ihre Wirkung
+		\item<3-> \begin{verbatim}
+			\begingroup
+			\itshape
+			Dies ist kursiver Text in einer Gruppe.
+			\endgroup
+			Nach der Gruppe wird die Formatierung zurückgesetzt.
+		\end{verbatim}
+		$$\Downarrow$$
+		\begingroup
+		\itshape
+		Dies ist kursiver Text in einer Gruppe.
+		\endgroup
+		Nach der Gruppe wird die Formatierung zurückgesetzt.
+	\end{itemize}
+\end{frame}
+
+\section{Aufzählungen}
+\begin{frame}[fragile]
+\frametitle{Aufzählungen}
+\begin{itemize}
+\item Um eine Aufzählung zu bekommen kann die \textbackslash itemize Umgebung verwendet werden
+\item Eine Aufzählung sieht dann so aus:
+\begin{verbatim}
+\begin{itemize}
+	\item article
+	\item book
+	\item tikzposter
+\end{itemize}
+\end{verbatim}
+\item[-] Mit \textbackslash \verb|item[-]| können statt Bulletpoints Spiegelstriche verwendet werden
+\item[$\gamma$] mit \verb|item[$CHARACTER$]| auch jedes beliebige andere Zeichen
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Aufzählungen II}
+\begin{enumerate}[1]
+\item Mit \textbackslash begin\{enumerate\} können geordnete Listen erstellt werden
+\item \begin{enumerate}[a]
+		\item Zusätzliche Listenebenen sind auch möglich
+		\item \ldots
+	\end{enumerate}
+\item \ldots
+\end{enumerate}
+\end{frame}
+
+\section{Matheformeln}
+\begin{frame}[fragile]
+\frametitle{Matheformeln I}
+\begin{itemize}
+\item<1-> Möchte man Mathematische Ausdrücke im Text verwenden, so muss man den gewünschten Ausdruck in \$ \$ schreiben
+
+Beispiel:
+\verb|$i \in \mathbb{N}$| wird zu $i \in \mathbb{N}$
+\item<2-> Komplizierte oder größere Formeln sollten in einer Formelumgebung stehen
+
+\$\$ ... \$\$ oder \textbackslash begin \{equation\}
+
+Beispiel:
+\begin{verbatim}
+	$$ \sum_{i=2}^{5t^{2}} \frac{1}{2 \pi i} $$
+\end{verbatim}
+wird zu
+$$ \sum_{i=2}^{5t^{2}} \frac{1}{2 \pi i} $$
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Matheformeln II}
+\begin{itemize}
+\item<1-> Griechische Buchstaben werden mit \textbackslash NAME geschrieben, z.B. \textbackslash gamma oder \textbackslash Gamma gibt $\gamma$ und $\Gamma$ 
+\item<2-> Brüche werden mit \textbackslash frac\{ZÄHLER\}\{NENNER\} dargestellt
+\item<3-> Beliebige Dinge bekommen einen Index durch \_\{ \} und einen Exponenten durch $\hat{}$ \{ \}
+\item<4-> Beispiel $\alpha_1^{2x}$ durch \begin{verbatim}
+$\alpha_1^{2x}$
+\end{verbatim}
+\item<5-> Allquantor $\forall$ \textbackslash forall, Existenzquantor $\exists $ \textbackslash exists, $\in$ \textbackslash in, $\notin$ \textbackslash notin
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Matheformeln III}
+\begin{itemize}
+\item<1-> Summen $\sum$ können durch \textbackslash sum erzeugt werden
+\item<2-> Integral $\int$ durch \textbackslash int
+\item<3-> Klammern, die durch \textbackslash left( und \textbackslash right) erstellt werden, passen sich an die Größe der Formel an
+\item<4-> $\mathbb{N}$, $\mathbb{Q}$ durch \textbackslash mathbb \{BUCHSTABE\}
+\item<5-> \url{https://en.wikibooks.org/wiki/LaTeX/Mathematics}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Matheformeln IV}
+\begin{itemize}
+\item<1-> Darstellung Matrix mit Array Umgebung $$A = \left( \begin{array}{cc}
+a_{11} & a_{12} \\
+a_{21} & a_{22} \\
+\end{array} \right)$$
+\item<2-> \begin{verbatim}
+$$ \left( \begin{array}{cc}
+a_{11} & a_{12} \\
+a_{21} & a_{22} \\
+\end{array} \right)$$
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Matheformeln V}
+\begin{itemize}
+\item Für Termumformungen möchte man untereinder angeordnete Formeln, dies ist mit \verb|\begin{align} ... \end{align}| möglich
+\begin{align*}
+x^{2} + y^{2} &= 9 \\
+x^{2} &= 9 - y^{2}\\
+\end{align*}
+
+\begin{verbatim}
+\begin{align*}
+x^{2} + y^{2} &= 9 \\
+x^{2} &= 9 - y^{2}\\
+\end{align*}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\section{Tabellen}
+\begin{frame}[fragile]
+\frametitle{Tabellen I}
+\begin{itemize}
+\item Einfache Tabellen  können mit einer tabular Umgebung in einer table Umgebung erstellt werden
+
+\begin{table}[]
+	\begin{tabular}{l|lll}
+		\multicolumn{4}{c}{\textbf{Personenübersicht}} \vspace{0.5cm} \\
+		Name&  Alter&  Studienfach&  Hobby \\
+		\hline
+		Jean&  117&  Irgendwas mit Medien&  Netflix \\
+		Jaque&  23&  Informatik& \LaTeX
+	\end{tabular}
+\end{table}
+
+\footnotesize \begin{verbatim}
+\begin{table}[]
+	\begin{tabular}{l|lll}
+		\multicolumn{4}{c}{\textbf{Personenübersicht}} \vspace{0.5cm} \\
+		Name&  Alter&  Studienfach&  Hobby \\
+		\hline
+		Jean&  117&  Irgendwas mit Medien&  Netflix \\
+		Jaque&  23&  Informatik& \LaTeX
+	\end{tabular}
+\end{table}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Tabellen II}
+\begin{itemize}
+\item<1-> $l$, $c$ und $r$ in dem \textbackslash begin\{tabular\}\{llll\} Befehl geben für jede Spalte an, wie sie ausgerichtet sein soll
+\item<2-> $|$ und \textbackslash hline für gerahmte Spalten/Zeilen
+\item<3-> Beschriftung und Mehrfachzellen sind möglich mit den Befehlen \verb|\caption{}|
+und \verb|\multicolumn{col}{pos}{text}|
+\end{itemize}
+\pause\pause\pause
+\begin{table}[]
+\caption{Tabelle}
+\begin{tabular}{|c|c|c|c|}
+ Name&  Alter&  Studienfach&  Hobby \\
+ \hline
+ \multicolumn{2}{|c|}{ 2}&  2&  2
+\end{tabular}
+\end{table}
+
+\footnotesize \begin{verbatim}
+\begin{table}[]
+\caption{Tabelle}
+\begin{tabular}{|c|c|c|c|}
+ Name&  Alter&  Studienfach&  Hobby \\
+ \hline
+ \multicolumn{2}{|c|}{ 2}&  2&  2
+\end{tabular}
+\end{table}
+\end{verbatim}
+\end{frame}
+
+\section{Figures}
+\begin{frame}[fragile]
+\frametitle{\secname\ I}
+\begin{itemize}
+	\item Verwenden von Graphiken mit dem graphicx Paket \verb|\usepackage{graphicx}|
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.3\linewidth]{test.pdf}
+	\caption{Dies ist nur ein Testbild}
+\end{figure}
+
+\begin{verbatim}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.3\linewidth]{test.pdf}
+	\caption{Dies ist nur ein Testbild}
+\end{figure}
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{\secname\ II}
+	\begin{itemize}
+		\item Verschiedene float specifier, um Graphiken auf der Seite zu platzieren.
+		
+		[h] (for here), [t] (top of the page), [b] (bottom of the page)
+		\item Anpassung der Breite oder Höhe einer Graphik mit den \verb|width|- und \verb|height|-Optionen
+		\item Bildbeschriftung mit dem \verb|caption{}|-Befehl
+		\item \url{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}
+	\end{itemize}
+\end{frame}
+
+\section{Code}
+\begin{frame}[fragile]
+\frametitle{Code}
+\begin{itemize}
+\item<1-> \textbackslash usepackage\{listings\}
+\item<2-> \footnotesize \lstset{language=Python} 
+\begin{lstlisting} 
+def dct1(a):
+	y = np.empty(2*n, dtype=np.float64)
+	y[0] = math.sqrt(2)*a[0]
+	y[n+1:2*n] = a[n-1:0:-1]
+	return erg
+	\end{lstlisting}
+\item<3-> \begin{verbatim}
+\lstset{language=Python}
+\begin{lstlisting} 
+def dct1(a):
+	y = np.empty(2*n, dtype=np.float64)
+	y[0] = math.sqrt(2)*a[0]
+	y[n+1:2*n] = a[n-1:0:-1]
+	return erg
+	\end{lstlisting}
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\section{Graphen}
+\begin{frame}[fragile]
+\frametitle{Graphen I}
+\begin{itemize}
+\item Mit dem tikz Paket kann man Graphiken zeichnen \textbackslash usepackage\{tikz\}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$}; 
+   \node[state] (q_1) [above right=of q_0] {$q_1$}; 
+   \node[state] (q_2) [below right=of q_0] {$q_2$}; 
+   \node[state,accepting](q_3) [below right=of q_1] {$q_3$};
+    \path[->] 
+    (q_0) edge  node {0} (q_1)
+          edge  node [swap] {1} (q_2)
+    (q_1) edge  node  {1} (q_3)
+          edge [loop above] node {0} ()
+    (q_2) edge  node [swap] {0} (q_3) 
+          edge [loop below] node {1} ();
+\end{tikzpicture}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Graphen II}
+ \scriptsize \begin{verbatim}
+\begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto] 
+   \node[state,initial] (q_0)   {$q_0$}; 
+   \node[state] (q_1) [above right=of q_0] {$q_1$}; 
+   \node[state] (q_2) [below right=of q_0] {$q_2$}; 
+   \node[state,accepting](q_3) [below right=of q_1] {$q_3$};
+    \path[->] 
+    (q_0) edge  node {0} (q_1)
+          edge  node [swap] {1} (q_2)
+    (q_1) edge  node  {1} (q_3)
+          edge [loop above] node {0} ()
+    (q_2) edge  node [swap] {0} (q_3) 
+          edge [loop below] node {1} ();
+\end{tikzpicture}
+\end{verbatim}
+\begin{itemize}
+\item \url{https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ}
+\item Verwendung von Zeichentools ebenfalls möglich (z.B. Ipe \url{http://ipe.otfried.org/})
+\end{itemize}
+\end{frame}
+
+%\section{Aufgaben}
+%\begin{frame}{Aufgaben}
+%\begin{enumerate}
+%\item Erstelle ein Dokument dass aus mindestens zwei Kapiteln besteht
+%\item Erstelle ein Inhaltsverzeichnis für das Dokument
+%\item Erstelle in dem Dokument einen Text, der an einem Beispiel die Verwendung der PQ-Formel erklärt
+%\item Erstelle in dem Dokument eine Tabelle, die den Namen, das Alter und ein Hobby der anderen Workshopteilnehmer*innen enthält
+%\end{enumerate}
+%\end{frame}
+\end{document}

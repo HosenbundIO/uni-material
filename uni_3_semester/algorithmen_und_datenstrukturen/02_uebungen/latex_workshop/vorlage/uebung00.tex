@@ -1,0 +1,137 @@
+\documentclass[11pt]{uebungsblatt}
+
+\blatttitel{Bonusübungsblatt -- Zur Selbstüberprüfung (unbenotet)}
+\blattuntertitel{\LaTeX }
+\excludecomment{loesung}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\def\url#1{\expandafter \textcolor{blue}{#1} \csname #1\endcsname}
+
+\header{\textbf{Algorithmen und Datenstrukturen}\hfill\textbf{Wintersemester 2026/27}\\
+	Prof.~Dr.~Florin~Manea \hfill Georg-August-Universität Göttingen \\
+	M.Sc.~Timo~Specht \hfill Institut für Informatik\\
+	\strut\hfill Lehrstuhl für Theoretische Informatik\\
+	\rule{\textwidth}{0.1mm}}
+\introtext{%
+	
+}
+
+\begin{document}
+
+\begin{aufgabe}
+	Eine kleine Einführung zur Verwendung von \LaTeX\ ist für Sie im Stud.IP unter Medien hochgeladen.
+
+	In der Stud.IP Veranstaltung zur Vorlesung befindet sich unter \textit{Dateien} $\rightarrow$ \textit{Übung} $\rightarrow$ \textit{Latex} $\rightarrow$ \textit{template.zip} eine allgemeine Vorlage für die Anfertigung Ihrer Abgaben.
+	Laden Sie das Archiv herunter und entpacken Sie es.
+	Bei den Dateien \textit{uebungsblatt.sty} und \textit{uebungsblatt.cls} handelt es sich um Klassen- bzw. Style-Files,
+	die Sie zum kompilieren benötigen, aber \textbf{nicht} weiter bearbeiten sollen.
+	Die Datei \textit{uebung.tex} soll von Ihnen angepasst werden,
+	indem Sie im Header an den entsprechenden Stellen {Student:in1} und {Student:in2} durch die Namen der abgebenden Studierenden ersetzen.
+	Ergänzen Sie außerdem die entsprechende Blattnummer.
+
+	Zum Editieren und Kompilieren können Sie beispielsweise den \LaTeX-Editor des GWDG verwenden.
+	Dieser ist unter \url{https://sharelatex.gwdg.de/} zu finden.
+	Hier müssen Sie lediglich Ihre Datei zusammen mit den beiden Klassen-/Style-Files in einem neuen Projekt hochladen.
+
+	Für zukünftige Abgaben wird stets ein entsprechendes Template mit den aktuellen Aufgaben im Latex-Ordner hochgeladen werden,
+	welches Sie nutzen können.
+\end{aufgabe}
+
+\textbf{Verwenden Sie Ihre angepasste Vorlage aus Aufgabe 1 nun für die folgenden Aufgaben.}
+
+\begin{aufgabe}
+	Setzen Sie in Ihrer \LaTeX-Datei folgenden Text inklusive Zeichenformatierung und der Tabelle. Verwenden Sie dabei mindestens an einer Stelle eine Gruppe.
+
+	\bigskip
+	Um einen \LaTeX-Text zu setzen, kann man sich vieler Mittel bedienen.
+	\textit{Sehen Sie sich zum Beispiel diesen Satz an, er ist kursiv!}
+	\textsf{\textbf{Aber auch serifenlos und fett können einzelne Textelemente gesetzt werden.}}
+
+	Absätze innerhalb eines Texts können wir einfach durch eine Leerzeile erreichen.
+	Darüber hinaus werden Zeilenumbrüche innerhalb eines \LaTeX-Textes einfach ignoriert.
+	Zeichen wie \& oder \textbackslash\ müssen normalerweise speziell gesetzt werden,
+	damit diese in einem Text verwendet werden können.
+
+	\begingroup
+	\LARGE
+	Um Text besonders hervorzuheben, können wir die Schriftgröße auf LARGE setzen.
+	\endgroup
+	Dabei ist allerdings wichtig, dass wir die Schriftgröße für darauffolgenden Text auch wieder auf ein normales Maß runterstellen.
+	Um dies zu erreichen können wir beispielsweise mit Gruppen arbeiten.
+
+	Zum Abschluss folgt hier nun eine Tabelle mit einer kleinen Übersicht möglicher Zeichensätze.
+
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lll}
+			\multicolumn{2}{r}{\textbf{Familie}}                                                              \\
+			\texttt{\string\rmfamily} & \texttt{\string\textrm\{\}} & \textrm{normal}                         \\
+			\texttt{\string\sffamily} & \texttt{\string\textsf\{\}} & \textsf{serifenfrei}                    \\
+			\texttt{\string\ttfamily} & \texttt{\string\texttt\{\}} & \texttt{Schreibmaschine} \vspace{0.5cm} \\
+			\multicolumn{2}{r}{\textbf{Stärke}}                                                               \\
+			\verb|\mdseries|          & \verb|\textmd{}|            & \textmd{normal}                         \\
+			\verb|\bfseries|          & \verb|\textbf{}|            & \textbf{fett} \vspace{0.5cm}            \\
+			\multicolumn{2}{r}{\textbf{Varianten}}                                                            \\
+			\verb|\upshape|           & \verb|\textup{}|            & \textup{aufrecht}                       \\
+			\verb|\itshape|           & \verb|\textit{}|            & \textit{kursiv}                         \\
+			\verb|\scshape|           & \verb|\textsc{}|            & \textsc{Kapitälchen}                    \\
+		\end{tabular}
+	\end{table}
+\end{aufgabe}
+
+\newpage
+\begin{aufgabe}
+	Setzen Sie in Ihrer \LaTeX-Datei die folgenden mathematischen Ausdrücke:
+
+	\begin{enumerate}[a)]
+		\item $$ f \in \mathcal{O}(n), \quad g \in \Omega(n \log n) $$
+		\item $$ \forall k \in \mathbb{N} \colon s \sim_k t \vcentcolon\Leftrightarrow \mathcal{SF}_k(s) = \mathcal{SF}_k(t) $$
+		\item $$ f \colon \mathbb{Z} \rightarrow \mathbb{R}, \quad f(x) \coloneqq \sqrt[5]{\lvert x - 5 \rvert} $$
+		\item $$ \underbrace{\varDelta \frac{\gamma_1^3}{2 m_0} = \sum_i^x \frac{i}{2\varepsilon}}_{\text{\Large{This is some nice equation stuff!}}} $$
+		\item $$ fib(n) =
+			      \begin{cases}
+				      1                   & \text{for } n \in \{1,2\} \\
+				      fib(n-1) + fib(n-2) & \text{for } n \geq 3
+			      \end{cases}
+		      $$
+	\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}
+	Fügen Sie für diese Aufgabe ein beliebiges Bild
+	(z.B. ein Gruß, ein lustiges Meme, süße Katzenbabys, ein nettes Selfie, was auch immer)
+	in Ihre \LaTeX-Datei ein.
+	Wählen Sie eine geeignete Bildgröße.
+	Versehen Sie das Bild mit einem Untertitel (auch caption genannt).
+
+	Hinweis: Das Bild muss als pdf, jpg oder png vorliegen, darf maximal 1 MB groß sein und muss sich im selben Verzeichnis wie Ihre \LaTeX-Datei befinden.
+\end{aufgabe}
+
+\newpage
+\begin{loesung}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.5\linewidth]{photo.png}
+		\caption{Ungewöhnliche Freundschaft}
+	\end{figure}
+\end{loesung}
+
+\newpage
+%=====================================================================
+\begin{cut}
+
+
+	\begin{aufgabe}
+		\begin{loesung}
+
+
+		\end{loesung}
+	\end{aufgabe}
+
+
+\end{cut}
+%=====================================================================
+
+\end{document}

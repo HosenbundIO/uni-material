@@ -11,10 +11,7 @@
 | `B.WIWI-ECON.0003` | [Wissenschaftliches Arbeiten mit KI](wissenschaftliches_arbeiten_mit_ki/) |
 | `B.WIWI-QMW.0016` | [Statistik und Data Science 1: Grundlagen der Angewandten Statistik](statistik_und_data_science_1/) |
 | `B.WIWI-WIN.0001` | [Enterprise Architecture und Prozessmodellierung](enterprise_architecture_und_prozessmodellierung/) |
-| `B.WIWI-WIN.0002` | [Management der Informationswirtschaft](management_der_informationswirtschaft/) |
-| `B.WIWI-WIN.0002` | [Strategisches IS- und Daten-Management](strategisches_is_und_daten_management/) |
-
-> Die Kennung `B.WIWI-WIN.0002` steht in der Vorlage bei zwei verschiedenen Modulen. Beide sind deshalb anhand ihres Titels getrennt abgelegt; die Kennungen wurden aus der Vorlage übernommen.
+| `B.WIWI-WIN.0002` | [Strategisches IS und Datenmanagement](strategisches_is_und_datenmanagement/) |
 
 ## Einheitliche Ordnerstruktur
 

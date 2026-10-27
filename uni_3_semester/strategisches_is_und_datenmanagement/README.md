@@ -1,4 +1,4 @@
-# Management der Informationswirtschaft
+# Strategisches IS und Datenmanagement
 
 **Modulkennung:** `B.WIWI-WIN.0002`
 
